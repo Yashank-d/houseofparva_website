@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-cormorant), "Apple Garamond", "Baskerville", serif;
+  --font-sans: var(--font-montserrat), sans-serif;
+  --font-cinzel: var(--font-cinzel), serif;
+}
+
+:root {
+  --background: #3a0d13;
+  --background-dark: #220609;
+  --foreground: #ede7c7;
+  --gold-primary: #dfcca3;
+  --gold-light: #fff6e3;
+  --gold-dark: #b89f6d;
+  --cream: #ede7c7;
+}
+
+body {
+  background: radial-gradient(circle at 50% 35%, #4a1219 0%, #350c12 55%, #220609 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Luminous Champagne Rose-Gold Shimmer Gradient */
+.gold-gradient-text {
+  background: linear-gradient(
+    135deg,
+    #dfcca3 0%,
+    #fff7e6 30%,
+    #ebd3a0 50%,
+    #fff7e6 70%,
+    #dfcca3 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shimmer 8s linear infinite;
+}
+
+/* Transforms dark PNG logo into luminous silken cream gold */
+.logo-cream-filter {
+  filter: brightness(0) invert(0.92) sepia(0.18) saturate(1.8) hue-rotate(5deg) brightness(1.08) drop-shadow(0 4px 24px rgba(237, 231, 199, 0.2));
+}
+
+.gold-border {
+  border-color: rgba(223, 204, 163, 0.35);
+}
+
+/* Subtle Shimmer Animation */
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Velvet Grain Texture Overlay */
+.bg-velvet-grain {
+  background-image: radial-gradient(rgba(237, 231, 199, 0.04) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+
