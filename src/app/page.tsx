@@ -31,43 +31,43 @@ export default function LuxuryLandingPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col justify-between items-center overflow-hidden bg-velvet-grain text-[#ede7c7] selection:bg-[#dfcca3] selection:text-[#220609] px-4 sm:px-6 py-6 sm:py-10 md:py-16">
+    <div className="relative min-h-screen w-full flex flex-col justify-between items-center overflow-hidden bg-velvet-grain text-[#ede7c7] selection:bg-[#dfcca3] selection:text-[#220609] px-6 py-6 sm:py-10 md:py-16">
       {/* Ambient Velvet Gold Radial Spotlights */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[950px] h-[600px] bg-gradient-to-tr from-[#dfcca3]/15 via-[#dfcca3]/8 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-gradient-to-bl from-[#dfcca3]/10 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-gradient-to-tr from-[#dfcca3]/10 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Architectural Corner Framing Brackets (Haute Couture Invitation Feel) */}
-      <div className="fixed top-4 left-4 sm:top-8 sm:left-8 w-6 h-6 sm:w-10 sm:h-10 border-t border-l border-[#dfcca3]/25 pointer-events-none z-20" />
-      <div className="fixed top-4 right-4 sm:top-8 sm:right-8 w-6 h-6 sm:w-10 sm:h-10 border-t border-r border-[#dfcca3]/25 pointer-events-none z-20" />
-      <div className="fixed bottom-4 left-4 sm:bottom-8 sm:left-8 w-6 h-6 sm:w-10 sm:h-10 border-b border-l border-[#dfcca3]/25 pointer-events-none z-20" />
-      <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-6 h-6 sm:w-10 sm:h-10 border-b border-r border-[#dfcca3]/25 pointer-events-none z-20" />
+      <div className="fixed top-5 left-5 sm:top-8 sm:left-8 w-8 h-8 sm:w-10 sm:h-10 border-t border-l border-[#dfcca3]/35 pointer-events-none z-20" />
+      <div className="fixed top-5 right-5 sm:top-8 sm:right-8 w-8 h-8 sm:w-10 sm:h-10 border-t border-r border-[#dfcca3]/35 pointer-events-none z-20" />
+      <div className="fixed bottom-5 left-5 sm:bottom-8 sm:left-8 w-8 h-8 sm:w-10 sm:h-10 border-b border-l border-[#dfcca3]/35 pointer-events-none z-20" />
+      <div className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 w-8 h-8 sm:w-10 sm:h-10 border-b border-r border-[#dfcca3]/35 pointer-events-none z-20" />
 
       {/* Top Soulful Statement (Matching Reference) */}
-      <motion.div
+      <motion.header
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, delay: 0.3 }}
-        className="w-full text-center z-10 pt-3 sm:pt-8 px-2"
+        className="w-full text-center z-10 pt-6 sm:pt-8 px-4"
       >
-        <p className="font-sans font-light text-xs sm:text-base md:text-lg tracking-[0.14em] sm:tracking-[0.18em] text-[#ede7c7]/90">
+        <p className="font-sans font-light text-xs sm:text-base md:text-lg tracking-[0.16em] sm:tracking-[0.18em] text-[#ede7c7]/90">
           Something soulful is taking shape.
         </p>
-      </motion.div>
+      </motion.header>
 
-      {/* Main Sanctuary Content */}
+      {/* Main Sanctuary Content - Expanded to fill screen height gracefully */}
       <motion.main
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center z-10 my-auto py-6 sm:py-10"
+        className="w-full max-w-4xl mx-auto flex-1 flex flex-col items-center justify-center text-center z-10 px-4 py-8 sm:py-12"
       >
         {/* Emblem / Logo with Subtle Ambient Aureole */}
-        <motion.div variants={itemVariants} className="mb-6 sm:mb-8 md:mb-12 relative group">
+        <motion.div variants={itemVariants} className="mb-6 sm:mb-10 md:mb-12 relative group">
           {/* Subtle Ambient Shimmer Behind Logo */}
           <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-[#dfcca3]/20 via-transparent to-[#dfcca3]/20 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-          <div className="relative w-48 sm:w-64 md:w-80 h-28 sm:h-40 md:h-52 mx-auto flex items-center justify-center p-2">
+          <div className="relative w-64 sm:w-72 md:w-80 h-36 sm:h-44 md:h-52 mx-auto flex items-center justify-center p-2">
             {!logoError ? (
               <Image
                 src="/Logo.svg"
@@ -80,11 +80,11 @@ export default function LuxuryLandingPage() {
               />
             ) : (
               <div className="flex flex-col items-center justify-center">
-                <span className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-[0.25em] font-light text-[#ede7c7]">
+                <span className="font-serif text-4xl md:text-5xl tracking-[0.25em] font-light text-[#ede7c7]">
                   PARVA
                 </span>
                 <div className="w-16 h-[1px] bg-[#dfcca3] my-2.5" />
-                <span className="text-[10px] sm:text-[11px] tracking-[0.45em] uppercase font-sans text-[#dfcca3]">
+                <span className="text-[11px] tracking-[0.45em] uppercase font-sans text-[#dfcca3]">
                   Weddings & Couture
                 </span>
               </div>
@@ -93,18 +93,21 @@ export default function LuxuryLandingPage() {
         </motion.div>
 
         {/* Majestic Headline (Coming Soon / Launching Soon) */}
-        <motion.div variants={itemVariants} className="mb-8 sm:mb-10 md:mb-14">
-          <h1 className="text-5xl sm:text-7xl md:text-9xl font-serif font-light tracking-normal sm:tracking-wide leading-[1.08] sm:leading-[0.96] text-[#ede7c7]">
+        <motion.div variants={itemVariants} className="mb-6 sm:mb-10 md:mb-14">
+          <h1 className="text-6xl sm:text-7xl md:text-9xl font-serif font-light tracking-tight sm:tracking-wide leading-none text-[#ede7c7]">
             Coming Soon
           </h1>
         </motion.div>
 
+        {/* Delicate Couture Gold Separator Line */}
+        <motion.div variants={itemVariants} className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#dfcca3]/60 to-transparent mb-6 sm:mb-8" />
+
         {/* The Premium Brand Summary / Quote (Matching Reference Elegance) */}
         <motion.div
           variants={itemVariants}
-          className="max-w-2xl mx-auto px-4"
+          className="max-w-xl mx-auto px-2"
         >
-          <p className="font-serif italic text-base sm:text-2xl md:text-3xl text-[#ede7c7]/95 leading-relaxed font-light">
+          <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-[#ede7c7]/95 leading-relaxed font-light">
             &ldquo;Crafted in heritage. Brought to life at &lsquo;House of Parva&rsquo;.&rdquo;
           </p>
         </motion.div>
@@ -115,15 +118,15 @@ export default function LuxuryLandingPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, delay: 0.8 }}
-        className="w-full text-center z-10 pb-4 sm:pb-6"
+        className="w-full text-center z-10 pb-6 sm:pb-8"
       >
         <div className="flex flex-col items-center gap-2">
-          <div className="flex items-center gap-2 sm:gap-3 font-serif text-[10px] sm:text-xs tracking-[0.25em] text-[#dfcca3]/70">
+          <div className="flex items-center gap-3 font-serif text-[11px] sm:text-xs tracking-[0.25em] text-[#dfcca3]/70">
             <span>◈</span>
             <span>HOUSE OF PARVA</span>
             <span>◈</span>
           </div>
-          <p className="text-[10px] sm:text-[11px] font-light tracking-[0.1em] sm:tracking-[0.12em] text-[#ede7c7]/60">
+          <p className="text-[11px] font-light tracking-[0.12em] text-[#ede7c7]/60">
             © 2026 Ocean and Origin LLP. All rights reserved.
           </p>
         </div>
