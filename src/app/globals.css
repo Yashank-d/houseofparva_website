@@ -1,64 +1,82 @@
 @import "tailwindcss";
 
-@theme {
-  --font-serif: var(--font-cormorant), "Apple Garamond", "Baskerville", serif;
-  --font-sans: var(--font-montserrat), sans-serif;
-  --font-cinzel: var(--font-cinzel), serif;
-}
-
-:root {
-  --background: #3a0d13;
-  --background-dark: #220609;
-  --foreground: #ede7c7;
-  --gold-primary: #dfcca3;
-  --gold-light: #fff6e3;
-  --gold-dark: #b89f6d;
-  --cream: #ede7c7;
-}
-
-body {
-  background: radial-gradient(circle at 50% 35%, #4a1219 0%, #350c12 55%, #220609 100%);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, sans-serif;
-  overflow-x: hidden;
-}
-
-/* Luminous Champagne Rose-Gold Shimmer Gradient */
-.gold-gradient-text {
-  background: linear-gradient(
-    135deg,
-    #dfcca3 0%,
-    #fff7e6 30%,
-    #ebd3a0 50%,
-    #fff7e6 70%,
-    #dfcca3 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: shimmer 8s linear infinite;
-}
-
-/* Transforms dark PNG logo into luminous silken cream gold */
-.logo-cream-filter {
-  filter: brightness(0) invert(0.92) sepia(0.18) saturate(1.8) hue-rotate(5deg) brightness(1.08) drop-shadow(0 4px 24px rgba(237, 231, 199, 0.2));
-}
-
-.gold-border {
-  border-color: rgba(223, 204, 163, 0.35);
-}
-
-/* Subtle Shimmer Animation */
-@keyframes shimmer {
-  to {
-    background-position: 200% center;
+@layer base {
+  :root {
+    --parchment: #E8DFD0;
+    --ivory: #F5F1E8;
+    --emerald: #12352C;
+    --emerald-dark: #0E2922;
+    --burgundy: #641F27;
+    --ink: #1C1B18;
+    --rose: #CFA4A5;
   }
 }
 
-/* Velvet Grain Texture Overlay */
-.bg-velvet-grain {
-  background-image: radial-gradient(rgba(237, 231, 199, 0.04) 1px, transparent 0);
-  background-size: 20px 20px;
+.font-serif-editorial {
+  font-family: var(--font-cormorant), Georgia, serif;
 }
 
+.font-sans-utility {
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
 
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+.font-scribble {
+  font-family: var(--font-scribble), cursive;
+}
+
+/* Texture Overlay */
+.paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Masking Tape Visual Effect */
+.masking-tape {
+  background: rgba(245, 238, 220, 0.75);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1px);
+  border-left: 2px dashed rgba(200, 190, 170, 0.4);
+  border-right: 2px dashed rgba(200, 190, 170, 0.4);
+}
+
+/* Non-Straight Sweeping Real Torn Paper Edge */
+.rough-paper-edge-right {
+  clip-path: polygon(
+    0% 0%, 
+    78% 0%, 82% 1%, 86% 2.2%, 93% 3.5%, 98.5% 4.8%, 95% 6.2%, 89% 7.8%, 
+    93% 9.4%, 87% 11.2%, 90% 13.5%, 86% 16%, 89.5% 18.5%, 93% 21.5%, 97.5% 25%, 
+    99.2% 29%, 95.5% 32.5%, 91% 36%, 86% 39.5%, 81% 43.5%, 77.5% 47.5%, 75.8% 52%, 
+    77% 55.5%, 79.5% 59%, 83% 62.5%, 87% 66.5%, 89.2% 70.5%, 87.5% 74.5%, 83% 78.5%, 
+    78% 82.5%, 75% 86.5%, 76.2% 90.5%, 74% 94.5%, 72.5% 97.5%, 70.8% 100%, 
+    0% 100%
+  );
+}
+
+.torn-paper-card {
+  box-shadow: 2px 4px 15px rgba(28, 27, 24, 0.12);
+  clip-path: polygon(
+    2% 0%, 98% 1%, 100% 97%, 98% 100%, 1% 98%, 0% 3%
+  );
+}
+
+/* Archival Shadow */
+.scrapbook-shadow {
+  box-shadow: 0 12px 28px -6px rgba(28, 27, 24, 0.15), 0 4px 10px -2px rgba(28, 27, 24, 0.08);
+}
+
+.scrapbook-shadow-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scrapbook-shadow-hover:hover {
+  box-shadow: 0 22px 45px -8px rgba(28, 27, 24, 0.22);
+  transform: translateY(-4px) rotate(0.5deg);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}

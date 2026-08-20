@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Montserrat, Cinzel } from "next/font/google";
+import { Cormorant_Garamond, Montserrat, Caveat, Reenie_Beanie } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -15,17 +15,30 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600"],
 });
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
+const caveat = Caveat({
+  variable: "--font-script",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
 
+const reenieBeanie = Reenie_Beanie({
+  variable: "--font-scribble",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
-  title: "Parva | House of Parva — Luxury Weddings & Couture Digital Archive",
+  title: "PARVA WEDDINGS | Wedding Photography & Cinematography Archive",
   description:
-    "Explore the House of Parva's digital archive. Celebrating bespoke couture heritage, artisanal bridal storytelling, and luxury celebrations.",
-  keywords: ["Parva", "House of Parva", "Luxury Weddings", "Couture Archive", "Bridal Heritage"],
+    "Curating intimate Indian wedding stories that last forever. Fine-art wedding photography & cinematic films by Parva Weddings, a House of Parva brand.",
+  keywords: [
+    "Parva Weddings",
+    "House of Parva",
+    "Luxury Wedding Photography",
+    "Wedding Cinematography India",
+    "Bangalore Wedding Photographer",
+    "Fine Art Wedding Stories",
+  ],
 };
 
 export default function RootLayout({
@@ -36,12 +49,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${montserrat.variable} ${cinzel.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${montserrat.variable} ${caveat.variable} ${reenieBeanie.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col selection:bg-[#c5a059] selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#EAE1D2] text-[#1C1B18] font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
         {children}
       </body>
     </html>
   );
 }
-

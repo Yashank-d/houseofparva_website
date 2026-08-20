@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The House of Parva ❦
 
-## Getting Started
+> **Fine Art & Storytelling House** — Crafting timeless wedding stories and celebrating life's beautiful beginnings.
 
-First, run the development server:
+An editorial, physical scrapbook-inspired web experience built with **Next.js 16**, **Tailwind CSS v4**, **Framer Motion**, and **TypeScript**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🏛️ Brand Architecture
+
+The website features two primary divisions under the parent umbrella:
+
+1. **The Gateway (`/`)**: High-fashion physical card portal introducing the two divisions:
+   - **Parva Weddings**: Wedding photography, cinematic films, destination elopements, and intimate celebrations.
+   - **Parva Origins**: Milestone portraiture, baby showers, naming ceremonies, housewarmings, and family archives.
+
+2. **Parva Weddings Archive (`/parvaweddings`)**: A 4-page interactive scrapbook experience:
+   - `Home`: Editorial introduction, brand philosophy, and visual showcase.
+   - `Portfolio`: The Artistic Archive featuring dynamic postcard styles, Cloudinary-hosted galleries, and uncropped bento lightboxes.
+   - `About`: Behind-the-lens studio story, team values, and fine art approach.
+   - `Contact`: Paperclipped inquiry note, direct contact details, and booking form.
+
+3. **Parva Origins Archive (`/parvaorigins`)**: Dedicated brand page for life milestone portraiture.
+
+---
+
+## 🛠️ Data Management & Cloudinary Integration
+
+All portfolio works, images, vow texts, and handwritten stories are centrally managed in a dedicated database file:
+
+```
+src/data/portfolioData.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To update or add new wedding stories to the portfolio:
+1. Open [`src/data/portfolioData.ts`](file:///Users/yashankd/Ocean%20and%20Origin/Parva/Website/src/data/portfolioData.ts).
+2. Add or edit entries in the `artisticWorks` array.
+3. Paste Cloudinary image URLs into `mainImage` and `gallery`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### 1. Prerequisites
+- **Node.js** (v18.x or higher)
+- **npm** / **yarn** / **pnpm**
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Installation & Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Clone the repository
+git clone https://github.com/<your-username>/<your-repo-name>.git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Navigate into project directory
+cd Website
 
-## Deploy on Vercel
+# Install dependencies
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Run dev server
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## ☁️ Deploying to Vercel
+
+This repository is optimized out-of-the-box for **Vercel** deployment:
+
+1. Push your repository to **GitHub**.
+2. Go to [Vercel Dashboard](https://vercel.com/new).
+3. Import your GitHub repository.
+4. Framework Preset will auto-detect as **Next.js**.
+5. Click **Deploy**.
+
+---
+
+## 📄 License & Credits
+
+© **Ocean and Origin LLP** • Bengaluru, India. All Rights Reserved.
