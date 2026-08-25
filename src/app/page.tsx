@@ -29,7 +29,7 @@ export default function HouseOfParvaGateway() {
 
       {/* Main Center Gateway Area: Pushed Higher to Top */}
       <main className="w-full max-w-6xl lg:max-w-7xl mx-auto px-6 md:px-12 flex-1 flex flex-col justify-start items-center relative z-20 pt-1 md:pt-2 pb-4 overflow-y-auto">
-        
+
         {/* Header Section (Pushed Higher to Top) */}
         <div className="w-full text-center relative z-40 space-y-1.5 md:space-y-2 pt-0 pb-3">
           <motion.span
@@ -86,7 +86,7 @@ export default function HouseOfParvaGateway() {
 
         {/* Two Physical Paper Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-stretch max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto w-full relative pt-2">
-          
+
           {/* LEFT CARD: PARVA ORIGINS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ export default function HouseOfParvaGateway() {
             <div className="absolute inset-2.5 md:inset-3.5 border border-[#1C1B18]/12 pointer-events-none rounded-xs" />
 
             <div className="w-full flex flex-col items-center space-y-4.5 relative z-10 pt-1">
-              
+
               {/* Monogram Logo */}
               <div className="w-20 md:w-24 lg:w-26 h-auto flex items-center justify-center">
                 <img
@@ -181,7 +181,7 @@ export default function HouseOfParvaGateway() {
             <div className="absolute inset-2.5 md:inset-3.5 border border-[#641F27]/12 pointer-events-none rounded-xs" />
 
             <div className="w-full flex flex-col items-center space-y-4.5 relative z-10 pt-1">
-              
+
               {/* Monogram Logo */}
               <div className="w-20 md:w-24 lg:w-26 h-auto flex items-center justify-center">
                 <img
@@ -251,7 +251,7 @@ export default function HouseOfParvaGateway() {
             rel="noopener noreferrer"
             className="hover:text-[#641F27] transition-colors font-medium tracking-[0.18em]"
           >
-            IG: @weddingsbyparva
+            IG: weddingsbyparva
           </a>
           <span className="opacity-30 hidden sm:inline">•</span>
           <a

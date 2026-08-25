@@ -136,31 +136,29 @@ export default function ParvaWeddingsPage() {
           </AnimatePresence>
         </div>
 
-        {/* Bottom Control Bar (Footer line shifted slightly higher with padding) */}
-        <footer className="w-full pt-4 pb-5 px-8 md:px-12 flex justify-between items-center relative z-40 border-t border-[#1C1B18]/15 text-xs font-sans-utility tracking-[0.2em] uppercase select-none">
-          {/* Left Bottom: Minimal SVG Icons + Stacked Text (Slightly Bigger) */}
-          <div className="flex flex-col items-start gap-1.5 text-xs md:text-[13px] text-[#1C1B18]/85 z-10">
-            {/* Instagram Link with Minimal SVG Icon */}
+        {/* Bottom Control Bar — breathing room, not extreme bottom */}
+        <footer className="w-full py-5 md:py-6 px-8 md:px-12 flex justify-between items-center relative z-40 border-t border-[#1C1B18]/10 text-xs font-sans-utility tracking-[0.18em] uppercase select-none mb-1">
+          {/* Left: single-line Instagram | Email */}
+          <div className="flex flex-row items-center gap-3 text-[12.5px] md:text-[13px] text-[#1C1B18]/70 z-10">
             <a
               href="https://instagram.com/weddingsbyparva"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 hover:text-[#641F27] transition-colors font-medium tracking-[0.18em]"
+              className="group flex items-center gap-2 hover:text-[#641F27] transition-colors font-medium tracking-[0.16em]"
             >
-              <svg className="w-4 h-4 text-[#1C1B18]/70 group-hover:text-[#641F27] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <svg className="w-4 h-4 text-[#1C1B18]/60 group-hover:text-[#641F27] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
-              <span>@weddingsbyparva</span>
+              <span>WEDDINGSBYPARVA</span>
             </a>
-
-            {/* Email Link with Minimal SVG Envelope Icon */}
+            <span className="text-[#1C1B18]/20 font-light mx-1">|</span>
             <a
               href="mailto:hello@thehouseofparva.in"
-              className="group flex items-center gap-2 hover:text-[#641F27] transition-colors font-medium tracking-[0.18em] lowercase font-sans text-xs md:text-[13px]"
+              className="group flex items-center gap-2 hover:text-[#641F27] transition-colors font-medium tracking-[0.14em] normal-case font-sans text-[12.5px] md:text-[13px]"
             >
-              <svg className="w-4 h-4 text-[#1C1B18]/70 group-hover:text-[#641F27] transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <svg className="w-4 h-4 text-[#1C1B18]/60 group-hover:text-[#641F27] transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />
               </svg>

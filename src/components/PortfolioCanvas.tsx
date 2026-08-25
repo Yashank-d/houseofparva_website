@@ -104,8 +104,8 @@ export default function PortfolioCanvas() {
         </div>
       </div>
 
-      {/* Main Single Viewport Artistic Canvas */}
-      <div className="relative z-10 w-full h-[82%] flex items-center justify-center px-8 md:px-16">
+      {/* Main Single Viewport Artistic Canvas — bigger, vh-centered */}
+      <div className="relative z-10 w-full h-[84vh] max-h-[760px] min-h-[620px] flex items-center justify-center px-8 md:px-16 my-auto">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={`artistic-${currentWork.id}`}
@@ -114,7 +114,7 @@ export default function PortfolioCanvas() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full max-w-4xl h-full flex flex-col justify-between p-6 md:p-10 relative bg-[#F5F1E8] rounded-xs scrapbook-shadow border border-[#1C1B18]/10 overflow-hidden transform-gpu"
+            className="w-full max-w-5xl h-full flex flex-col justify-between p-8 md:p-12 relative bg-[#F5F1E8] rounded-xs scrapbook-shadow border border-[#1C1B18]/10 overflow-hidden transform-gpu"
           >
             {/* Style 1: Pink Journal */}
             {currentWork.styleType === "pink-journal" && (
@@ -123,15 +123,15 @@ export default function PortfolioCanvas() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
                   {/* Left Column: Tilted Pink Frame Photo */}
                   <div className="md:col-span-6 relative flex justify-center items-center">
-                    <div className="p-3 bg-[#e8a3b5]/25 border border-[#d4889c]/40 rounded-xs inline-block rotate-[-1.5deg] shadow-md transition-transform hover:rotate-0 duration-500">
-                      <div className="overflow-hidden bg-[#E8DFD0] flex">
+                    <button onClick={() => setModalStory(currentWork)} className="p-3 bg-[#e8a3b5]/25 border border-[#d4889c]/40 rounded-xs inline-block rotate-[-1.5deg] shadow-md transition-transform hover:rotate-0 duration-500 cursor-pointer group/img" title="Open full gallery">
+                      <div className="overflow-hidden bg-[#E8DFD0] flex relative">
                         <img
                           src={currentWork.mainImage}
                           alt={currentWork.couple}
-                          className="max-w-full max-h-[42vh] w-auto object-contain rounded-xs"
+                          className="max-w-full max-h-[42vh] w-auto object-contain rounded-xs group-hover/img:scale-[1.02] transition-transform duration-500"
                         />
                       </div>
-                    </div>
+                    </button>
                   </div>
 
                   {/* Right Column: Structured Journal Entry & Handwritten Excerpt */}
@@ -175,7 +175,7 @@ export default function PortfolioCanvas() {
 
                   <button
                     onClick={() => setModalStory(currentWork)}
-                    className="mt-3 sm:mt-0 font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#641F27] hover:text-[#1C1B18] border-b border-[#641F27] cursor-pointer"
+                    className="mt-3 sm:mt-0 px-5 py-2 border border-[#641F27]/35 bg-[#F5F1E8] font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#641F27] hover:bg-[#641F27] hover:text-[#F5F1E8] hover:border-[#641F27] shadow-sm hover:shadow transition-all duration-300 cursor-pointer rounded-xs"
                   >
                     EXPLORE FULL RECORD →
                   </button>
@@ -194,15 +194,15 @@ export default function PortfolioCanvas() {
 
                   {/* Right Column: Overlapping White-Border Photo */}
                   <div className="md:col-span-6 relative">
-                    <div className="bg-white p-3 rounded-xs shadow-xl rotate-[2deg] max-w-md ml-auto">
-                      <div className="aspect-[4/3] w-full overflow-hidden bg-[#E8DFD0]">
+                    <button onClick={() => setModalStory(currentWork)} className="bg-white p-3 rounded-xs shadow-xl rotate-[2deg] max-w-md ml-auto w-full text-left cursor-pointer group/img hover:rotate-[1deg] transition-transform" title="Open full gallery">
+                      <div className="aspect-[4/3] w-full overflow-hidden bg-[#E8DFD0] relative">
                         <img
                           src={currentWork.mainImage}
                           alt={currentWork.couple}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover group-hover/img:scale-[1.02] transition-transform duration-500"
                         />
                       </div>
-                    </div>
+                    </button>
                   </div>
                 </div>
 
@@ -210,9 +210,9 @@ export default function PortfolioCanvas() {
                   <span>HANDWRITTEN VOWS ({currentWork.couple})</span>
                   <button
                     onClick={() => setModalStory(currentWork)}
-                    className="text-[#641F27] border-b border-[#641F27] cursor-pointer"
+                    className="px-5 py-2 border border-[#641F27]/35 bg-[#F5F1E8] font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#641F27] hover:bg-[#641F27] hover:text-[#F5F1E8] hover:border-[#641F27] shadow-sm hover:shadow transition-all duration-300 cursor-pointer rounded-xs"
                   >
-                    VIEW ARCHIVE RECORD →
+                    EXPLORE FULL RECORD →
                   </button>
                 </div>
               </div>
@@ -225,30 +225,28 @@ export default function PortfolioCanvas() {
                   {/* Translucent Washi Tape at Top */}
                   <div className="absolute -top-4 left-6 w-28 h-6 masking-tape z-30 rotate-[-2deg]" />
 
-                  {/* Black and White Photo */}
-                  <div className="bg-[#E8DFD0] p-4 rounded-xs shadow-md mb-4">
-                    <div className="aspect-[4/5] w-full overflow-hidden">
+                  {/* Polaroid with big quote ON the photo — color, white overlay */}
+                  <button onClick={() => setModalStory(currentWork)} className="bg-[#E8DFD0] p-4 rounded-xs shadow-md w-full text-left cursor-pointer group/img hover:shadow-lg transition-shadow" title="Open full gallery">
+                    <div className="aspect-[4/5] w-full overflow-hidden relative">
                       <img
                         src={currentWork.mainImage}
                         alt={currentWork.couple}
-                        className="w-full h-full object-cover grayscale"
+                        className="w-full h-full object-cover group-hover/img:scale-[1.02] transition-transform duration-500"
                       />
+                      <p className="absolute inset-0 flex items-center justify-center text-center px-6 font-script text-4xl sm:text-5xl md:text-[2.9rem] leading-none text-white -rotate-[7deg] pointer-events-none select-none" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.38), 0 2px 14px rgba(0,0,0,0.32), 0 1px 0 rgba(0,0,0,0.25)" }}>
+                        {currentWork.blueQuote}
+                      </p>
                     </div>
-                  </div>
-
-                  {/* Blue Ink Handwritten Quote */}
-                  <p className="font-script text-2xl md:text-3xl text-[#1e3a8a] leading-relaxed text-right pr-4">
-                    {currentWork.blueQuote}
-                  </p>
+                  </button>
                 </div>
 
-                <div className="w-full pt-4 border-t border-[#1C1B18]/10 flex justify-between items-center text-[10px] font-sans-utility tracking-[0.2em] uppercase text-[#1C1B18]/70">
+                <div className="w-full pt-3 mt-2 border-t border-[#1C1B18]/10 flex justify-between items-center text-[10px] font-sans-utility tracking-[0.2em] uppercase text-[#1C1B18]/70 shrink-0">
                   <span>{currentWork.couple} ({currentWork.location})</span>
                   <button
                     onClick={() => setModalStory(currentWork)}
-                    className="text-[#641F27] border-b border-[#641F27] cursor-pointer"
+                    className="px-5 py-2 border border-[#641F27]/35 bg-[#F5F1E8] font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#641F27] hover:bg-[#641F27] hover:text-[#F5F1E8] hover:border-[#641F27] shadow-sm hover:shadow transition-all duration-300 cursor-pointer rounded-xs shrink-0"
                   >
-                    FULL RECORD →
+                    EXPLORE FULL RECORD →
                   </button>
                 </div>
               </div>
@@ -267,24 +265,24 @@ export default function PortfolioCanvas() {
                   </div>
 
                   {/* Layered Photos Stack */}
-                  <div className="relative z-10 bg-white p-4 pb-6 rounded-xs shadow-xl rotate-[1deg]">
-                    <div className="aspect-[4/3] w-full overflow-hidden bg-[#E8DFD0]">
+                  <button onClick={() => setModalStory(currentWork)} className="relative z-10 bg-white p-4 pb-6 rounded-xs shadow-xl rotate-[1deg] w-full text-left cursor-pointer group/img hover:rotate-[0.5deg] transition-transform" title="Open full gallery">
+                    <div className="aspect-[4/3] w-full overflow-hidden bg-[#E8DFD0] relative">
                       <img
                         src={currentWork.mainImage}
                         alt={currentWork.couple}
-                        className="w-full h-full object-cover grayscale"
+                        className="w-full h-full object-cover grayscale group-hover/img:scale-[1.02] transition-transform duration-500"
                       />
                     </div>
-                  </div>
+                  </button>
                 </div>
 
                 <div className="pt-4 border-t border-[#1C1B18]/10 flex justify-between items-center text-[10px] font-sans-utility tracking-[0.2em] uppercase text-[#1C1B18]/70">
                   <span>{currentWork.couple} ({currentWork.date})</span>
                   <button
                     onClick={() => setModalStory(currentWork)}
-                    className="text-[#641F27] border-b border-[#641F27] cursor-pointer"
+                    className="px-5 py-2 border border-[#641F27]/35 bg-[#F5F1E8] font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#641F27] hover:bg-[#641F27] hover:text-[#F5F1E8] hover:border-[#641F27] shadow-sm hover:shadow transition-all duration-300 cursor-pointer rounded-xs"
                   >
-                    EXPLORE →
+                    EXPLORE FULL RECORD →
                   </button>
                 </div>
               </div>
@@ -305,19 +303,19 @@ export default function PortfolioCanvas() {
                   </div>
 
                   <div className="md:col-span-6">
-                    <div className="bg-[#E8DFD0] p-3 rounded-xs shadow-lg rotate-[-2deg] max-w-sm ml-auto">
-                      <div className="aspect-[3/4] w-full overflow-hidden">
-                        <img src={currentWork.mainImage} alt="" className="w-full h-full object-cover grayscale" />
+                    <button onClick={() => setModalStory(currentWork)} className="bg-[#E8DFD0] p-3 rounded-xs shadow-lg rotate-[-2deg] max-w-sm ml-auto w-full text-left cursor-pointer group/img hover:rotate-[-1deg] transition-transform" title="Open full gallery">
+                      <div className="aspect-[3/4] w-full overflow-hidden relative">
+                        <img src={currentWork.mainImage} alt="" className="w-full h-full object-cover grayscale group-hover/img:scale-[1.02] transition-transform duration-500" />
                       </div>
-                    </div>
+                    </button>
 
                   </div>
                 </div>
 
                 <div className="pt-4 border-t border-[#1C1B18]/10 flex justify-between items-center text-[10px] font-sans-utility tracking-[0.2em] uppercase text-[#1C1B18]/70">
                   <span>PARVA ARTISTIC ARCHIVE • {currentWork.location}</span>
-                  <button onClick={() => setModalStory(currentWork)} className="text-[#641F27] border-b border-[#641F27] cursor-pointer">
-                    FULL STORY →
+                  <button onClick={() => setModalStory(currentWork)} className="px-5 py-2 border border-[#641F27]/35 bg-[#F5F1E8] font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#641F27] hover:bg-[#641F27] hover:text-[#F5F1E8] hover:border-[#641F27] shadow-sm hover:shadow transition-all duration-300 cursor-pointer rounded-xs">
+                    EXPLORE FULL RECORD →
                   </button>
                 </div>
               </div>
@@ -388,26 +386,7 @@ export default function PortfolioCanvas() {
         )}
       </AnimatePresence>
 
-      {/* Bottom Nav Buttons for Works */}
-      <div className="relative z-20 flex justify-between items-center text-xs font-sans-utility tracking-[0.2em] uppercase px-4 pt-2">
-        <button
-          onClick={handlePrev}
-          className="hover:text-[#641F27] transition-colors cursor-pointer"
-        >
-          ← PREV WORK
-        </button>
 
-        <span className="font-script text-base text-[#641F27] hidden sm:inline">
-          {currentWork.couple} ({currentWork.location})
-        </span>
-
-        <button
-          onClick={handleNext}
-          className="hover:text-[#641F27] transition-colors cursor-pointer"
-        >
-          NEXT WORK →
-        </button>
-      </div>
     </div>
   );
 }
