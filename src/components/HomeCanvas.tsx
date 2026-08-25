@@ -82,11 +82,18 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
           {/* Metallic Paperclip Pin on Top Left Corner of Polaroid */}
           <div className="absolute -top-4 left-6 w-4 h-9 border-2 border-[#1C1B18]/70 rounded-full z-50 shadow-md rotate-[-12deg]" />
 
-          {/* Burgundy Torn-Paper Sheet BEHIND Polaroid */}
+          {/* Burgundy Paper Sheet BEHIND Polaroid — true paper stock (not flat color) */}
           <div 
-            className="absolute -top-3 -right-5 w-[104%] h-[104%] bg-[#641F27] rounded-xs rotate-[3.5deg] shadow-xl transition-transform duration-700 group-hover:rotate-[4.5deg]"
+            className="absolute -top-2 -right-2 w-[100%] h-[102%] bg-[#641F27] rotate-[3.5deg] transition-transform duration-700 group-hover:rotate-[4.5deg] overflow-hidden"
             style={{
-              clipPath: "polygon(0% 2%, 96% 0%, 100% 95%, 98% 100%, 3% 97%, 0% 5%)",
+              clipPath: "polygon(0.8% 1.2%, 98.2% 0.3%, 99.6% 2.8%, 100% 96.8%, 98.1% 99.4%, 1.6% 98.2%, 0.2% 96.5%, 0% 3.5%)",
+              backgroundImage: [
+                `url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='bp1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' seed='9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23bp1)' opacity='0.32'/%3E%3C/svg%3E")`,
+                `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='bp2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.38' numOctaves='2' seed='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23bp2)' opacity='0.18'/%3E%3C/svg%3E")`,
+                `linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 55%, rgba(0,0,0,0.10) 100%)`,
+              ].join(", "),
+              backgroundBlendMode: "overlay, soft-light, normal",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 2px rgba(0,0,0,0.25), 0 12px 24px rgba(28,27,24,0.18), 0 4px 10px rgba(28,27,24,0.12)",
             }}
           />
 
@@ -132,7 +139,7 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="w-[26%] md:w-[24%] z-20 flex flex-col justify-between h-full py-4 space-y-6 pl-2"
+          className="w-[26%] md:w-[24%] z-30 flex flex-col justify-between h-full py-4 space-y-6 pl-6"
         >
           {/* Top Right: Handwritten Wedding Story */}
           <div className="space-y-3 pt-4">
@@ -144,10 +151,10 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
             </span>
           </div>
 
-          {/* Lower Right: Paperclipped Scrap Note (Enlarged & Signed - Parva) */}
-          <div className="relative bg-[#E8DFD0] p-5 pt-6 rounded-xs shadow-lg border border-[#1C1B18]/15 rotate-[-3deg] max-w-[260px] ml-auto mb-2">
-            {/* Metal Paperclip Pin */}
-            <div className="absolute -top-3.5 right-5 w-4 h-9 border-2 border-[#1C1B18]/70 rounded-full z-30 shadow-xs" />
+          {/* Lower Right: Paperclipped Scrap Note (Enlarged & Signed - Parva) — fiber, no clip */}
+          <div className="relative bg-[#E8DFD0] p-5 pt-6 rounded-xs shadow-lg border border-[#1C1B18]/15 rotate-[-3deg] max-w-[260px] ml-auto mb-2 paper-card" style={{ overflow: "visible" }}>
+            {/* Metal Paperclip Pin — kept inside visible bounds */}
+            <div className="absolute -top-3 right-5 w-4 h-9 border-2 border-[#1C1B18]/70 rounded-full z-30 shadow-xs" />
             <p className="font-script text-lg md:text-xl text-[#1C1B18] leading-snug">
               Some stories are meant to be felt, not just seen.
             </p>

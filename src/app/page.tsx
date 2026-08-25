@@ -6,9 +6,7 @@ import Link from "next/link";
 
 export default function HouseOfParvaGateway() {
   return (
-    <div className="w-screen h-screen overflow-hidden bg-[#EAE1D2] text-[#1C1B18] flex flex-col justify-between relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8] select-none">
-      {/* Paper Grain Noise Texture Overlay across the entire viewport */}
-      <div className="pointer-events-none fixed inset-0 z-50 paper-grain" />
+    <div className="w-screen h-screen overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col justify-between relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8] select-none">
 
       {/* Top Utility Header Bar */}
       <header className="w-full py-2.5 px-8 md:px-16 flex justify-between items-center relative z-40 flex-shrink-0">

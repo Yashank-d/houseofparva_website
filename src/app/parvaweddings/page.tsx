@@ -79,9 +79,7 @@ export default function ParvaWeddingsPage() {
   };
 
   return (
-    <div className="w-screen h-screen overflow-hidden bg-[#EAE1D2] text-[#1C1B18] flex relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
-      {/* Paper Grain Noise Texture Overlay across the entire viewport */}
-      <div className="pointer-events-none fixed inset-0 z-50 paper-grain" />
+    <div className="w-screen h-screen overflow-hidden paper-bg-parchment text-[#1C1B18] flex relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
 
       {/* Physical Layer 1: Locked Emerald Paper Sheet (20vw width) */}
       <SidebarScrapbook

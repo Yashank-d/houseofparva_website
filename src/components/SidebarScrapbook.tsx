@@ -21,54 +21,31 @@ export default function SidebarScrapbook({
 
   return (
     <>
-      {/* High-Density Randomized Non-Linear Micro-Torn SVG clipPath */}
-      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-        <defs>
-          <clipPath id="microTornRandomCurvedSilhouette" clipPathUnits="objectBoundingBox">
-            <path
-              d="
-                M 0,0 
-                L 0.985,0 
-                L 0.972,0.015 L 0.988,0.030 L 0.958,0.045 L 0.975,0.060 L 0.942,0.075 L 0.965,0.090 
-                L 0.930,0.105 L 0.952,0.120 L 0.918,0.135 L 0.940,0.150 L 0.905,0.165 L 0.928,0.180 
-                L 0.892,0.195 L 0.915,0.210 L 0.885,0.225 L 0.908,0.240 L 0.890,0.255 L 0.918,0.270 
-                L 0.932,0.285 L 0.955,0.300 L 0.940,0.315 L 0.968,0.330 L 0.952,0.345 L 0.979,0.360 
-                L 0.960,0.375 L 0.945,0.390 L 0.920,0.405 L 0.902,0.420 L 0.885,0.435 L 0.908,0.450 
-                L 0.872,0.465 L 0.895,0.480 L 0.880,0.495 L 0.905,0.510 L 0.922,0.525 L 0.948,0.540 
-                L 0.935,0.555 L 0.962,0.570 L 0.948,0.585 L 0.975,0.600 L 0.960,0.615 L 0.985,0.630 
-                L 0.968,0.645 L 0.952,0.660 L 0.938,0.675 L 0.955,0.690 L 0.928,0.705 L 0.945,0.720 
-                L 0.918,0.735 L 0.938,0.750 L 0.908,0.765 L 0.925,0.780 L 0.948,0.795 L 0.968,0.810 
-                L 0.950,0.825 L 0.978,0.840 L 0.962,0.855 L 0.988,0.870 L 0.969,0.885 L 0.945,0.900 
-                L 0.922,0.915 L 0.948,0.930 L 0.920,0.945 L 0.942,0.960 L 0.910,0.975 L 0.888,0.990 
-                L 0.875,1.00 
-                L 0,1.00 Z
-              "
-            />
-          </clipPath>
-        </defs>
-      </svg>
+      {/* Real torn paper — PNG mask generated from actual fiber scan (no clipPath) */}
 
-      {/* Decorative Emerald Paper Container (20vw width, 3D Drop Shadow) */}
+      {/* Decorative Emerald Paper Container (20vw width, real torn fiber) */}
       <div 
         className="fixed inset-y-0 left-0 z-30 w-[20vw] min-w-[195px] max-w-[290px] h-full pointer-events-none"
         style={{
-          filter: "drop-shadow(10px 4px 20px rgba(18, 53, 44, 0.45)) drop-shadow(20px 8px 36px rgba(28, 27, 24, 0.3))"
+          filter: "drop-shadow(12px 4px 18px rgba(0,0,0,0.35)) drop-shadow(6px 1px 8px rgba(0,0,0,0.22))"
         }}
       >
-        {/* Deep Emerald Physical Paper Sheet */}
+        {/* Deep Emerald Physical Paper Sheet — real PNG mask (photo-real torn fiber) */}
         <div
-          className="absolute inset-0 bg-[#12352C]"
+          className="absolute inset-0 paper-bg-emerald"
           style={{
-            clipPath: "url(#microTornRandomCurvedSilhouette)",
-            WebkitClipPath: "url(#microTornRandomCurvedSilhouette)",
+            WebkitMaskImage: "url(/masks/torn-edge.png)",
+            maskImage: "url(/masks/torn-edge.png)",
+            WebkitMaskSize: "100% 100%",
+            maskSize: "100% 100%",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskPosition: "center",
+            maskPosition: "center",
           }}
         />
-
         {/* Content Printed Directly on Emerald Paper */}
         <aside className="w-full h-full text-[#F5F1E8] flex flex-col justify-between p-4 md:p-5 pointer-events-auto relative z-10 select-none">
-          
-          {/* Subtle Paper Grain Overlay */}
-          <div className="absolute inset-0 paper-grain opacity-40 pointer-events-none" />
 
           {/* Parva_logo.svg (Shifted slightly left) */}
           <div className="relative z-10 pt-2 pl-1 md:pl-2.5 flex flex-col items-start text-left w-full space-y-1.5">

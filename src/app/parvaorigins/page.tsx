@@ -21,9 +21,7 @@ export default function ParvaOriginsPage() {
   };
 
   return (
-    <div className="w-screen h-screen overflow-hidden bg-[#EAE1D2] text-[#1C1B18] flex flex-col justify-between relative font-sans selection:bg-[#12352C] selection:text-[#F5F1E8] select-none">
-      {/* Paper Grain Noise Texture Overlay across the entire viewport */}
-      <div className="pointer-events-none fixed inset-0 z-50 paper-grain" />
+    <div className="w-screen h-screen overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col justify-between relative font-sans selection:bg-[#12352C] selection:text-[#F5F1E8] select-none">
 
       {/* Header Bar */}
       <header className="w-full py-5 px-8 md:px-12 flex justify-between items-center relative z-40">
