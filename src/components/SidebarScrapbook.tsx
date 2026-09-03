@@ -45,10 +45,10 @@ export default function SidebarScrapbook({
           }}
         />
         {/* Content Printed Directly on Emerald Paper */}
-        <aside className="w-full h-full text-[#F5F1E8] flex flex-col justify-between p-4 md:p-5 pointer-events-auto relative z-10 select-none">
+        <aside className="w-full h-full text-[#F5F1E8] flex flex-col justify-between px-5 md:px-6 py-5 pointer-events-auto relative z-10 select-none">
 
-          {/* Parva_logo.svg (Shifted slightly left) */}
-          <div className="relative z-10 pt-2 pl-1 md:pl-2.5 flex flex-col items-start text-left w-full space-y-1.5">
+          {/* Parva_logo.svg */}
+          <div className="relative z-10 pt-1 flex flex-col items-start text-left w-full space-y-1.5">
             <img
               src="/Parva_logo.svg"
               alt="Parva Weddings Logo"
@@ -64,33 +64,30 @@ export default function SidebarScrapbook({
             </div>
           </div>
 
-          {/* Navigation Items (Shifted slightly left) */}
-          <nav className="relative z-10 my-auto pl-1 md:pl-2.5 py-2">
-            <ul className="space-y-5">
+          {/* Navigation — straight, no hover shift */}
+          <nav className="relative z-10 my-auto py-2">
+            <ul className="space-y-[18px]">
               {pages.map((page) => {
                 const isActive = currentPage === page.targetIdx;
                 return (
                   <li key={page.name}>
                     <button
                       onClick={() => onSelectPage(page.targetIdx)}
-                      className="group flex items-center gap-3 text-left w-full cursor-pointer py-1"
+                      className="group flex items-center gap-3.5 text-left w-full cursor-pointer py-1.5 px-2 rotate-0 transform-none"
+                      style={{ transform: "none" }}
                     >
-                      {/* Active Small Ivory Dot */}
-                      <span className="flex-shrink-0 transition-transform duration-300 group-hover:scale-125">
+                      <span className="flex-shrink-0 w-1.5 h-1.5 flex items-center justify-center rotate-0">
                         {isActive ? (
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#F5F1E8] block shadow-xs" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#F5F1E8] block shadow-xs rotate-0" />
                         ) : (
-                          <span className="w-1.5 h-1.5 rounded-full bg-transparent border border-[#F5F1E8]/35 block group-hover:border-[#F5F1E8] group-hover:bg-[#F5F1E8]/20 transition-all duration-300" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-transparent border border-[#F5F1E8]/35 block rotate-0" />
                         )}
                       </span>
-
-                      {/* Navigation Title Text */}
                       <span
-                        className={`font-sans-utility text-[11px] md:text-xs tracking-[0.22em] uppercase font-medium transition-all duration-300 transform group-hover:translate-x-1.5 ${
-                          isActive
-                            ? "text-[#F5F1E8] font-semibold"
-                            : "text-[#F5F1E8]/60 group-hover:text-[#F5F1E8]"
+                        className={`font-sans-utility text-[11px] md:text-xs tracking-[0.2em] uppercase font-medium leading-none rotate-0 transition-colors duration-200 ${
+                          isActive ? "text-[#F5F1E8] font-semibold" : "text-[#F5F1E8]/60 group-hover:text-[#F5F1E8]"
                         }`}
+                        style={{ transform: "none" }}
                       >
                         {page.name}
                       </span>
@@ -101,8 +98,8 @@ export default function SidebarScrapbook({
             </ul>
           </nav>
 
-          {/* Lower Left: Handwritten Script & Dried Flower (Shifted slightly left) */}
-          <div className="relative z-10 pl-1 md:pl-2.5 pb-2 flex flex-col items-start gap-3">
+          {/* Lower Left: Handwritten Script & Dried Flower */}
+          <div className="relative z-10 pb-1 flex flex-col items-start gap-3">
             <p className="font-script text-xl md:text-2xl text-[#CFA4A5] leading-snug">
               Let's create <br />
               something timeless

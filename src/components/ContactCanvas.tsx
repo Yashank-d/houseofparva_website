@@ -12,10 +12,27 @@ export default function ContactCanvas() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to send.");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -97,6 +114,7 @@ export default function ContactCanvas() {
                 </label>
                 <textarea
                   rows={3}
+                  required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full bg-transparent border-b border-[#1C1B18]/30 py-2 text-xs font-sans-utility focus:outline-none focus:border-[#641F27] transition-colors resize-none"
@@ -104,12 +122,16 @@ export default function ContactCanvas() {
                 />
               </div>
 
+              {error && (
+                <p className="text-xs text-[#641F27] bg-[#F5F1E8] border border-[#641F27]/20 px-3 py-2 rounded-xs font-sans-utility">{error}</p>
+              )}
               {/* Dark Torn Button */}
               <button
                 type="submit"
-                className="px-8 py-3.5 bg-[#12352C] text-[#F5F1E8] hover:bg-[#641F27] font-sans-utility text-xs tracking-[0.25em] uppercase transition-all duration-500 rounded-xs shadow-md flex items-center gap-3 group"
+                disabled={loading}
+                className="px-8 py-3.5 bg-[#12352C] text-[#F5F1E8] hover:bg-[#641F27] disabled:opacity-60 disabled:cursor-not-allowed font-sans-utility text-xs tracking-[0.25em] uppercase transition-all duration-500 rounded-xs shadow-md flex items-center gap-3 group"
               >
-                <span>SEND MESSAGE</span>
+                <span>{loading ? "SENDING…" : "SEND MESSAGE"}</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </button>
             </form>
@@ -135,58 +157,70 @@ export default function ContactCanvas() {
         {/* Right Column: Contact Scrapbook Collage */}
         <div className="lg:col-span-6 relative hidden lg:block">
           <div className="relative w-full max-w-md mx-auto">
-            {/* Dark Red Swatch behind */}
-            <div className="absolute -top-6 -left-6 w-32 h-64 bg-[#641F27] rounded-xs shadow-md rotate-[-5deg]" />
+            {/* Burgundy Paper Swatch behind — deckled */}
+            <div className="absolute -top-6 -left-6 w-32 h-64 bg-[#641F27] rounded-xs shadow-xl rotate-[-5deg] paper-card" style={{ clipPath: "polygon(0.5% 0%, 98% 1%, 99.5% 98%, 1% 99%)" }} />
 
-            {/* Main Polaroid */}
+            {/* Main Polaroid — premium */}
             <motion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
-              className="bg-[#F5F1E8] p-5 pb-6 rounded-xs scrapbook-shadow rotate-[1deg] relative z-20"
+              className="bg-[#FFFCF5] p-5 pb-8 rounded-xs shadow-[0_16px_32px_rgba(28,27,24,0.14)] rotate-[1deg] relative z-20 border border-[#C9A86A]/12"
             >
-              {/* Top Masking Tape */}
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-6 masking-tape z-30 rotate-[-2deg]" />
-
-              <div className="aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] mb-3">
+              <div className="aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] mb-4 ring-1 ring-[#C9A86A]/10">
                 <img
-                  src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85"
-                  alt="Couple Kissing in Mountains"
-                  className="w-full h-full object-cover grayscale opacity-95"
+                  src="https://res.cloudinary.com/fdzu3ih2/image/upload/v1787640286/3.jpg"
+                  alt="Couple"
+                  className="w-full h-full object-cover"
+                  style={{ filter: "saturate(0.92) contrast(1.04)" }}
                 />
               </div>
-
-              <p className="font-script text-xl text-[#1C1B18] text-center">
-                Can't wait to create magic together.
-              </p>
+              <div className="absolute bottom-[22px] left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/15 to-transparent pointer-events-none" />
             </motion.div>
 
-            {/* Top Right Scrap Note with Paperclip */}
-            <div className="absolute -right-8 -top-6 z-30 bg-[#E8DFD0] p-4 max-w-xs rounded-xs shadow-md border border-[#1C1B18]/10 rotate-[4deg]">
-              <div className="absolute -top-3 right-4 w-3 h-8 border-2 border-[#1C1B18]/50 rounded-full z-40" />
-              <p className="font-script text-base text-[#1C1B18] leading-tight">
+            {/* Top Right Scrap Note — premium */}
+            <div className="absolute -right-8 -top-6 z-30 bg-[#FFFCF8] p-4 max-w-[260px] rounded-xs shadow-xl border border-[#C9A86A]/15 rotate-[3.5deg]">
+              <div className="absolute -top-3 right-5 w-3 h-7 border-[1.5px] border-[#C9A86A]/40 rounded-full z-40 bg-[#FFFCF8]/60" />
+              <p className="font-script text-[15px] leading-snug text-[#1C1B18]">
                 Long after the music fades, your story remains. We cannot wait to preserve yours.
               </p>
-              <span className="font-script text-xs text-[#641F27] block text-right mt-1">♡</span>
+              <span className="font-sans-utility text-[9px] tracking-[0.18em] uppercase text-[#C9A86A] block text-right mt-2">— The Atelier</span>
             </div>
 
-            {/* Dark Emerald Contact Info Swatch */}
-            <div className="absolute -bottom-8 -right-6 z-30 bg-[#12352C] text-[#F5F1E8] p-5 max-w-xs rounded-xs shadow-lg rotate-[-3deg] space-y-3">
-              <span className="font-sans-utility text-[9px] tracking-[0.3em] uppercase text-[#CFA4A5] font-semibold block">
+            {/* Premium Emerald Contact Card — clear of caption — slightly reduced */}
+            <img
+              src="/Assets/seal/parva_seal.png"
+              alt="Parva Seal"
+              className="absolute -bottom-8 -left-8 w-20 h-20 md:w-24 md:h-24 object-contain rotate-[-12deg] opacity-90 drop-shadow-md pointer-events-none z-20"
+            />
+            <div className="absolute -bottom-20 -right-12 z-30 bg-[#12352C] text-[#F5F1E8] p-5 rounded-xs shadow-[0_16px_36px_rgba(0,0,0,0.28)] rotate-[-5.5deg] border border-[#C9A86A]/15 min-w-[270px]">
+              <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/30 to-transparent" />
+              <span className="font-sans-utility text-[7px] tracking-[0.32em] uppercase text-[#C9A86A] font-semibold block mb-3">
                 REACH US AT
               </span>
-
-              <div className="space-y-2 font-sans-utility text-xs text-[#F5F1E8]/90">
-                <p>✉ hello@thehouseofparva.in</p>
-                <p>📷 @weddingsbyparva</p>
-                <p>📍 Bangalore, India & worldwide</p>
+              <div className="space-y-2.5">
+                <a href="mailto:hello@thehouseofparva.in" className="group flex items-center gap-2.5 hover:text-[#C9A86A] transition-colors">
+                  <span className="w-6 h-6 rounded-full bg-white/[0.06] border border-[#C9A86A]/20 flex items-center justify-center text-[#C9A86A] group-hover:bg-[#C9A86A] group-hover:text-[#12352C] transition-colors">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                  </span>
+                  <span className="font-sans-utility text-[11px] tracking-wide">hello@thehouseofparva.in</span>
+                </a>
+                <a href="https://instagram.com/weddingsbyparva" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2.5 hover:text-[#C9A86A] transition-colors">
+                  <span className="w-6 h-6 rounded-full bg-white/[0.06] border border-[#C9A86A]/20 flex items-center justify-center text-[#C9A86A] group-hover:bg-[#C9A86A] group-hover:text-[#12352C] transition-colors">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+                  </span>
+                  <span className="font-sans-utility text-[11px] tracking-wide">@weddingsbyparva</span>
+                </a>
+                <div className="flex items-center gap-2.5 text-[#F5F1E8]/80">
+                  <span className="w-6 h-6 rounded-full bg-white/[0.06] border border-[#C9A86A]/20 flex items-center justify-center text-[#C9A86A]">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M12 21s-6.5-4.3-9-9A5.5 5.5 0 0 1 12 5a5.5 5.5 0 0 1 9 7c-2.5 4.7-9 9-9 9z" /><circle cx="12" cy="12" r="2.5" /></svg>
+                  </span>
+                  <span className="font-sans-utility text-[11px] tracking-wide">Bangalore, India & worldwide</span>
+                </div>
               </div>
             </div>
 
-            {/* Bottom Vintage Postage Stamp */}
-            <div className="absolute -bottom-10 left-4 z-40 bg-[#641F27] text-[#F5F1E8] p-3 rounded-xs border border-[#F5F1E8]/20 shadow-md rotate-[-10deg] flex flex-col items-center">
-              <span className="font-serif-editorial text-[8px] uppercase tracking-widest">POSTE PARVA</span>
-              <span className="font-serif-editorial text-2xl font-bold">50</span>
-            </div>
+
           </div>
         </div>
       </div>

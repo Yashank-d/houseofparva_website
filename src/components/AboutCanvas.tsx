@@ -95,9 +95,9 @@ export default function AboutCanvas() {
             <div className="flex-1">
               <div className="aspect-[4/5.6] w-full overflow-hidden bg-[#E8DFD0]">
                 <img
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85"
+                  src="/Assets/Founders/Founder%20B.png"
                   alt="Yashank D."
-                  className="w-full h-full object-cover grayscale"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="text-center mt-5">
@@ -114,18 +114,18 @@ export default function AboutCanvas() {
               <span className="font-serif-editorial text-[20px] leading-none text-[#C9A86A]">O</span>
             </div>
 
-            {/* Devika */}
+            {/* Tejas */}
             <div className="flex-1">
               <div className="aspect-[4/5.6] w-full overflow-hidden bg-[#E8DFD0]">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85"
-                  alt="Devika Y."
-                  className="w-full h-full object-cover grayscale"
+                  src="/Assets/Founders/Founder%20A.png"
+                  alt="Tejas"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="text-center mt-5">
-                <p className="font-serif-editorial text-[19px] tracking-[0.02em] text-[#1C1B18]">Devika Y.</p>
-                <p className="font-sans-utility text-[9px] tracking-[0.22em] uppercase text-[#1C1B18]/55 mt-1.5">FOUNDER & CREATIVE DIRECTOR</p>
+                <p className="font-serif-editorial text-[19px] tracking-[0.02em] text-[#1C1B18]">Tejas</p>
+                <p className="font-sans-utility text-[9px] tracking-[0.22em] uppercase text-[#1C1B18]/55 mt-1.5">FOUNDER & FILMMAKER</p>
                 <div className="h-px w-11 bg-[#C9A86A]/45 mx-auto mt-2.5" />
               </div>
             </div>

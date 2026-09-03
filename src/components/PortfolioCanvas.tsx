@@ -218,34 +218,42 @@ export default function PortfolioCanvas() {
               </div>
             )}
 
-            {/* Style 3: Blue Ink Polaroid */}
+            {/* Style 3: Blue Ink — redesigned like Journal Entry (2nd image) */}
             {currentWork.styleType === "blue-ink-polaroid" && (
-              <div className="w-full h-full flex flex-col justify-between items-center text-center relative py-4">
-                <div className="relative max-w-sm mx-auto my-auto">
-                  {/* Translucent Washi Tape at Top */}
-                  <div className="absolute -top-4 left-6 w-28 h-6 masking-tape z-30 rotate-[-2deg]" />
-
-                  {/* Polaroid with big quote ON the photo — color, white overlay */}
-                  <button onClick={() => setModalStory(currentWork)} className="bg-[#E8DFD0] p-4 rounded-xs shadow-md w-full text-left cursor-pointer group/img hover:shadow-lg transition-shadow" title="Open full gallery">
-                    <div className="aspect-[4/5] w-full overflow-hidden relative">
-                      <img
-                        src={currentWork.mainImage}
-                        alt={currentWork.couple}
-                        className="w-full h-full object-cover group-hover/img:scale-[1.02] transition-transform duration-500"
-                      />
-                      <p className="absolute inset-0 flex items-center justify-center text-center px-6 font-script text-4xl sm:text-5xl md:text-[2.9rem] leading-none text-white -rotate-[7deg] pointer-events-none select-none" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.38), 0 2px 14px rgba(0,0,0,0.32), 0 1px 0 rgba(0,0,0,0.25)" }}>
-                        {currentWork.blueQuote}
-                      </p>
+              <div className="w-full h-full flex flex-col justify-between relative py-2">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
+                  {/* Left: Image with pink framing like 2nd image */}
+                  <div className="md:col-span-6 relative flex justify-center items-center">
+                    <button onClick={() => setModalStory(currentWork)} className="p-3 bg-[#e8a3b5]/25 border border-[#d4889c]/40 rounded-xs inline-block rotate-[-1.2deg] shadow-md transition-transform hover:rotate-0 duration-500 cursor-pointer group/img" title="Open full gallery">
+                      <div className="overflow-hidden bg-[#E8DFD0] flex relative">
+                        <img
+                          src={currentWork.mainImage}
+                          alt={currentWork.couple}
+                          className="max-w-full max-h-[42vh] w-auto object-contain rounded-xs group-hover/img:scale-[1.02] transition-transform duration-500"
+                        />
+                      </div>
+                    </button>
+                  </div>
+                  {/* Right: Journal Entry — names + quote */}
+                  <div className="md:col-span-6 flex flex-col justify-center space-y-4 md:pl-2">
+                    <div className="space-y-1">
+                      <span className="font-sans-utility text-[10px] tracking-[0.25em] uppercase text-[#641F27] font-semibold block">JOURNAL ENTRY</span>
+                      <h3 className="font-serif-editorial text-2xl md:text-3xl text-[#1C1B18] capitalize">{currentWork.couple}</h3>
                     </div>
-                  </button>
+                    <p className="font-script text-xl md:text-2xl text-[#1C1B18]/90 leading-relaxed">
+                      {currentWork.blueQuote}
+                    </p>
+                    <span className="font-script text-lg text-[#641F27] block text-right pt-1">— I & A</span>
+                  </div>
                 </div>
-
-                <div className="w-full pt-3 mt-2 border-t border-[#1C1B18]/10 flex justify-between items-center text-[10px] font-sans-utility tracking-[0.2em] uppercase text-[#1C1B18]/70 shrink-0">
-                  <span>{currentWork.couple} ({currentWork.location})</span>
-                  <button
-                    onClick={() => setModalStory(currentWork)}
-                    className="px-5 py-2 border border-[#641F27]/35 bg-[#F5F1E8] font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#641F27] hover:bg-[#641F27] hover:text-[#F5F1E8] hover:border-[#641F27] shadow-sm hover:shadow transition-all duration-300 cursor-pointer rounded-xs shrink-0"
-                  >
+                {/* Footer like 2nd image */}
+                <div className="pt-4 border-t border-[#1C1B18]/10 flex flex-col sm:flex-row justify-between items-start sm:items-end text-[10px] font-sans-utility tracking-[0.2em] uppercase text-[#1C1B18]/70">
+                  <div className="space-y-0.5">
+                    <p>LOVE STORY <span className="font-script text-sm text-[#1C1B18] capitalize font-normal">{currentWork.couple}</span></p>
+                    <p>LOCATION <span className="text-[#1C1B18] font-normal">{currentWork.location}</span></p>
+                    <p>WHEN <span className="font-script text-sm text-[#1C1B18] capitalize font-normal">{currentWork.date}</span></p>
+                  </div>
+                  <button onClick={() => setModalStory(currentWork)} className="mt-3 sm:mt-0 px-5 py-2 border border-[#641F27]/35 bg-[#F5F1E8] font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#641F27] hover:bg-[#641F27] hover:text-[#F5F1E8] hover:border-[#641F27] shadow-sm hover:shadow transition-all duration-300 cursor-pointer rounded-xs">
                     EXPLORE FULL RECORD →
                   </button>
                 </div>
