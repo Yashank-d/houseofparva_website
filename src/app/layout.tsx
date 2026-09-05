@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Montserrat, Caveat, Reenie_Beanie } from "next/font/google";
 import "./globals.css";
 
@@ -26,6 +26,12 @@ const reenieBeanie = Reenie_Beanie({
   subsets: ["latin"],
   weight: "400",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "PARVA WEDDINGS | Wedding Photography & Cinematography Archive",

@@ -1,270 +1,161 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import MGateway from "@/components/mobile/MGateway";
 
 export default function HouseOfParvaGateway() {
+  // NOTE: init false so server HTML matches first client render (no hydration mismatch);
+  // the effect below corrects to mobile right after mount.
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Width-first, with a phone-UA fallback for browsers reporting a wide
+    // ("desktop site") viewport on phones.
+    const check = () => {
+      const narrow = window.innerWidth < 768;
+      const phoneUA = /iPhone|iPod|Android.*Mobile/i.test(navigator.userAgent);
+      const minSide = Math.min(window.screen.width, window.screen.height);
+      // Tablets (incl. iPad mini at 744px) stay on desktop; only true phones
+      // (smallest side well under tablet sizes) get the mobile layout — even
+      // when "desktop site" mode spoofs viewport width or UA.
+      const isTablet = !phoneUA && minSide >= 600;
+      setIsMobile(!isTablet && (narrow || phoneUA || minSide < 600));
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) return <MGateway />;
+
   return (
-    <div className="w-screen h-screen overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col justify-between relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8] select-none">
+    <div className="w-full min-h-[100dvh] overflow-x-hidden overflow-y-auto md:overflow-hidden bg-[#2B0F14] text-[#F5EED5] flex flex-col relative font-sans selection:bg-[#C9A86A] selection:text-[#2B0F14] select-none touch-manipulation" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      {/* velvet depth */}
+      <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse 88% 68% at 50% 30%, rgba(201,168,106,0.078) 0%, rgba(255,245,220,0.035) 18%, transparent 62%), radial-gradient(ellipse 130% 88% at 50% 105%, rgba(0,0,0,0.45) 0%, transparent 60%)" }} />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.028]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.95) 0.85px, transparent 0.85px)", backgroundSize: "17px 17px" }} />
+      {/* outer frame — thinner on mobile to save real estate */}
+      <div className="pointer-events-none absolute inset-[8px] md:inset-[14px] border border-[#F5EED5]/07" />
+      <div className="pointer-events-none absolute top-[8px] left-[8px] md:top-[14px] md:left-[14px] w-4 h-4 md:w-5 md:h-5 border-l border-t border-[#C9A86A]/28" />
+      <div className="pointer-events-none absolute top-[8px] right-[8px] md:top-[14px] md:right-[14px] w-4 h-4 md:w-5 md:h-5 border-r border-t border-[#C9A86A]/28" />
+      <div className="pointer-events-none absolute bottom-[8px] left-[8px] md:bottom-[14px] md:left-[14px] w-4 h-4 md:w-5 md:h-5 border-l border-b border-[#C9A86A]/28" />
+      <div className="pointer-events-none absolute bottom-[8px] right-[8px] md:bottom-[14px] md:right-[14px] w-4 h-4 md:w-5 md:h-5 border-r border-b border-[#C9A86A]/28" />
 
-      {/* Top Utility Header Bar */}
-      <header className="w-full py-2.5 px-8 md:px-16 flex justify-between items-center relative z-40 flex-shrink-0">
-        <div className="flex items-center gap-3">
-          <img
-            src="/Parva_logo.svg"
-            alt="Parva Logo"
-            className="w-26 md:w-32 h-auto filter drop-shadow-xs"
-          />
-          <div className="h-3.5 w-px bg-[#1C1B18]/20 hidden sm:block" />
-          <span className="font-sans-utility text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-[#1C1B18]/60 hidden sm:inline font-medium">
-            FINE ART & STORYTELLING HOUSE
-          </span>
+      {/* top bar — larger tap targets on mobile, no hidden text */}
+      <div className="w-full flex justify-between items-center px-4 sm:px-7 md:px-10 pt-3.5 md:pt-6 relative z-20 shrink-0">
+        <a href="https://instagram.com/weddingsbyparva" target="_blank" rel="noopener noreferrer" className="font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.18em] md:tracking-[0.28em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/25 py-2 -my-2">IG — @weddingsbyparva</a>
+        <a href="mailto:hello@thehouseofparva.in" className="hidden sm:inline font-sans-utility text-[8.5px] tracking-[0.28em] uppercase text-[#F5EED5]/25 py-2 -my-2">hello@thehouseofparva.in</a>
+        <span className="font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.18em] md:tracking-[0.28em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/25 py-2 -my-2">Est. MMXXVI</span>
+      </div>
+
+      {/* centered maison mark */}
+      <motion.header initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }} className="w-full flex flex-col items-center relative z-20 pt-3 md:pt-5 shrink-0">
+        <img src="/Parva_logo.svg" alt="Parva" className="w-[66px] sm:w-[72px] md:w-[86px] h-auto" style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 1px 8px rgba(0,0,0,0.35))" }} />
+        <div className="flex items-center gap-2.5 md:gap-3 mt-2.5 md:mt-3">
+          <span className="h-px w-6 md:w-8 bg-[#C9A86A]/22" />
+          <span className="font-sans-utility text-[8px] sm:text-[8.5px] md:text-[9px] tracking-[0.28em] md:tracking-[0.36em] uppercase text-[#F5EED5]/55 md:text-[#F5EED5]/42">Fine Art & Storytelling House</span>
+          <span className="h-px w-6 md:w-8 bg-[#C9A86A]/22" />
         </div>
+      </motion.header>
 
-        <div className="font-sans-utility text-[10px] md:text-xs tracking-[0.25em] uppercase text-[#641F27] font-semibold">
-          THE HOUSE OF PARVA
-        </div>
-      </header>
+      {/* hero — wraps on mobile instead of overflowing */}
+      <main className="w-full max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 flex-1 flex flex-col items-center relative z-20 pt-3 md:pt-6 pb-4 shrink-0">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.08 }} className="text-center w-full">
+          <p className="font-sans-utility text-[10px] md:text-[10.5px] tracking-[0.38em] md:tracking-[0.48em] uppercase text-[#C9A86A]">Welcome to</p>
+          <h1 className="font-serif-editorial text-[24px] xs:text-[27px] sm:text-[36px] md:text-[48px] lg:text-[54px] tracking-[0.08em] sm:tracking-[0.10em] md:tracking-[0.12em] uppercase text-[#F5EED5] font-light leading-[0.95] md:leading-none mt-2 px-2 sm:px-0" style={{ textShadow: "0 2px 18px rgba(0,0,0,0.4)", wordSpacing: "0.06em" }}>
+            <span className="block sm:inline">The House</span> <span className="block sm:inline">of Parva</span>
+          </h1>
+          <div className="flex items-center justify-center gap-3 sm:gap-4 max-w-[240px] sm:max-w-[320px] mx-auto mt-3 md:mt-3.5">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C9A86A]/30" />
+            <span className="text-[#C9A86A] text-[9px] leading-none">❦</span>
+            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C9A86A]/30" />
+          </div>
+          <p className="font-sans-utility text-[9px] sm:text-[9.5px] md:text-[10.5px] tracking-[0.18em] sm:tracking-[0.30em] uppercase text-[#C9A86A]/90 mt-2.5 px-2">Photography & Films • Weddings • Family • Stories</p>
+          <p className="font-serif-editorial text-[15px] sm:text-[16px] md:text-[18px] text-[#F5EED5]/70 md:text-[#F5EED5]/58 italic font-light mt-1.5 leading-snug px-4 sm:px-0">Two worlds, one belief — every story, <br className="sm:hidden" />remembered beautifully.</p>
+        </motion.div>
 
-      {/* Main Center Gateway Area: Pushed Higher to Top */}
-      <main className="w-full max-w-6xl lg:max-w-7xl mx-auto px-6 md:px-12 flex-1 flex flex-col justify-start items-center relative z-20 pt-1 md:pt-2 pb-4 overflow-y-auto">
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.32, duration: 0.5 }} className="font-sans-utility text-[10.5px] md:text-[11px] tracking-[0.22em] md:tracking-[0.28em] uppercase text-[#F5EED5]/70 md:text-[#F5EED5]/65 mt-3.5 md:mt-5">
+          Choose your story <span className="text-[#C9A86A]">—</span> tap to enter
+        </motion.p>
 
-        {/* Header Section (Pushed Higher to Top) */}
-        <div className="w-full text-center relative z-40 space-y-1.5 md:space-y-2 pt-0 pb-3">
-          <motion.span
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="font-sans-utility text-xs md:text-sm tracking-[0.38em] uppercase text-[#641F27] font-semibold block"
-          >
-            WELCOME TO
-          </motion.span>
-
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-serif-editorial text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase tracking-[0.08em] md:tracking-[0.1em] text-[#1C1B18] font-normal leading-none whitespace-nowrap"
-          >
-            THE HOUSE OF PARVA
-          </motion.h1>
-
-          {/* Ornamental Flourish Line */}
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0.8 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full flex items-center justify-center gap-4 py-0.5 max-w-sm mx-auto"
-          >
-            <div className="h-px bg-[#641F27]/30 flex-1 max-w-[120px]" />
-            <span className="text-[#641F27] text-xs md:text-sm">❦</span>
-            <div className="h-px bg-[#641F27]/30 flex-1 max-w-[120px]" />
-          </motion.div>
-
-          {/* Category Subtitle */}
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="font-sans-utility text-[10.5px] md:text-xs lg:text-sm tracking-[0.34em] uppercase text-[#641F27] font-semibold"
-          >
-            PHOTOGRAPHY & FILMS • WEDDINGS • FAMILY • STORIES
-          </motion.div>
-
-          {/* Italic Subhead */}
-          <motion.p
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="font-serif-editorial text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#1C1B18]/90 italic font-light pt-0.5"
-          >
-            Two worlds, one belief – every story deserves to be remembered beautifully.
-          </motion.p>
-        </div>
-
-        {/* Two Physical Paper Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-stretch max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto w-full relative pt-2">
-
-          {/* LEFT CARD: PARVA ORIGINS */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.015 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative bg-[#F5F1E8] p-7 md:p-10 lg:p-11 rounded-xs border border-[#1C1B18]/15 flex flex-col justify-between items-center text-center shadow-xl transition-all duration-500"
-            style={{
-              boxShadow: "0 12px 36px -6px rgba(28, 27, 24, 0.14), 0 2px 6px rgba(28, 27, 24, 0.05)",
-            }}
-          >
-            {/* Washi Masking Tape Accent on Top Left */}
-            <div className="absolute -top-4 left-10 w-32 h-6.5 masking-tape z-30 rotate-[-2deg]" />
-
-            {/* Double Border Frame Line Effect */}
-            <div className="absolute inset-2.5 md:inset-3.5 border border-[#1C1B18]/12 pointer-events-none rounded-xs" />
-
-            <div className="w-full flex flex-col items-center space-y-4.5 relative z-10 pt-1">
-
-              {/* Monogram Logo */}
-              <div className="w-20 md:w-24 lg:w-26 h-auto flex items-center justify-center">
-                <img
-                  src="/Assets/Brands/Asset 29.svg"
-                  alt="Parva Origins Monogram"
-                  className="w-full h-auto object-contain filter hue-rotate-[90deg] saturate-50 contrast-125 transition-transform duration-500 group-hover:scale-105"
-                  style={{
-                    filter: "invert(17%) sepia(48%) saturate(980%) hue-rotate(116deg) brightness(92%) contrast(96%)"
-                  }}
-                />
-              </div>
-
-              {/* Main Brand Title */}
-              <div className="space-y-0.5">
-                <span className="font-sans-utility text-[10.5px] md:text-xs tracking-[0.45em] uppercase text-[#12352C] font-semibold block">
-                  PARVA
-                </span>
-                <h2 className="font-serif-editorial text-3xl md:text-4xl lg:text-5xl uppercase tracking-[0.2em] text-[#12352C] font-medium leading-none">
-                  ORIGINS
-                </h2>
-              </div>
-
-              {/* Ornamental Flourish Line */}
-              <div className="w-full flex items-center justify-center gap-3 py-0.5">
-                <div className="h-px bg-[#12352C]/25 flex-1 max-w-[95px]" />
-                <span className="text-[#12352C] text-[11px]">❦</span>
-                <div className="h-px bg-[#12352C]/25 flex-1 max-w-[95px]" />
-              </div>
-
-              {/* Tagline */}
-              <div className="space-y-0.5 pt-0.5">
-                <p className="font-sans-utility text-[10px] md:text-[11px] lg:text-xs tracking-[0.28em] uppercase text-[#12352C] font-semibold">
-                  CELEBRATING LIFE'S
-                </p>
-                <p className="font-sans-utility text-[10px] md:text-[11px] lg:text-xs tracking-[0.28em] uppercase text-[#12352C] font-semibold">
-                  BEAUTIFUL BEGINNINGS
-                </p>
-              </div>
-
-              {/* Services List */}
-              <div className="space-y-1.5 pt-1.5 text-[9.5px] md:text-[10.5px] lg:text-[11.5px] font-sans-utility tracking-[0.22em] uppercase text-[#1C1B18]/75 font-normal max-w-sm mx-auto">
-                <p>BABY SHOWERS • NAMING CEREMONIES</p>
-                <p>HOUSEWARMINGS • FAMILY SESSIONS</p>
-                <p className="text-[#12352C] font-semibold">AND MORE</p>
-              </div>
-
+        {/* ── Gilded ateliers — mobile: full-width stacked, 44px+ targets, thumb zone ── */}
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }} className="w-full max-w-[1040px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-7 mt-3.5 md:mt-5">
+          {/* Weddings — LEFT on desktop, TOP on mobile (primary) */}
+          <Link href="/parvaweddings" aria-label="Enter Parva Weddings — weddings atelier" className="group relative flex flex-col items-center text-center px-5 sm:px-8 md:px-10 py-7 sm:py-8 md:py-11 border border-[#C9A86A]/24 hover:border-[#C9A86A]/45 active:border-[#C9A86A]/50 bg-[#F5EED5]/06 hover:bg-[#F5EED5]/10 active:bg-[#F5EED5]/12 backdrop-blur-[1px] transition-all duration-300 overflow-hidden active:scale-[0.99] md:hover:-translate-y-1 md:hover:shadow-[0_16px_40px_rgba(0,0,0,0.32)]">
+            <div className="pointer-events-none absolute inset-[7px] md:inset-[8px] border border-white/08 group-hover:border-white/14 transition-colors" />
+            <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-20 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/40 to-transparent opacity-80" />
+            <span className="font-sans-utility text-[9px] sm:text-[9.5px] tracking-[0.30em] sm:tracking-[0.36em] uppercase text-[#C9A86A]">Atelier — 01 • Weddings</span>
+            <div className="w-[76px] sm:w-[84px] md:w-[102px] mt-4" style={{ filter: "brightness(0) invert(1) opacity(0.96)" }}>
+              <img src="/Assets/Brands/Asset 30.svg" alt="Parva Weddings" className="w-full h-auto" />
             </div>
+            <span className="font-sans-utility text-[9px] sm:text-[10px] tracking-[0.44em] uppercase text-[#F5EED5]/70 mt-4">Parva</span>
+            <h2 className="font-serif-editorial text-[26px] sm:text-[30px] md:text-[36px] tracking-[0.16em] sm:tracking-[0.18em] uppercase text-[#F5EED5] leading-none mt-1">Weddings</h2>
+            <div className="h-px w-12 bg-[#C9A86A]/40 mt-3 md:mt-4 group-hover:w-20 group-active:w-20 transition-all duration-500" />
+            <p className="font-sans-utility text-[10.5px] sm:text-[11px] md:text-[11.5px] tracking-[0.18em] md:tracking-[0.20em] uppercase text-[#F5EED5]/85 leading-relaxed mt-3">Crafting timeless wedding<br />stories with soul</p>
+            <p className="font-sans-utility text-[10px] md:text-[10.5px] tracking-[0.13em] md:tracking-[0.14em] uppercase text-[#F5EED5]/60 md:text-[#F5EED5]/58 mt-2 leading-relaxed">Wedding photography • Cinematic films<br />Destination • Intimate celebrations</p>
+            <span className="mt-5 md:mt-7 inline-flex w-full sm:w-auto items-center justify-center gap-2 font-sans-utility text-[10px] sm:text-[11px] tracking-[0.20em] uppercase text-[#2B0F14] bg-[#C9A86A] md:bg-[#F5EED5] md:group-hover:bg-[#C9A86A] border border-[#C9A86A] md:border-[#F5EED5] md:group-hover:border-[#C9A86A] min-h-[40px] md:min-h-[44px] px-5 md:px-7 py-2.5 md:py-3 transition-colors shadow-sm">
+              Enter Weddings <span className="text-[12px] md:text-[13px]">→</span>
+            </span>
+            <span className="font-sans-utility text-[10px] md:text-[9px] tracking-[0.16em] md:tracking-[0.18em] uppercase text-[#F5EED5]/50 md:text-[#F5EED5]/45 mt-2">Tap to explore</span>
+          </Link>
 
-            {/* CTA Button -> Direct Link to /parvaorigins */}
-            <div className="pt-7 w-full flex items-center justify-center relative z-10">
-              <Link
-                href="/parvaorigins"
-                className="group/btn inline-flex items-center gap-2.5 font-sans-utility text-xs md:text-sm tracking-[0.28em] uppercase text-[#12352C] hover:text-[#641F27] transition-colors font-semibold"
+          {/* Origins — RIGHT on desktop, BOTTOM on mobile */}
+          <Link href="/parvaorigins" aria-label="Enter Parva Origins — family and beginnings atelier" className="group relative flex flex-col items-center text-center px-5 sm:px-8 md:px-10 py-7 sm:py-8 md:py-11 border border-[#C9A86A]/24 hover:border-[#C9A86A]/45 active:border-[#C9A86A]/50 bg-[#F5EED5]/06 hover:bg-[#F5EED5]/10 active:bg-[#F5EED5]/12 backdrop-blur-[1px] transition-all duration-300 overflow-hidden active:scale-[0.99] md:hover:-translate-y-1 md:hover:shadow-[0_16px_40px_rgba(0,0,0,0.32)]">
+            <div className="pointer-events-none absolute inset-[7px] md:inset-[8px] border border-white/08 group-hover:border-white/14 transition-colors" />
+            <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-20 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/40 to-transparent opacity-80" />
+            <span className="font-sans-utility text-[9px] sm:text-[9.5px] tracking-[0.30em] sm:tracking-[0.36em] uppercase text-[#C9A86A]">Atelier — 02 • Family & Beginnings</span>
+            <div className="w-[76px] sm:w-[84px] md:w-[102px] mt-4" style={{ filter: "brightness(0) invert(1) opacity(0.96)" }}>
+              <img src="/Assets/Brands/Asset 29.svg" alt="Parva Origins" className="w-full h-auto" />
+            </div>
+            <span className="font-sans-utility text-[9px] sm:text-[10px] tracking-[0.44em] uppercase text-[#F5EED5]/70 mt-4">Parva</span>
+            <h2 className="font-serif-editorial text-[26px] sm:text-[30px] md:text-[36px] tracking-[0.16em] sm:tracking-[0.18em] uppercase text-[#F5EED5] leading-none mt-1">Origins</h2>
+            <div className="h-px w-12 bg-[#C9A86A]/40 mt-3 md:mt-4 group-hover:w-20 group-active:w-20 transition-all duration-500" />
+            <p className="font-sans-utility text-[10.5px] sm:text-[11px] md:text-[11.5px] tracking-[0.18em] md:tracking-[0.20em] uppercase text-[#F5EED5]/85 leading-relaxed mt-3">Celebrating life&apos;s<br />beautiful beginnings</p>
+            <p className="font-sans-utility text-[10px] md:text-[10.5px] tracking-[0.13em] md:tracking-[0.14em] uppercase text-[#F5EED5]/60 md:text-[#F5EED5]/58 mt-2 leading-relaxed">Baby showers • Naming ceremonies<br />Housewarmings • Family sessions</p>
+            <span className="mt-5 md:mt-7 inline-flex w-full sm:w-auto items-center justify-center gap-2 font-sans-utility text-[10px] sm:text-[11px] tracking-[0.20em] uppercase text-[#2B0F14] bg-[#C9A86A] md:bg-[#F5EED5] md:group-hover:bg-[#C9A86A] border border-[#C9A86A] md:border-[#F5EED5] md:group-hover:border-[#C9A86A] min-h-[40px] md:min-h-[44px] px-5 md:px-7 py-2.5 md:py-3 transition-colors shadow-sm">
+              Enter Origins <span className="text-[12px] md:text-[13px]">→</span>
+            </span>
+            <span className="font-sans-utility text-[10px] md:text-[9px] tracking-[0.16em] md:tracking-[0.18em] uppercase text-[#F5EED5]/50 md:text-[#F5EED5]/45 mt-2">Tap to explore</span>
+          </Link>
+        </motion.div>
+
+        {/* Follow the House — all three ateliers on Instagram */}
+        <div className="w-full max-w-[1040px] mt-4 md:mt-5">
+          <p className="font-sans-utility text-[9px] md:text-[9.5px] tracking-[0.3em] uppercase text-[#C9A86A] text-center">Follow the House</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 md:gap-3 mt-2.5">
+            {[
+              { name: "House of Parva", handle: "@thehouseofparva.in", href: "https://instagram.com/thehouseofparva.in" },
+              { name: "Parva Weddings", handle: "@weddingsbyparva", href: "https://instagram.com/weddingsbyparva" },
+              { name: "Parva Origins", handle: "@originsbyparva", href: "https://instagram.com/originsbyparva" },
+            ].map((a) => (
+              <a
+                key={a.handle}
+                href={a.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 px-4 py-3 border border-[#C9A86A]/20 hover:border-[#C9A86A]/50 active:border-[#C9A86A]/60 bg-[#F5EED5]/04 hover:bg-[#F5EED5]/08 transition-colors"
               >
-                <span>DISCOVER ORIGINS</span>
-                <span className="transform group-hover/btn:translate-x-1.5 transition-transform text-sm">→</span>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* RIGHT CARD: PARVA WEDDINGS */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.015 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative bg-[#F5F1E8] p-7 md:p-10 lg:p-11 rounded-xs border border-[#1C1B18]/15 flex flex-col justify-between items-center text-center shadow-xl transition-all duration-500"
-            style={{
-              boxShadow: "0 12px 36px -6px rgba(100, 31, 39, 0.14), 0 2px 6px rgba(28, 27, 24, 0.05)",
-            }}
-          >
-            {/* Double Border Frame Line Effect */}
-            <div className="absolute inset-2.5 md:inset-3.5 border border-[#641F27]/12 pointer-events-none rounded-xs" />
-
-            <div className="w-full flex flex-col items-center space-y-4.5 relative z-10 pt-1">
-
-              {/* Monogram Logo */}
-              <div className="w-20 md:w-24 lg:w-26 h-auto flex items-center justify-center">
-                <img
-                  src="/Assets/Brands/Asset 30.svg"
-                  alt="Parva Weddings Monogram"
-                  className="w-full h-auto object-contain filter drop-shadow-xs transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Main Brand Title */}
-              <div className="space-y-0.5">
-                <span className="font-sans-utility text-[10.5px] md:text-xs tracking-[0.45em] uppercase text-[#641F27] font-semibold block">
-                  PARVA
+                <svg className="w-[18px] h-[18px] text-[#C9A86A] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+                <span className="flex-1 min-w-0 text-left">
+                  <span className="block font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#F5EED5]/85">{a.name}</span>
+                  <span className="block font-sans-utility text-[10px] tracking-[0.08em] text-[#F5EED5]/45 mt-0.5">{a.handle}</span>
                 </span>
-                <h2 className="font-serif-editorial text-3xl md:text-4xl lg:text-5xl uppercase tracking-[0.2em] text-[#641F27] font-medium leading-none">
-                  WEDDINGS
-                </h2>
-              </div>
-
-              {/* Ornamental Flourish Line */}
-              <div className="w-full flex items-center justify-center gap-3 py-0.5">
-                <div className="h-px bg-[#641F27]/25 flex-1 max-w-[95px]" />
-                <span className="text-[#641F27] text-[11px]">❦</span>
-                <div className="h-px bg-[#641F27]/25 flex-1 max-w-[95px]" />
-              </div>
-
-              {/* Tagline */}
-              <div className="space-y-0.5 pt-0.5">
-                <p className="font-sans-utility text-[10px] md:text-[11px] lg:text-xs tracking-[0.28em] uppercase text-[#641F27] font-semibold">
-                  CRAFTING TIMELESS WEDDING
-                </p>
-                <p className="font-sans-utility text-[10px] md:text-[11px] lg:text-xs tracking-[0.28em] uppercase text-[#641F27] font-medium">
-                  STORIES WITH SOUL
-                </p>
-              </div>
-
-              {/* Services List */}
-              <div className="space-y-1.5 pt-1.5 text-[9.5px] md:text-[10.5px] lg:text-[11.5px] font-sans-utility tracking-[0.22em] uppercase text-[#1C1B18]/75 font-normal max-w-sm mx-auto">
-                <p>WEDDING PHOTOGRAPHY • CINEMATIC FILMS</p>
-                <p>DESTINATION WEDDINGS • INTIMATE CELEBRATIONS</p>
-                <p className="text-[#641F27] font-semibold">AND MORE</p>
-              </div>
-
-            </div>
-
-            {/* CTA Button -> Direct Link to /parvaweddings */}
-            <div className="pt-7 w-full flex items-center justify-center relative z-10">
-              <Link
-                href="/parvaweddings"
-                className="group/btn inline-flex items-center gap-2.5 font-sans-utility text-xs md:text-sm tracking-[0.28em] uppercase text-[#641F27] hover:text-[#12352C] transition-colors font-semibold"
-              >
-                <span>DISCOVER WEDDINGS</span>
-                <span className="transform group-hover/btn:translate-x-1.5 transition-transform text-sm">→</span>
-              </Link>
-            </div>
-          </motion.div>
-
+                <span className="text-[#C9A86A] text-sm group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            ))}
+          </div>
         </div>
+
+        <p className="font-sans-utility text-[9px] sm:text-[8.5px] tracking-[0.22em] sm:tracking-[0.28em] uppercase text-[#F5EED5]/35 md:text-[#F5EED5]/32 mt-3.5 md:mt-4 text-center px-4">Two ateliers • One house • Bengaluru & Beyond</p>
       </main>
 
-      {/* Footer Bar */}
-      <footer className="w-full py-4 px-8 md:px-16 flex justify-between items-center relative z-40 border-t border-[#1C1B18]/15 text-xs font-sans-utility tracking-[0.2em] uppercase select-none flex-shrink-0">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-[#1C1B18]/80">
-          <a
-            href="https://instagram.com/weddingsbyparva"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#641F27] transition-colors font-medium tracking-[0.18em]"
-          >
-            IG: weddingsbyparva
-          </a>
-          <span className="opacity-30 hidden sm:inline">•</span>
-          <a
-            href="mailto:hello@thehouseofparva.in"
-            className="hover:text-[#641F27] transition-colors font-medium tracking-[0.18em] lowercase font-sans"
-          >
-            hello@thehouseofparva.in
-          </a>
-        </div>
-
-        <div className="text-[10px] text-[#1C1B18]/60 font-sans-utility tracking-[0.2em] uppercase">
-          OCEAN AND ORIGIN LLP • BENGALURU
-        </div>
+      <footer className="w-full flex justify-center items-center px-4 sm:px-6 md:px-8 pb-[calc(12px+env(safe-area-inset-bottom))] md:pb-5 pt-3 relative z-20 shrink-0">
+        <span className="font-sans-utility text-[9px] sm:text-[8.5px] tracking-[0.18em] sm:tracking-[0.26em] uppercase text-[#F5EED5]/30 md:text-[#F5EED5]/20 text-center leading-relaxed">Ocean and Origin LLP • Est. MMXXVI<br className="sm:hidden" /><span className="hidden sm:inline"> — </span>hello@thehouseofparva.in</span>
       </footer>
     </div>
   );

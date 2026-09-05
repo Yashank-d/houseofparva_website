@@ -1,122 +1,312 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import OriginsSidebar from "@/components/OriginsSidebar";
+import OriginsHomeCanvas from "@/components/OriginsHomeCanvas";
+import OriginsPortfolioCanvas from "@/components/OriginsPortfolioCanvas";
+import OriginsAboutCanvas from "@/components/OriginsAboutCanvas";
+import OriginsContactCanvas from "@/components/OriginsContactCanvas";
+import OHome from "@/components/mobile/origins/OHome";
+import OStories from "@/components/mobile/origins/OStories";
+import OAbout from "@/components/mobile/origins/OAbout";
+import OContact from "@/components/mobile/origins/OContact";
+import MPreloader from "@/components/mobile/MPreloader";
 
 export default function ParvaOriginsPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    eventType: "Family Session",
-    message: "",
-  });
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const isLockedRef = useRef(false);
+  const mScrollRef = useRef<HTMLDivElement>(null);
 
-  const [submitted, setSubmitted] = useState(false);
+  const totalPages = 4;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const goToNextPage = () => {
+    setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : prev));
   };
 
+  const goToPrevPage = () => {
+    setCurrentPage((prev) => (prev > 0 ? prev - 1 : prev));
+  };
+
+  useEffect(() => {
+    const check = () => {
+      const narrow = window.innerWidth < 768;
+      const phoneUA = /iPhone|iPod|Android.*Mobile/i.test(navigator.userAgent);
+      const minSide = Math.min(window.screen.width, window.screen.height);
+      const isTablet = !phoneUA && minSide >= 600;
+      setIsMobile(!isTablet && (narrow || phoneUA || minSide < 600));
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // Keyboard Arrow Key Listener — desktop only
+  useEffect(() => {
+    if (isMobile) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        goToNextPage();
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        goToPrevPage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMobile]);
+
+  // Strict Sequential Viewport Wheel Scroll Listener — desktop only
+  useEffect(() => {
+    if (isMobile) return;
+    const handleWheel = (e: WheelEvent) => {
+      if (isLockedRef.current) return;
+
+      const threshold = 35;
+      if (e.deltaY > threshold) {
+        isLockedRef.current = true;
+        setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : prev));
+        setTimeout(() => {
+          isLockedRef.current = false;
+        }, 1200);
+      } else if (e.deltaY < -threshold) {
+        isLockedRef.current = true;
+        setCurrentPage((prev) => (prev > 0 ? prev - 1 : prev));
+        setTimeout(() => {
+          isLockedRef.current = false;
+        }, 1200);
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [isMobile]);
+
+  // Mobile shell scrolls — reset to top on page change
+  useEffect(() => {
+    if (!isMobile) return;
+    mScrollRef.current?.scrollTo(0, 0);
+  }, [currentPage, isMobile]);
+
+  const renderPageCanvas = () => {
+    switch (currentPage) {
+      case 0:
+        return <OriginsHomeCanvas onNavigate={setCurrentPage} />;
+      case 1:
+        return <OriginsPortfolioCanvas onNavigate={setCurrentPage} />;
+      case 2:
+        return <OriginsAboutCanvas />;
+      case 3:
+        return <OriginsContactCanvas />;
+      default:
+        return <OriginsHomeCanvas onNavigate={setCurrentPage} />;
+    }
+  };
+  const renderMobileCanvas = () => {
+    switch (currentPage) {
+      case 0:
+        return <OHome onNavigate={setCurrentPage} />;
+      case 1:
+        return <OStories onNavigate={setCurrentPage} />;
+      case 2:
+        return <OAbout />;
+      case 3:
+        return <OContact />;
+      default:
+        return <OHome onNavigate={setCurrentPage} />;
+    }
+  };
+
+  // Mobile — velvet shell: seamless masthead + floating velvet tab pill
+  if (isMobile) {
+    const navItems = [
+      { short: "Home", idx: 0, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" /></svg>) },
+      { short: "Stories", idx: 1, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" /><circle cx="9" cy="9" r="1.6" /><path d="m21 15-4.5-4.5L6 21" /></svg>) },
+      { short: "About", idx: 2, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5" /><path d="M4.5 20.5c1.4-3.6 4.2-5.5 7.5-5.5s6.1 1.9 7.5 5.5" /></svg>) },
+      { short: "Contact", idx: 3, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="4" /><path d="m3.5 7 8.5 6 8.5-6" /></svg>) },
+    ];
+    return (
+      <div className="w-full h-[100dvh] overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col relative font-sans selection:bg-[#2B0F14] selection:text-[#F5EED5]">
+        <MPreloader mark="/Assets/Brands/Asset 29.svg" sub="Origins" />
+        {/* Seamless masthead — PARVA ORIGINS */}
+        <header className="shrink-0 z-20" style={{ paddingTop: "env(safe-area-inset-top)" }}>
+          <div className="h-[64px] px-5 flex items-center justify-between">
+            <span className="flex items-center gap-3 min-w-0">
+              <img src="/Assets/seal/parva_seal_256.png" alt="Parva seal" className="w-9 h-9 object-contain shrink-0" />
+              <span className="w-px h-9 bg-[#1C1B18]/12 shrink-0" />
+              <span className="flex flex-col leading-none">
+                <span className="font-serif-editorial text-[21px] tracking-[0.12em] text-[#1C1B18]">PARVA</span>
+                <span className="font-sans-utility text-[7.5px] tracking-[0.46em] uppercase text-[#2B0F14] font-semibold mt-1">Origins</span>
+              </span>
+            </span>
+            <Link href="/" aria-label="Back to the House of Parva" className="shrink-0 min-h-[44px] flex items-center gap-1.5 pl-2">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2B0F14" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="14 6 8 12 14 18" /></svg>
+              <span className="font-sans-utility text-[9px] tracking-[0.18em] uppercase font-semibold text-[#1C1B18]/70 leading-snug text-right">Back to<br />the House</span>
+            </Link>
+          </div>
+        </header>
+        <div className="flex-1 w-full relative overflow-hidden">
+          <div ref={mScrollRef} className="absolute inset-0 w-full h-full overflow-y-auto overscroll-contain">
+            <AnimatePresence mode="wait">
+              <motion.div key={currentPage} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }} className="w-full">
+                {renderMobileCanvas()}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          {/* Floating velvet tab pill — gold gliding indicator */}
+          <nav className="absolute bottom-0 inset-x-0 z-30 px-5" style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 12px)" }}>
+            <div className="w-full rounded-full bg-[#2B0F14]/80 backdrop-blur-xl shadow-[0_14px_36px_rgba(43,15,20,0.45)] border border-[#C9A86A]/25 flex items-center px-2 py-2">
+              {navItems.map((item) => {
+                const active = currentPage === item.idx;
+                return (
+                  <button
+                    key={item.short}
+                    onClick={() => setCurrentPage(item.idx)}
+                    className={`relative flex-1 h-[48px] rounded-full flex flex-col items-center justify-center gap-0.5 outline-none focus:outline-none transition-colors duration-300 ${active ? "text-[#2B0F14]" : "text-[#F5EED5]/60 active:text-[#F5EED5]"}`}
+                  >
+                    {active && (
+                      <motion.span
+                        layoutId="onnav-pill"
+                        transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                        className="absolute inset-0 rounded-full bg-[#C9A86A] shadow-[0_4px_14px_rgba(201,168,106,0.45)]"
+                      />
+                    )}
+                    <span className="relative">{item.icon}</span>
+                    <span className={`relative font-sans-utility text-[9px] tracking-[0.14em] uppercase leading-none ${active ? "font-bold" : "font-medium"}`}>{item.short}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-screen h-screen overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col justify-between relative font-sans selection:bg-[#12352C] selection:text-[#F5F1E8] select-none">
+    <div className="w-screen h-screen overflow-hidden paper-bg-parchment text-[#1C1B18] flex relative font-sans selection:bg-[#2B0F14] selection:text-[#F5EED5]">
 
-      {/* Header Bar */}
-      <header className="w-full py-5 px-8 md:px-12 flex justify-between items-center relative z-40">
-        <Link
-          href="/"
-          className="group flex items-center gap-2 font-sans-utility text-[10px] tracking-[0.3em] uppercase text-[#1C1B18]/70 hover:text-[#12352C] transition-colors font-medium"
-          title="Return to The House of Parva Gateway"
-        >
-          <span className="transform group-hover:-translate-x-1 transition-transform">←</span>
-          <span>THE HOUSE OF PARVA</span>
-        </Link>
+      {/* Physical Layer 1: Locked Velvet Paper Sheet (20vw width) */}
+      <OriginsSidebar
+        currentPage={currentPage}
+        onSelectPage={setCurrentPage}
+      />
 
-        <div className="font-sans-utility text-[10px] md:text-xs tracking-[0.25em] uppercase text-[#12352C] font-semibold">
-          PARVA ORIGINS ARCHIVE
-        </div>
-      </header>
-
-      {/* Main Content Area */}
-      <main className="w-full max-w-6xl mx-auto px-6 md:px-12 py-2 flex-1 flex flex-col justify-between overflow-y-auto z-20">
-        
-        {/* Top Hero Logo & Headline */}
-        <div className="text-center my-auto py-6 space-y-4 max-w-3xl mx-auto">
-          {/* Logo SVG */}
-          <div className="w-full max-w-[220px] md:max-w-[260px] mx-auto">
-            <img
-              src="/Assets/Brands/Asset 29.svg"
-              alt="Parva Origins Logo"
-              className="w-full h-auto object-contain filter hue-rotate-[90deg] saturate-50 contrast-125"
-              style={{
-                filter: "invert(17%) sepia(48%) saturate(980%) hue-rotate(116deg) brightness(92%) contrast(96%)"
-              }}
-            />
-          </div>
-
-          <p className="font-script text-2xl md:text-3xl text-[#12352C]">
-            "Celebrating life's beautiful beginnings."
-          </p>
-
-          <p className="font-sans-utility text-xs md:text-sm text-[#1C1B18]/80 leading-relaxed max-w-xl mx-auto font-light">
-            Parva Origins is our fine art portraiture and milestone archive. From baby showers and naming ceremonies to housewarmings and multi-generational family sessions—we preserve life's quiet beginnings.
-          </p>
-
-          {/* Three Service Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 text-left">
-            <div className="bg-[#F5F1E8] p-6 rounded-xs border border-[#1C1B18]/12 shadow-sm space-y-2">
-              <span className="font-sans-utility text-[9.5px] tracking-[0.25em] uppercase text-[#12352C] font-semibold block">
-                01 • BABY & NAMING
-              </span>
-              <p className="font-sans-utility text-xs text-[#1C1B18]/80 leading-relaxed font-light">
-                Capturing the quiet warmth of new life, naming ceremonies, cradling rituals, and baby showers.
-              </p>
-            </div>
-
-            <div className="bg-[#F5F1E8] p-6 rounded-xs border border-[#1C1B18]/12 shadow-sm space-y-2">
-              <span className="font-sans-utility text-[9.5px] tracking-[0.25em] uppercase text-[#12352C] font-semibold block">
-                02 • HOUSEWARMINGS
-              </span>
-              <p className="font-sans-utility text-xs text-[#1C1B18]/80 leading-relaxed font-light">
-                Documenting griha pravesh rituals, traditional pujas, and homecoming celebrations in family spaces.
-              </p>
-            </div>
-
-            <div className="bg-[#F5F1E8] p-6 rounded-xs border border-[#1C1B18]/12 shadow-sm space-y-2">
-              <span className="font-sans-utility text-[9.5px] tracking-[0.25em] uppercase text-[#12352C] font-semibold block">
-                03 • FAMILY SESSIONS
-              </span>
-              <p className="font-sans-utility text-xs text-[#1C1B18]/80 leading-relaxed font-light">
-                Unscripted fine-art portraits of connection, laughter, and multi-generational family milestones.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </main>
-
-      {/* Footer Bar */}
-      <footer className="w-full pt-4 pb-5 px-8 md:px-12 flex justify-between items-center relative z-40 border-t border-[#1C1B18]/15 text-xs font-sans-utility tracking-[0.2em] uppercase select-none">
-        <div className="flex items-center gap-4 text-xs text-[#1C1B18]/80">
-          <a
-            href="mailto:hello@thehouseofparva.in"
-            className="hover:text-[#12352C] transition-colors font-medium tracking-[0.18em] lowercase font-sans"
+      {/* Physical Layer 2: Main Cream Content Canvas */}
+      <div className="w-full h-full pl-[16vw] md:pl-[18vw] relative flex flex-col justify-between overflow-hidden z-10">
+        {/* Top Header */}
+        <header className="w-full py-5 px-8 md:px-12 flex justify-between items-center relative z-40 select-none">
+          <Link
+            href="/"
+            className="group flex items-center gap-2 font-sans-utility text-[10px] tracking-[0.3em] uppercase text-[#1C1B18]/70 hover:text-[#2B0F14] transition-colors font-medium"
+            title="Return to The House of Parva Gateway"
           >
-            hello@thehouseofparva.in
-          </a>
-          <span>•</span>
-          <span className="text-[#1C1B18]/60">BENGALURU & WORLDWIDE</span>
+            <span className="transform group-hover:-translate-x-1 transition-transform">←</span>
+            <span>THE HOUSE OF PARVA</span>
+          </Link>
+
+          <div className="flex items-center gap-6">
+            {currentPage !== 3 && (
+              <button
+                onClick={() => setCurrentPage(3)}
+                className="group inline-flex items-center gap-2.5 font-script text-xl md:text-2xl text-[#1C1B18] hover:text-[#2B0F14] transition-colors relative cursor-pointer py-1"
+                title="Begin Your Chapter | Contact Us"
+              >
+                <span className="border-b-2 border-[#2B0F14] pb-0.5 font-medium">
+                  Let&apos;s keep every beginning
+                </span>
+                <span className="transform group-hover:translate-x-1.5 transition-transform duration-300 text-lg">
+                  →
+                </span>
+              </button>
+            )}
+          </div>
+        </header>
+
+        {/* Dynamic Page Content */}
+        <div className="flex-1 w-full relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full h-full absolute inset-0"
+            >
+              {renderPageCanvas()}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <Link
-          href="/parvaweddings"
-          className="text-xs text-[#641F27] hover:text-[#12352C] transition-colors font-medium tracking-[0.2em] uppercase"
-        >
-          EXPLORE PARVA WEDDINGS →
-        </Link>
-      </footer>
+        {/* Bottom Control Bar */}
+        <footer className="w-full py-5 md:py-6 px-8 md:px-12 flex justify-between items-center relative z-40 border-t border-[#1C1B18]/10 text-xs font-sans-utility tracking-[0.18em] uppercase select-none mb-1">
+          <div className="flex flex-row items-center gap-3 text-[12.5px] md:text-[13px] text-[#1C1B18]/70 z-10">
+            <a
+              href="https://instagram.com/originsbyparva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 hover:text-[#2B0F14] transition-colors font-medium tracking-[0.16em]"
+            >
+              <svg className="w-4 h-4 text-[#1C1B18]/60 group-hover:text-[#2B0F14] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+              <span>ORIGINSBYPARVA</span>
+            </a>
+            <span className="text-[#1C1B18]/20 font-light mx-1">|</span>
+            <a
+              href="mailto:hello@thehouseofparva.in"
+              className="group flex items-center gap-2 hover:text-[#2B0F14] transition-colors font-medium tracking-[0.14em] normal-case font-sans text-[12.5px] md:text-[13px]"
+            >
+              <svg className="w-4 h-4 text-[#1C1B18]/60 group-hover:text-[#2B0F14] transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <span>hello@thehouseofparva.in</span>
+            </a>
+          </div>
+
+          <div className="absolute left-1/2 -translate-x-1/2 z-20">
+            <button
+              onClick={() => {
+                if (currentPage < 3) {
+                  goToNextPage();
+                } else {
+                  goToPrevPage();
+                }
+              }}
+              className="group flex items-center gap-2 cursor-pointer transition-transform duration-300 hover:scale-105"
+              title={currentPage < 3 ? "Scroll down to next section" : "Scroll up to previous section"}
+            >
+              <div className="w-3.5 h-6 border border-[#1C1B18]/40 rounded-full flex justify-center items-center relative overflow-hidden group-hover:border-[#2B0F14] transition-colors">
+                {currentPage < 3 ? (
+                  <motion.div
+                    animate={{ y: [-3, 3, -3] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="w-1 h-1 bg-[#2B0F14] rounded-full"
+                  />
+                ) : (
+                  <motion.div
+                    animate={{ y: [3, -3, 3] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="w-1 h-1 bg-[#2B0F14] rounded-full"
+                  />
+                )}
+              </div>
+
+              <span className="font-sans-utility text-[9.5px] tracking-[0.25em] uppercase text-[#1C1B18]/70 group-hover:text-[#2B0F14] transition-colors font-medium">
+                {currentPage < 3 ? "Scroll down" : "Scroll up"}
+              </span>
+            </button>
+          </div>
+
+          <div className="w-24 hidden md:block z-10" />
+        </footer>
+      </div>
     </div>
   );
 }

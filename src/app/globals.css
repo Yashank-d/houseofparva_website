@@ -4,8 +4,8 @@
   :root {
     --parchment: #E8DFD0;
     --ivory: #F5F1E8;
-    --emerald: #12352C;
-    --emerald-dark: #0E2922;
+    --emerald: #2B0F14;
+    --emerald-dark: #1E0A0E;
     --burgundy: #641F27;
     --ink: #1C1B18;
     --rose: #CFA4A5;
@@ -42,14 +42,23 @@
 .paper-bg-parchment {
   background-color: #EAE1D2;
   background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='pp'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' seed='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pp)' opacity='0.038'/%3E%3C/svg%3E");
-  background-size: 260px 260px;
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='pp'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' seed='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pp)' opacity='0.038'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='cr' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011 0.014' numOctaves='4' seed='7' stitchTiles='stitch' result='n'/%3E%3CfeDiffuseLighting in='n' lighting-color='%23ece4d2' surfaceScale='2.6' result='lit'%3E%3CfeDistantLight azimuth='235' elevation='58'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='900' height='900' filter='url(%23cr)'/%3E%3C/svg%3E");
+  background-size: 260px 260px, 900px 900px;
 }
 
 .paper-bg-emerald {
-  background-color: #12352C;
+  background-color: #2B0F14;
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='pe'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='2' seed='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pe)' opacity='0.045'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+}
+
+/* Velvet — Parva Origins dark stock: deep maroon with fiber IN the paper */
+.paper-bg-velvet {
+  background-color: #2B0F14;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='pv'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='2' seed='7'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pv)' opacity='0.05'/%3E%3C/svg%3E");
   background-size: 260px 260px;
 }
 
@@ -159,4 +168,14 @@
 /* Custom scrollbars */
 ::-webkit-scrollbar {
   display: none;
+}
+
+/* Origins marquee ribbon */
+@keyframes origins-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-origins-marquee {
+  animation: origins-marquee 36s linear infinite;
+  will-change: transform;
 }
