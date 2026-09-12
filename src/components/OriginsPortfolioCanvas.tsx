@@ -198,7 +198,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
     return (
       <div
         key={key}
-        className={`overflow-hidden ${leafBg} ${isLeft ? "border-r border-[#1C1B18]/12" : "border-l border-[#1C1B18]/12"} select-none cursor-pointer`}
+        className={`overflow-hidden w-full h-full ${leafBg} ${isLeft ? "border-r border-[#1C1B18]/12" : "border-l border-[#1C1B18]/12"} select-none cursor-pointer`}
         onClick={() => turn(isLeft ? -1 : 1)}
       >
         <div className={`relative w-full h-full py-4 md:py-5 ${leafPadding}`}>
@@ -293,9 +293,9 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                 width={480}
                 height={630}
                 size="stretch"
-                minWidth={280}
+                minWidth={240}
                 maxWidth={520}
-                minHeight={360}
+                minHeight={315}
                 maxHeight={680}
                 showCover={false}
                 mobileScrollSupport={false}
@@ -313,7 +313,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                 ────────────────────────────────────────────────────────────── */}
 
                 {/* Leaf 0: Curator's Archival Dedication Note (Left) */}
-                <div className="overflow-hidden bg-gradient-to-r from-[#FDF8F0] via-[#FBF7EC] via-[82%] to-[#D8CCB2]/70 text-[#1C1B18] border-r border-[#1C1B18]/12 relative flex flex-col justify-between py-6 md:py-8 pl-7 md:pl-9 pr-5 md:pr-7 select-none">
+                <div className="overflow-hidden w-full h-full bg-gradient-to-r from-[#FDF8F0] via-[#FBF7EC] via-[82%] to-[#D8CCB2]/70 text-[#1C1B18] border-r border-[#1C1B18]/12 relative flex flex-col justify-between py-6 md:py-8 pl-7 md:pl-9 pr-5 md:pr-7 select-none">
                   <div aria-hidden className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-[#C9A86A] via-[#E8D4A0] to-[#C9A86A] opacity-80 pointer-events-none" />
                   <span aria-hidden className="absolute inset-3 md:inset-4 border border-[#C9A86A]/55 pointer-events-none rounded-[2px]" />
                   <span aria-hidden className="absolute inset-4 md:inset-5 border border-[#C9A86A]/20 pointer-events-none rounded-[1px]" />
@@ -363,7 +363,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
 
                 {/* Leaf 1: Velvet Monograph Cover Plate (Right) */}
                 <div
-                  className="overflow-hidden bg-gradient-to-br from-[#2B0F14] via-[#1F0A0E] to-[#140608] text-[#F5EED5] flex flex-col justify-between py-6 md:py-8 pl-5 md:pl-7 pr-7 md:pr-9 cursor-pointer relative select-none border-l border-[#1C1B18]/12"
+                  className="overflow-hidden w-full h-full bg-gradient-to-br from-[#2B0F14] via-[#1F0A0E] to-[#140608] text-[#F5EED5] flex flex-col justify-between py-6 md:py-8 pl-5 md:pl-7 pr-7 md:pr-9 cursor-pointer relative select-none border-l border-[#1C1B18]/12"
                   onClick={() => turn(1)}
                 >
                   <div aria-hidden className="absolute top-0 right-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C9A86A] via-[#E8D4A0] to-[#C9A86A] opacity-90 pointer-events-none" />
@@ -383,7 +383,13 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                   </div>
 
                   <div className="relative z-10 flex flex-col items-center justify-center my-auto text-center px-4">
-                    <h2 className="font-serif-editorial text-3xl md:text-4xl lg:text-5xl uppercase tracking-[0.16em] text-[#F5EED5] leading-[0.95]">
+                    <img
+                      src="/Assets/seal/parva_seal_256.png"
+                      alt="Parva seal"
+                      className="w-12 h-12 md:w-14 md:h-14 object-contain"
+                      draggable={false}
+                    />
+                    <h2 className="font-serif-editorial text-3xl md:text-4xl lg:text-5xl uppercase tracking-[0.16em] text-[#F5EED5] leading-[0.95] mt-3">
                       PARVA
                       <br />
                       <span className="text-[#C9A86A]">ORIGINS</span>
@@ -392,13 +398,14 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                       Every beginning, beautifully kept.
                     </p>
 
+                    <div aria-hidden className="w-24 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/60 to-transparent mt-6" />
                     <button
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         turn(1);
                       }}
-                      className="mt-6 inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#C9A86A] text-[#2B0F14] font-sans-utility text-[10px] tracking-[0.22em] uppercase font-bold hover:bg-[#E8D4A0] hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg cursor-pointer"
+                      className="mt-4 inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#C9A86A] text-[#2B0F14] font-sans-utility text-[10px] tracking-[0.22em] uppercase font-bold hover:bg-[#E8D4A0] hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg cursor-pointer"
                     >
                       <span>EXPLORE OUR WORK</span>
                       <span>→</span>
@@ -527,7 +534,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                     "final-spread-left"
                   )
                 ) : (
-                  <div className="overflow-hidden bg-gradient-to-r from-[#FDF8F0] via-[#FBF7EC] via-[82%] to-[#D8CCB2]/70 border-r border-[#1C1B18]/12 select-none">
+                  <div className="overflow-hidden w-full h-full bg-gradient-to-r from-[#FDF8F0] via-[#FBF7EC] via-[82%] to-[#D8CCB2]/70 border-r border-[#1C1B18]/12 select-none">
                     <div className="relative w-full h-full py-6 md:py-8 pl-6 md:pl-8 pr-4 md:pr-6 flex flex-col justify-between">
                       <div aria-hidden className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-[#C9A86A] via-[#E8D4A0] to-[#C9A86A] opacity-80 pointer-events-none" />
                       <span aria-hidden className="absolute inset-2.5 md:inset-3.5 border border-[#C9A86A]/50 pointer-events-none rounded-[2px]" />
@@ -553,7 +560,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                 )}
 
                 {/* Final Spread Right Leaf: Velvet Monograph Endplate */}
-                <div className="overflow-hidden bg-gradient-to-br from-[#2B0F14] via-[#1F0A0E] to-[#140608] text-[#F5EED5] border-l border-[#1C1B18]/12 select-none">
+                <div className="overflow-hidden w-full h-full bg-gradient-to-br from-[#2B0F14] via-[#1F0A0E] to-[#140608] text-[#F5EED5] border-l border-[#1C1B18]/12 select-none">
                   <div className="relative w-full h-full py-6 md:py-8 pl-4 md:pl-6 pr-6 md:pr-8 flex flex-col justify-between items-center text-center">
                     <div aria-hidden className="absolute top-0 right-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C9A86A] via-[#E8D4A0] to-[#C9A86A] opacity-90 pointer-events-none" />
                     <span aria-hidden className="absolute inset-2.5 md:inset-3.5 border border-[#C9A86A]/70 pointer-events-none rounded-[2px]" />
