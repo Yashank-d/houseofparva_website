@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 // Maison Reveal — desktop gateway splash.
-// Velvet backdrop identical to the gateway, maison mark rises with gold
-// hairline, then the extras melt away and the mark glides home into the
-// header while the backdrop dissolves (same blend as mobile MPreloader).
+// Same choreography as mobile MPreloader house mode: mark in, brief hold,
+// glide home into the header while the veil dissolves. Timings match mobile
+// exactly; landing is logo-anchored so it docks pixel-true.
 export default function GatewayPreloader({
   onDone,
   landRef,
@@ -45,7 +45,7 @@ export default function GatewayPreloader({
       const g = group.current;
       const land = landRef?.current;
 
-      // If the header mark isn't mounted, fall back to a simple dissolve.
+      // If the header mark isn't mounted, fall back to a quick dissolve.
       if (!g || !land) {
         const tl = gsap.timeline({
           onComplete: () => {
@@ -56,16 +56,15 @@ export default function GatewayPreloader({
         });
         tl.fromTo(
           ".gp-mark",
-          { scale: 0.86, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.8, ease: "expo.out" }
-        ).to(el, { opacity: 0, duration: 0.7, ease: "power2.out", delay: 0.3 });
+          { scale: 0.85, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.7, ease: "expo.out" }
+        ).to(el, { opacity: 0, duration: 0.55, ease: "power1.inOut", delay: 0.25 });
         return;
       }
 
-      // Measured lazily at glide time (function-based tween values) so the
-      // landing uses final layout after fonts settle — no 1px drift.
-      // Anchored logo-to-logo: scale pins around the splash logo center and
-      // translates that point exactly onto the header logo center.
+      // Measured lazily at glide time so the landing uses final layout
+      // after fonts settle. Anchored logo-to-logo: scale pins around the
+      // splash logo center and translates it onto the header logo center.
       const measure = () => {
         const gr = g.getBoundingClientRect();
         const sr = g.querySelector(".gp-mark")?.getBoundingClientRect();
@@ -85,44 +84,34 @@ export default function GatewayPreloader({
 
       gsap.set(land, { opacity: 0 });
 
+      // Everything in ONE timeline so unmount only happens after the
+      // glide completes. Timings mirror mobile MPreloader house mode.
       const tl = gsap.timeline({
         onComplete: () => {
           document.body.style.overflow = prevOverflow;
           setGone(true);
         },
       });
-      tl.fromTo(
-        ".gp-mark",
-        { scale: 0.86, opacity: 0, filter: "blur(6px)" },
-        { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.9, ease: "expo.out" }
-      )
+      tl.fromTo(g, { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: "expo.out" })
         .fromTo(
-          ".gp-tag",
-          { y: 10, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" },
-          "-=0.55"
+          ".gp-bar",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.65, ease: "expo.inOut" },
+          "-=0.35"
         )
-        .fromTo(
-          ".gp-fade",
-          { y: 14, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.65, ease: "expo.out", stagger: 0.09 },
-          "-=0.5"
-        )
-        .to({}, { duration: 0.35 })
-        // Extras melt away — only the shared mark + tagline glide home.
-        .to(".gp-fade", { y: -10, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.05 })
-        // Cue the gateway body to rise underneath while the veil dissolves.
+        .to(g, { duration: 0.25 })
+        // Cue the gateway body to rise underneath as the glide begins.
         .add(() => doneRef.current?.())
         .add(() => gsap.set(g, { transformOrigin: measure().origin }))
         .to(g, {
           x: () => measure().dx,
           y: () => measure().dy,
           scale: () => measure().scale,
-          duration: 1.1,
+          duration: 0.85,
           ease: "expo.inOut",
         })
-        .to(el, { opacity: 0, duration: 0.85, ease: "power2.out" }, "-=0.6")
-        .to(land, { opacity: 1, duration: 0.5, ease: "power2.out" }, "-=0.55");
+        .to(el, { opacity: 0, duration: 0.55, ease: "power1.inOut" }, "-=0.4")
+        .to(land, { opacity: 1, duration: 0.3, ease: "power1.out" }, "-=0.3");
     }, el);
     return () => {
       ctx.revert();
@@ -161,32 +150,23 @@ export default function GatewayPreloader({
       <div className="pointer-events-none absolute bottom-[14px] left-[14px] w-5 h-5 border-l border-b border-[#C9A86A]/28" />
       <div className="pointer-events-none absolute bottom-[14px] right-[14px] w-5 h-5 border-r border-b border-[#C9A86A]/28" />
 
-      <div className="relative flex flex-col items-center px-6 text-center">
-        <span className="gp-fade font-sans-utility text-[10.5px] tracking-[0.48em] uppercase text-[#C9A86A] pl-[0.48em]">
-          Welcome to
-        </span>
-        {/* shared element — glides into the header mark */}
-        <div ref={group} className="flex flex-col items-center">
-          <img
-            src="/Parva_logo.svg"
-            alt=""
-            className="gp-mark w-[104px] h-auto mt-5"
-            style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 2px 12px rgba(0,0,0,0.45))" }}
-          />
-          <span className="gp-tag flex items-center gap-3 mt-3">
-            <span className="h-px w-8 bg-[#C9A86A]/22" />
-            <span className="font-sans-utility text-[9px] tracking-[0.36em] uppercase text-[#F5EED5]/55 pl-[0.36em]">
-              Fine Art & Storytelling House
-            </span>
-            <span className="h-px w-8 bg-[#C9A86A]/22" />
+      {/* shared element — glides into the header mark */}
+      <div ref={group} className="relative flex flex-col items-center">
+        <img
+          src="/Parva_logo.svg"
+          alt=""
+          className="gp-mark w-[104px] h-auto"
+          style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 2px 12px rgba(0,0,0,0.45))" }}
+        />
+        <span className="flex items-center gap-3 mt-3">
+          <span className="h-px w-8 bg-[#C9A86A]/22" />
+          <span className="font-sans-utility text-[9px] tracking-[0.36em] uppercase text-[#F5EED5]/70 pl-[0.36em]">
+            Fine Art & Storytelling House
           </span>
-        </div>
-        <h1 className="gp-fade font-serif-editorial text-[30px] md:text-[36px] tracking-[0.14em] uppercase font-light leading-none mt-5 pl-[0.14em]">
-          The House of Parva
-        </h1>
-        <span className="gp-fade block w-[148px] h-px bg-gradient-to-r from-transparent via-[#C9A86A] to-transparent mt-6 origin-center" />
-        <span className="gp-fade text-[#C9A86A] text-[11px] leading-none mt-4">❦</span>
+          <span className="h-px w-8 bg-[#C9A86A]/22" />
+        </span>
       </div>
+      <span className="gp-bar block w-[120px] h-[2px] bg-[#C9A86A] rounded-full mt-5 origin-center" />
     </div>
   );
 }
