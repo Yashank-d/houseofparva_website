@@ -94,9 +94,8 @@ export default function MGateway() {
                 <Link
                   href={a.href}
                   aria-label={a.label}
-                  className={`mt-4 flex w-full min-h-[52px] items-center justify-center gap-2 rounded-full font-sans-utility text-[11px] tracking-[0.2em] uppercase font-bold active:scale-[0.99] transition-transform outline-none ${
-                    a.gold ? "bg-[#C9A86A] text-[#2B0F14]" : "bg-[#2B0F14] text-[#F5F1E8]"
-                  }`}
+                  className={`mt-4 flex w-full min-h-[52px] items-center justify-center gap-2 rounded-full font-sans-utility text-[11px] tracking-[0.2em] uppercase font-bold active:scale-[0.99] transition-transform outline-none ${a.gold ? "bg-[#C9A86A] text-[#2B0F14]" : "bg-[#2B0F14] text-[#F5F1E8]"
+                    }`}
                 >
                   {a.cta} <span>→</span>
                 </Link>

@@ -1,14 +1,11 @@
 "use client";
 import React, { useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { originWorks, OriginWork } from "@/data/originsData";
+import { originGallery } from "@/data/originsData";
 import Reveal from "../Reveal";
 
 interface Pin {
   src: string;
-  family: string;
-  location: string;
-  ratio: number;
 }
 
 const thumb = (src: string) =>
@@ -25,30 +22,30 @@ function shuffled<T>(arr: T[]): T[] {
   return a;
 }
 
+const FAMILY = "Parva Origins";
+const PLACE = "Bangalore, Karnataka";
+
 function PinCard({ p, eager, onOpen }: { p: Pin; eager?: boolean; onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
       className="block w-full text-left outline-none [content-visibility:auto] [contain-intrinsic-size:280px_380px]"
     >
-      <div
-        className="relative overflow-hidden rounded-[16px] bg-[#E8DFD0]"
-        style={{ aspectRatio: `1 / ${p.ratio}` }}
-      >
+      <div className="relative overflow-hidden rounded-[16px] bg-[#E8DFD0]">
         <img
           src={thumb(p.src)}
-          alt={p.family}
+          alt={FAMILY}
           loading={eager ? "eager" : "lazy"}
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-auto block"
         />
         <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black/55 to-transparent pointer-events-none" />
         <p className="absolute bottom-2.5 left-3 right-3 font-script text-[17px] leading-none text-white drop-shadow">
-          {p.family}
+          {FAMILY}
         </p>
       </div>
       <p className="font-sans-utility text-[9px] tracking-[0.16em] uppercase text-[#1C1B18]/40 mt-1.5 px-0.5">
-        {p.location}
+        {PLACE}
       </p>
     </button>
   );
@@ -59,39 +56,12 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
   const [dir, setDir] = useState(1);
   const touch = useRef<{ x: number; y: number } | null>(null);
 
-  // originsData.ts is the single source: every story's images join the wall.
-  // Empty today — the empty-state panel below shows until you add stories.
+  // Flat gallery, shuffled once per visit. Odd counts drop the last entry
+  // so the two columns always pair evenly.
   const wall = useMemo<Pin[]>(() => {
-    const all: Pin[] = [];
-    const push = (w: OriginWork) => {
-      const ratio = w.ratio ?? 1.25;
-      all.push({ src: w.mainImage, family: w.family, location: w.location, ratio });
-      for (const src of w.gallery) {
-        if (src !== w.mainImage) all.push({ src, family: w.family, location: w.location, ratio });
-      }
-    };
-    originWorks.forEach(push);
-    const list = all.length % 2 === 1 ? all.slice(0, -1) : all;
-    return shuffled(list);
+    const list = originGallery.length % 2 === 1 ? originGallery.slice(0, -1) : originGallery;
+    return shuffled(list.map((src) => ({ src })));
   }, []);
-
-  const { left, right } = useMemo(() => {
-    const l: (Pin & { i: number })[] = [];
-    const r: (Pin & { i: number })[] = [];
-    let hl = 0;
-    let hr = 0;
-    wall.forEach((p, i) => {
-      const h = p.ratio + 0.22;
-      if (hl <= hr) {
-        l.push({ ...p, i });
-        hl += h;
-      } else {
-        r.push({ ...p, i });
-        hr += h;
-      }
-    });
-    return { left: l, right: r };
-  }, [wall]);
 
   const go = (d: 1 | -1) => {
     if (idx === null) return;
@@ -111,13 +81,18 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
     touch.current = null;
   };
 
+  const open = (i: number) => {
+    setDir(1);
+    setIdx(i);
+  };
+
   const view = idx !== null ? wall[idx] : null;
 
   return (
     <div className="w-full pt-4 pb-[110px]">
       <Reveal className="px-6" y={20}>
         <p className="font-sans-utility text-[10px] tracking-[0.3em] uppercase text-[#2B0F14] font-bold">
-          ★ The Family Archive
+          ★ The Family Gallery
         </p>
         <h2 className="font-serif-editorial text-[32px] leading-[0.95] uppercase text-[#1C1B18] mt-2">
           Every beginning,
@@ -155,16 +130,21 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
         </Reveal>
       ) : (
         <>
+          {/* Two even columns — alternate distribution, ends together */}
           <div className="px-3 mt-4 flex gap-3 items-start">
             <div className="flex-1 min-w-0 space-y-5">
-              {left.map((p, k) => (
-                <PinCard key={`${p.src}-l${k}`} p={p} eager={k < 3} onOpen={() => { setDir(1); setIdx(p.i); }} />
-              ))}
+              {wall.map((p, i) =>
+                i % 2 === 0 ? (
+                  <PinCard key={`${p.src}-l`} p={p} eager={i < 6} onOpen={() => open(i)} />
+                ) : null
+              )}
             </div>
             <div className="flex-1 min-w-0 space-y-5">
-              {right.map((p, k) => (
-                <PinCard key={`${p.src}-r${k}`} p={p} eager={k < 3} onOpen={() => { setDir(1); setIdx(p.i); }} />
-              ))}
+              {wall.map((p, i) =>
+                i % 2 === 1 ? (
+                  <PinCard key={`${p.src}-r`} p={p} eager={i < 6} onOpen={() => open(i)} />
+                ) : null
+              )}
             </div>
           </div>
 
@@ -184,7 +164,7 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
               </button>
             </div>
             <p className="font-sans-utility text-[10px] tracking-[0.24em] uppercase text-[#1C1B18]/35 text-center mt-6">
-              Parva Origins • Archive
+              Parva Origins • Gallery
             </p>
           </Reveal>
         </>
@@ -219,7 +199,7 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
                 <motion.img
                   key={idx}
                   src={view.src}
-                  alt={view.family}
+                  alt={FAMILY}
                   custom={dir}
                   initial={{ opacity: 0, x: dir > 0 ? 60 : -60 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -236,9 +216,9 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
             <div className="shrink-0 px-6 pt-2 text-center" style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 20px)" }}>
               <AnimatePresence mode="wait">
                 <motion.div key={idx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
-                  <p className="font-script text-[24px] leading-none text-[#C9A86A]">{view.family}</p>
+                  <p className="font-script text-[24px] leading-none text-[#C9A86A]">{FAMILY}</p>
                   <p className="font-sans-utility text-[10px] tracking-[0.2em] uppercase text-[#F5EED5]/50 mt-1.5">
-                    {view.location} • swipe or tap sides
+                    {PLACE} • swipe or tap sides
                   </p>
                 </motion.div>
               </AnimatePresence>

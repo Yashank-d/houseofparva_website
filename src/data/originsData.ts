@@ -1,18 +1,58 @@
-// ── PARVA ORIGINS — FAMILY ARCHIVE DATA ─────────────────────────────────────
-// This is the single source of truth for Origins, desktop + mobile.
-// The archive is intentionally EMPTY — add your first family stories here.
+// ── PARVA ORIGINS — FAMILY GALLERY ──────────────────────────────────────────
+// One flat photo wall. No projects, no albums — just every family frame,
+// shown desktop + mobile straight from this list.
 //
-// HOW TO ADD A STORY:
-//   1. Copy the TEMPLATE below into originWorks.
-//   2. Fill in family name, location, date, story lines.
-//   3. Paste image links into `gallery` (Cloudinary or otherwise).
-//   4. The first gallery image (or `mainImage`) becomes the cover.
-//   5. Mobile wall + desktop record open automatically. Nothing else to touch.
+// HOW TO ADD PHOTOS:
+//   1. Export all image URLs from Cloudinary at once (command below — run it
+//      on your own machine, it prints ready-to-paste lines).
+//   2. Paste the lines into originGallery.
+//   3. Rebuild. The desktop grid, mobile wall, viewers and empty states all
+//      switch on automatically. Nothing else to touch.
 //
-// RATIO (optional, height ÷ width, e.g. 1.25 portrait / 0.75 landscape):
-//   Measured automatically for Cloudinary links. Only set it by hand for
-//   non-Cloudinary images whose placeholder looks off.
+// BULK EXPORT (Admin API — needs your key + secret from Cloudinary
+// Dashboard → Settings → API keys; never share the secret):
+//
+//   CLOUD=<cloud_name> KEY=<api_key> SECRET=<api_secret> FOLDER=<folder/path>
+//   curl -s "https://$KEY:$SECRET@api.cloudinary.com/v1_1/$CLOUD/resources/image/upload?prefix=$FOLDER/&max_results=500" \
+//     | python3 -c 'import json,sys; [print("    \"" + r["secure_url"] + "\",") for r in json.load(sys.stdin).get("resources", [])]'
+//
+//   (>500 photos? The response includes `next_cursor` — repeat the call with
+//    ...&next_cursor=<cursor> appended, until no cursor comes back.)
+//
+export const originGallery: string[] = [
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/new-253.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/new-242.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/new-190.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/new-176.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/new-97.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC08230.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC08196.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC08081.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC08062.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC07316.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC07129.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC07104.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC07035.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC06828.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC06797.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC01580.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC01549.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC01534.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC01385.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC01273.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC00804.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC00759.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC00583.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC00564.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC00506.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC00490.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC00145.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC00108.jpeg",
+  "https://res.cloudinary.com/fdzu3ih2/image/upload/DSC06886.jpeg",
+];
 
+// Kept for later: if Origins ever grows project stories like Weddings,
+// each entry below becomes one journal record. Ignore for now.
 export interface OriginWork {
   id: string;
   family: string;
@@ -25,18 +65,4 @@ export interface OriginWork {
   ratio?: number;
 }
 
-export const originWorks: OriginWork[] = [
-  // ── TEMPLATE ── (copy, fill, uncomment)
-  // {
-  //   id: "sharma-housewarming",
-  //   family: "The Sharma Family",
-  //   location: "Bangalore, Karnataka",
-  //   date: "March 2026",
-  //   mainImage: "https://res.cloudinary.com/<cloud>/image/upload/<id>.jpg",
-  //   story: "A morning of marigolds and mantras as the Sharmas stepped into their new home.",
-  //   details: "Housewarming — griha pravesh rituals at dawn.",
-  //   gallery: [
-  //     "https://res.cloudinary.com/<cloud>/image/upload/<id>.jpg",
-  //   ],
-  // },
-];
+export const originWorks: OriginWork[] = [];

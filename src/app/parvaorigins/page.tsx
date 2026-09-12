@@ -135,8 +135,8 @@ export default function ParvaOriginsPage() {
         <header className="shrink-0 z-20" style={{ paddingTop: "env(safe-area-inset-top)" }}>
           <div className="h-[64px] px-5 flex items-center justify-between">
             <span className="flex items-center gap-3 min-w-0">
-              <img src="/Assets/seal/parva_seal_256.png" alt="Parva seal" className="w-9 h-9 object-contain shrink-0" />
-              <span className="w-px h-9 bg-[#1C1B18]/12 shrink-0" />
+              <img src="/Assets/Brands/Asset 29.svg" alt="Parva Origins" className="w-8 h-8 object-contain shrink-0" />
+              <span className="w-px h-8 bg-[#1C1B18]/12 shrink-0" />
               <span className="flex flex-col leading-none">
                 <span className="font-serif-editorial text-[21px] tracking-[0.12em] text-[#1C1B18]">PARVA</span>
                 <span className="font-sans-utility text-[7.5px] tracking-[0.46em] uppercase text-[#2B0F14] font-semibold mt-1">Origins</span>

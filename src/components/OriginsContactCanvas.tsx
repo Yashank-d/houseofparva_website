@@ -160,18 +160,19 @@ export default function OriginsContactCanvas() {
             {/* Velvet Paper Swatch behind */}
             <div className="absolute -top-6 -left-6 w-32 h-64 bg-[#2B0F14] rounded-xs shadow-xl rotate-[-5deg] paper-card" style={{ clipPath: "polygon(0.5% 0%, 98% 1%, 99.5% 98%, 1% 99%)" }} />
 
-            {/* Main Keepsake Frame — monogram placeholder until stories arrive */}
+            {/* Main Keepsake Frame — Polaroid with ContactPageImg.jpg (B&W to Color on hover) */}
             <motion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
-              className="bg-[#FFFCF5] p-5 pb-8 rounded-xs shadow-[0_16px_32px_rgba(28,27,24,0.14)] rotate-[1deg] relative z-20 border border-[#C9A86A]/12"
+              className="bg-[#FFFCF5] p-5 pb-8 rounded-xs shadow-[0_16px_32px_rgba(28,27,24,0.14)] rotate-[1deg] relative z-20 border border-[#C9A86A]/12 group cursor-pointer"
             >
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-6 masking-tape z-30 rotate-[-2deg]" />
-              <div className="aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] mb-4 ring-1 ring-[#C9A86A]/10 flex flex-col items-center justify-center border border-dashed border-[#C9A86A]/50">
-                <span className="font-serif-editorial text-7xl text-[#C9A86A] leading-none">O</span>
-                <p className="font-script text-2xl text-[#1C1B18]/70 mt-3 px-8 text-center">
-                  Our first family frames are on their way…
-                </p>
+              <div className="aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] mb-4 ring-1 ring-[#C9A86A]/10">
+                <img
+                  src="/Assets/ContactPageImg.jpg"
+                  alt="House of Parva family portrait"
+                  className="w-full h-full object-cover grayscale contrast-[1.06] brightness-[0.98] transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.02]"
+                />
               </div>
               <div className="absolute bottom-[22px] left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/15 to-transparent pointer-events-none" />
             </motion.div>
@@ -186,11 +187,6 @@ export default function OriginsContactCanvas() {
             </div>
 
             {/* Velvet Contact Card */}
-            <img
-              src="/Assets/seal/parva_seal_256.png"
-              alt="Parva Seal"
-              className="absolute -bottom-8 -left-8 w-20 h-20 md:w-24 md:h-24 object-contain rotate-[-12deg] opacity-90 drop-shadow-md pointer-events-none z-20"
-            />
             <div className="absolute -bottom-20 -right-12 z-30 bg-[#2B0F14] text-[#F5EED5] p-5 rounded-xs shadow-[0_16px_36px_rgba(0,0,0,0.32)] rotate-[-5.5deg] border border-[#C9A86A]/15 min-w-[270px]">
               <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/30 to-transparent" />
               <span className="font-sans-utility text-[7px] tracking-[0.32em] uppercase text-[#C9A86A] font-semibold block mb-3">
