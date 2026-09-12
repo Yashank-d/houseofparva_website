@@ -13,6 +13,7 @@ import OStories from "@/components/mobile/origins/OStories";
 import OAbout from "@/components/mobile/origins/OAbout";
 import OContact from "@/components/mobile/origins/OContact";
 import MPreloader from "@/components/mobile/MPreloader";
+import AtelierPreloader from "@/components/AtelierPreloader";
 
 export default function ParvaOriginsPage() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -187,6 +188,7 @@ export default function ParvaOriginsPage() {
 
   return (
     <div className="w-screen h-screen overflow-hidden paper-bg-parchment text-[#1C1B18] flex relative font-sans selection:bg-[#2B0F14] selection:text-[#F5EED5]">
+      <AtelierPreloader mark="/Assets/Brands/Asset 29.svg" title="Origins" accent="#2B0F14" />
 
       {/* Physical Layer 1: Locked Velvet Paper Sheet (20vw width) */}
       <OriginsSidebar

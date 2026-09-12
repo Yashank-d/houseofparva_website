@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import MGateway from "@/components/mobile/MGateway";
+import GatewayPreloader from "@/components/GatewayPreloader";
 
 export default function HouseOfParvaGateway() {
   // NOTE: init false so server HTML matches first client render (no hydration mismatch);
   // the effect below corrects to mobile right after mount.
   const [isMobile, setIsMobile] = useState(false);
+  // Desktop veil dissolves first; gateway content rises underneath it.
+  const [ready, setReady] = useState(false);
+  const headMark = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Width-first, with a phone-UA fallback for browsers reporting a wide
@@ -32,6 +36,8 @@ export default function HouseOfParvaGateway() {
 
   return (
     <div className="w-full min-h-[100dvh] overflow-x-hidden overflow-y-auto md:overflow-hidden bg-[#2B0F14] text-[#F5EED5] flex flex-col relative font-sans selection:bg-[#C9A86A] selection:text-[#2B0F14] select-none touch-manipulation" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      {/* self-unmounts on completion — must stay mounted through the glide */}
+      <GatewayPreloader onDone={() => setReady(true)} landRef={headMark} />
       {/* velvet depth */}
       <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse 88% 68% at 50% 30%, rgba(201,168,106,0.078) 0%, rgba(255,245,220,0.035) 18%, transparent 62%), radial-gradient(ellipse 130% 88% at 50% 105%, rgba(0,0,0,0.45) 0%, transparent 60%)" }} />
       <div className="pointer-events-none absolute inset-0 opacity-[0.028]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.95) 0.85px, transparent 0.85px)", backgroundSize: "17px 17px" }} />
@@ -49,19 +55,21 @@ export default function HouseOfParvaGateway() {
         <span className="font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.18em] md:tracking-[0.28em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/25 py-2 -my-2">Est. MMXXVI</span>
       </div>
 
-      {/* centered maison mark */}
-      <motion.header initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }} className="w-full flex flex-col items-center relative z-20 pt-3 md:pt-5 shrink-0">
-        <img src="/Parva_logo.svg" alt="Parva" className="w-[66px] sm:w-[72px] md:w-[86px] h-auto" style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 1px 8px rgba(0,0,0,0.35))" }} />
-        <div className="flex items-center gap-2.5 md:gap-3 mt-2.5 md:mt-3">
-          <span className="h-px w-6 md:w-8 bg-[#C9A86A]/22" />
-          <span className="font-sans-utility text-[8px] sm:text-[8.5px] md:text-[9px] tracking-[0.28em] md:tracking-[0.36em] uppercase text-[#F5EED5]/55 md:text-[#F5EED5]/42">Fine Art & Storytelling House</span>
-          <span className="h-px w-6 md:w-8 bg-[#C9A86A]/22" />
+      {/* centered maison mark — splash mark glides home into this (opacity-only so the landing rect stays stable mid-glide) */}
+      <motion.header initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 0.55 }} className="w-full flex flex-col items-center relative z-20 pt-3 md:pt-5 shrink-0">
+        <div ref={headMark} className="flex flex-col items-center">
+          <img src="/Parva_logo.svg" alt="Parva" className="w-[66px] sm:w-[72px] md:w-[86px] h-auto" style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 1px 8px rgba(0,0,0,0.35))" }} />
+          <div className="flex items-center gap-2.5 md:gap-3 mt-2.5 md:mt-3">
+            <span className="h-px w-6 md:w-8 bg-[#C9A86A]/22" />
+            <span className="font-sans-utility text-[8px] sm:text-[8.5px] md:text-[9px] tracking-[0.28em] md:tracking-[0.36em] uppercase text-[#F5EED5]/55 md:text-[#F5EED5]/42">Fine Art & Storytelling House</span>
+            <span className="h-px w-6 md:w-8 bg-[#C9A86A]/22" />
+          </div>
         </div>
       </motion.header>
 
       {/* hero — wraps on mobile instead of overflowing */}
       <main className="w-full max-w-[1120px] mx-auto px-4 sm:px-6 md:px-8 flex-1 flex flex-col items-center relative z-20 pt-3 md:pt-6 pb-4 shrink-0">
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.08 }} className="text-center w-full">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }} transition={{ duration: 0.6, delay: 0.08 }} className="text-center w-full">
           <p className="font-sans-utility text-[10px] md:text-[10.5px] tracking-[0.38em] md:tracking-[0.48em] uppercase text-[#C9A86A]">Welcome to</p>
           <h1 className="font-serif-editorial text-[24px] xs:text-[27px] sm:text-[36px] md:text-[48px] lg:text-[54px] tracking-[0.08em] sm:tracking-[0.10em] md:tracking-[0.12em] uppercase text-[#F5EED5] font-light leading-[0.95] md:leading-none mt-2 px-2 sm:px-0" style={{ textShadow: "0 2px 18px rgba(0,0,0,0.4)", wordSpacing: "0.06em" }}>
             <span className="block sm:inline">The House</span> <span className="block sm:inline">of Parva</span>
@@ -75,12 +83,12 @@ export default function HouseOfParvaGateway() {
           <p className="font-serif-editorial text-[15px] sm:text-[16px] md:text-[18px] text-[#F5EED5]/70 md:text-[#F5EED5]/58 italic font-light mt-1.5 leading-snug px-4 sm:px-0">Two worlds, one belief — every story, <br className="sm:hidden" />remembered beautifully.</p>
         </motion.div>
 
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.32, duration: 0.5 }} className="font-sans-utility text-[10.5px] md:text-[11px] tracking-[0.22em] md:tracking-[0.28em] uppercase text-[#F5EED5]/70 md:text-[#F5EED5]/65 mt-3.5 md:mt-5">
+        <motion.p initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : { opacity: 0 }} transition={{ delay: 0.32, duration: 0.5 }} className="font-sans-utility text-[10.5px] md:text-[11px] tracking-[0.22em] md:tracking-[0.28em] uppercase text-[#F5EED5]/70 md:text-[#F5EED5]/65 mt-3.5 md:mt-5">
           Choose your story <span className="text-[#C9A86A]">—</span> tap to enter
         </motion.p>
 
         {/* ── Gilded ateliers — mobile: full-width stacked, 44px+ targets, thumb zone ── */}
-        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }} className="w-full max-w-[1040px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-7 mt-3.5 md:mt-5">
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }} transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }} className="w-full max-w-[1040px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-7 mt-3.5 md:mt-5">
           {/* Weddings — LEFT on desktop, TOP on mobile (primary) */}
           <Link href="/parvaweddings" aria-label="Enter Parva Weddings — weddings atelier" className="group relative flex flex-col items-center text-center px-5 sm:px-8 md:px-10 py-7 sm:py-8 md:py-11 border border-[#C9A86A]/24 hover:border-[#C9A86A]/45 active:border-[#C9A86A]/50 bg-[#F5EED5]/06 hover:bg-[#F5EED5]/10 active:bg-[#F5EED5]/12 backdrop-blur-[1px] transition-all duration-300 overflow-hidden active:scale-[0.99] md:hover:-translate-y-1 md:hover:shadow-[0_16px_40px_rgba(0,0,0,0.32)]">
             <div className="pointer-events-none absolute inset-[7px] md:inset-[8px] border border-white/08 group-hover:border-white/14 transition-colors" />

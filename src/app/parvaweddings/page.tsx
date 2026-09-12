@@ -13,6 +13,7 @@ import MStories from "@/components/mobile/MStories";
 import MAbout from "@/components/mobile/MAbout";
 import MContact from "@/components/mobile/MContact";
 import MPreloader from "@/components/mobile/MPreloader";
+import AtelierPreloader from "@/components/AtelierPreloader";
 
 export default function ParvaWeddingsPage() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -209,6 +210,7 @@ export default function ParvaWeddingsPage() {
 
   return (
     <div className="w-screen h-screen overflow-hidden paper-bg-parchment text-[#1C1B18] flex relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
+      <AtelierPreloader mark="/Assets/Brands/Asset 30.svg" title="Weddings" accent="#641F27" />
 
       {/* Physical Layer 1: Locked Emerald Paper Sheet (20vw width) */}
       <SidebarScrapbook
