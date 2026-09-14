@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import Image from "next/image";
+import { blurPlaceholder } from "../../img";
 import Reveal from "../Reveal";
 
 export default function OHome({ onNavigate }: { onNavigate: (i: number) => void }) {
@@ -28,13 +30,15 @@ export default function OHome({ onNavigate }: { onNavigate: (i: number) => void 
         </div>
         <div className="px-4 pb-4">
           <div className="relative rounded-[20px] overflow-hidden aspect-[4/3] bg-[#1E0A0E]">
-            <img
+            <Image
               src="/Assets/OriginsHero_1600.jpg"
               alt="Parva Origins — family celebration"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              priority
+              sizes="(max-width: 768px) 90vw, 560px"
+              placeholder="blur"
+              blurDataURL={blurPlaceholder(32, 24)}
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
             <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full bg-[#C9A86A] flex items-center gap-1.5">

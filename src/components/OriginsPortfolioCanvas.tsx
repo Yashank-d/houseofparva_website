@@ -223,6 +223,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                   src={thumb(photo, 800)}
                   alt={"Parva Origins frame " + num}
                   loading={eager ? "eager" : "lazy"}
+                  decoding="async"
                   draggable={false}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 />

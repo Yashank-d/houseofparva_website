@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { blurPlaceholder } from "./img";
 
 interface OriginsHomeCanvasProps {
   onNavigate: (pageIndex: number) => void;
@@ -93,10 +95,15 @@ export default function OriginsHomeCanvas({ onNavigate }: OriginsHomeCanvasProps
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-6 masking-tape z-20 rotate-[1.5deg]" />
             {/* Inner sanctuary — first family frame */}
             <div className="w-full h-full rounded-t-[999px] rounded-b-[18px] bg-[#E8DFD0] overflow-hidden relative ring-1 ring-[#C9A86A]/30">
-              <img
+              <Image
                 src="/Assets/OriginsHero_1600.jpg"
                 alt="Parva Origins — family celebration"
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                priority
+                sizes="(max-width: 768px) 85vw, 420px"
+                placeholder="blur"
+                blurDataURL={blurPlaceholder(32, 40)}
+                className="object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 h-[34%] bg-gradient-to-t from-black/55 to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-0 right-0 text-center px-6">

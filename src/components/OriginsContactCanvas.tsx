@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { blurPlaceholder } from "./img";
 
 export default function OriginsContactCanvas() {
   const [formData, setFormData] = useState({
@@ -167,11 +169,15 @@ export default function OriginsContactCanvas() {
               className="bg-[#FFFCF5] p-5 pb-8 rounded-xs shadow-[0_16px_32px_rgba(28,27,24,0.14)] rotate-[1deg] relative z-20 border border-[#C9A86A]/12 group cursor-pointer"
             >
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-6 masking-tape z-30 rotate-[-2deg]" />
-              <div className="aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] mb-4 ring-1 ring-[#C9A86A]/10">
-                <img
+              <div className="aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] mb-4 ring-1 ring-[#C9A86A]/10 relative">
+                <Image
                   src="/Assets/ContactPageImg.jpg"
                   alt="House of Parva family portrait"
-                  className="w-full h-full object-cover grayscale contrast-[1.06] brightness-[0.98] transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.02]"
+                  fill
+                  sizes="(max-width: 768px) 80vw, 400px"
+                  placeholder="blur"
+                  blurDataURL={blurPlaceholder(32, 40)}
+                  className="object-cover grayscale contrast-[1.06] brightness-[0.98] transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.02]"
                 />
               </div>
               <div className="absolute bottom-[22px] left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/15 to-transparent pointer-events-none" />

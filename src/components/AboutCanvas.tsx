@@ -97,6 +97,8 @@ export default function AboutCanvas() {
                 <img
                   src="/Assets/Founders/Founder-B_768.jpg"
                   alt="Yashank D."
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -120,6 +122,8 @@ export default function AboutCanvas() {
                 <img
                   src="/Assets/Founders/Founder-A_768.jpg"
                   alt="Tejas"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>

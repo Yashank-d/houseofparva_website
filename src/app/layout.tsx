@@ -58,6 +58,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${montserrat.variable} ${caveat.variable} ${reenieBeanie.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#EAE1D2] text-[#1C1B18] font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
+        {/* Warm up the Cloudinary connection before hero images request it */}
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         {children}
       </body>
     </html>
