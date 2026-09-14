@@ -174,6 +174,9 @@ export default function ContactCanvas() {
                   src="https://res.cloudinary.com/fdzu3ih2/image/upload/w_800,q_auto,f_auto/v1787640286/3.jpg"
                   alt="Couple"
                   fill
+                  // Cloudinary already serves transformed bytes — routing through
+                  // /_next/image would add a second fetch + encode round-trip.
+                  unoptimized
                   sizes="(max-width: 768px) 80vw, 400px"
                   placeholder="blur"
                   blurDataURL={blurPlaceholder(32, 40)}
