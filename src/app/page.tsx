@@ -16,8 +16,8 @@ export default function LuxuryLandingPage() {
   const [logoError, setLogoError] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Target: September 14, 2026 at 11:55 AM IST (UTC+05:30)
-  const targetDate = new Date("2026-09-14T11:55:00+05:30").getTime();
+  // Target: September 14, 2026 at 12:34 PM IST (UTC+05:30)
+  const targetDate = new Date("2026-09-14T12:34:00+05:30").getTime();
 
   const calculateTimeLeft = (): TimeLeft => {
     const now = new Date().getTime();
@@ -198,7 +198,7 @@ export default function LuxuryLandingPage() {
           </div>
 
           <p className="font-sans text-[9.5px] sm:text-xs tracking-[0.22em] text-[#dfcca3]/75 uppercase mt-3">
-            September 14, 2026 • 11:55 AM IST
+            September 14, 2026 • 12:34 PM IST
           </p>
         </motion.div>
 
