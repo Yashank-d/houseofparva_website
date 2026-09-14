@@ -5,6 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { artisticWorks, ArtisticWork } from "@/data/portfolioData";
 
+// Serve sized, auto-format/compressed variants instead of full originals.
+const thumb = (src: string, w = 1200) =>
+  src.includes("res.cloudinary.com") && src.includes("/upload/")
+    ? src.replace("/upload/", `/upload/w_${w},q_auto,f_auto/`)
+    : src;
+
 export default function PortfolioCanvas() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -126,8 +132,10 @@ export default function PortfolioCanvas() {
                     <button onClick={() => setModalStory(currentWork)} className="p-3 bg-[#e8a3b5]/25 border border-[#d4889c]/40 rounded-xs inline-block rotate-[-1.5deg] shadow-md transition-transform hover:rotate-0 duration-500 cursor-pointer group/img" title="Open full gallery">
                       <div className="overflow-hidden bg-[#E8DFD0] flex relative">
                         <img
-                          src={currentWork.mainImage}
+                          src={thumb(currentWork.mainImage)}
                           alt={currentWork.couple}
+                          loading="lazy"
+                          decoding="async"
                           className="max-w-full max-h-[42vh] w-auto object-contain rounded-xs group-hover/img:scale-[1.02] transition-transform duration-500"
                         />
                       </div>
@@ -197,8 +205,10 @@ export default function PortfolioCanvas() {
                     <button onClick={() => setModalStory(currentWork)} className="bg-white p-3 rounded-xs shadow-xl rotate-[2deg] max-w-md ml-auto w-full text-left cursor-pointer group/img hover:rotate-[1deg] transition-transform" title="Open full gallery">
                       <div className="aspect-[4/3] w-full overflow-hidden bg-[#E8DFD0] relative">
                         <img
-                          src={currentWork.mainImage}
+                          src={thumb(currentWork.mainImage)}
                           alt={currentWork.couple}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover group-hover/img:scale-[1.02] transition-transform duration-500"
                         />
                       </div>
@@ -227,8 +237,10 @@ export default function PortfolioCanvas() {
                     <button onClick={() => setModalStory(currentWork)} className="p-3 bg-[#e8a3b5]/25 border border-[#d4889c]/40 rounded-xs inline-block rotate-[-1.2deg] shadow-md transition-transform hover:rotate-0 duration-500 cursor-pointer group/img" title="Open full gallery">
                       <div className="overflow-hidden bg-[#E8DFD0] flex relative">
                         <img
-                          src={currentWork.mainImage}
+                          src={thumb(currentWork.mainImage)}
                           alt={currentWork.couple}
+                          loading="lazy"
+                          decoding="async"
                           className="max-w-full max-h-[42vh] w-auto object-contain rounded-xs group-hover/img:scale-[1.02] transition-transform duration-500"
                         />
                       </div>
@@ -276,8 +288,10 @@ export default function PortfolioCanvas() {
                   <button onClick={() => setModalStory(currentWork)} className="relative z-10 bg-white p-4 pb-6 rounded-xs shadow-xl rotate-[1deg] w-full text-left cursor-pointer group/img hover:rotate-[0.5deg] transition-transform" title="Open full gallery">
                     <div className="aspect-[4/3] w-full overflow-hidden bg-[#E8DFD0] relative">
                       <img
-                        src={currentWork.mainImage}
+                        src={thumb(currentWork.mainImage)}
                         alt={currentWork.couple}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover grayscale group-hover/img:scale-[1.02] transition-transform duration-500"
                       />
                     </div>
@@ -313,7 +327,7 @@ export default function PortfolioCanvas() {
                   <div className="md:col-span-6">
                     <button onClick={() => setModalStory(currentWork)} className="bg-[#E8DFD0] p-3 rounded-xs shadow-lg rotate-[-2deg] max-w-sm ml-auto w-full text-left cursor-pointer group/img hover:rotate-[-1deg] transition-transform" title="Open full gallery">
                       <div className="aspect-[3/4] w-full overflow-hidden relative">
-                        <img src={currentWork.mainImage} alt="" className="w-full h-full object-cover grayscale group-hover/img:scale-[1.02] transition-transform duration-500" />
+                        <img src={thumb(currentWork.mainImage, 800)} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover grayscale group-hover/img:scale-[1.02] transition-transform duration-500" />
                       </div>
                     </button>
 
@@ -375,7 +389,7 @@ export default function PortfolioCanvas() {
               <div className="columns-1 sm:columns-2 gap-3 my-6 space-y-3">
                 {modalStory.gallery.map((img, i) => (
                   <div key={i} className="bg-[#E8DFD0] overflow-hidden rounded-xs break-inside-avoid shadow-sm">
-                    <img src={img} alt="" className="w-full h-auto block" />
+                    <img src={thumb(img, 1000)} alt="" loading="lazy" decoding="async" className="w-full h-auto block" />
                   </div>
                 ))}
               </div>

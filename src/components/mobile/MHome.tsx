@@ -1,7 +1,9 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { artisticWorks } from "@/data/portfolioData";
+import { blurPlaceholder } from "../img";
 import Reveal from "./Reveal";
 
 const heroSrc = (src: string) =>
@@ -80,13 +82,15 @@ export default function MHome({ onNavigate }: { onNavigate: (i: number) => void 
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0"
               >
-                <img
+                <Image
                   src={slides[s].src}
                   alt={slides[s].couple}
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-contain"
+                  fill
+                  priority={s === 0}
+                  sizes="(max-width: 768px) 90vw, 560px"
+                  placeholder="blur"
+                  blurDataURL={blurPlaceholder(32, 40)}
+                  className="object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
               </motion.div>

@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { blurPlaceholder } from "./img";
 
 interface HomeCanvasProps {
   onNavigate: (pageIndex: number) => void;
@@ -101,10 +103,15 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
 
             {/* Temple-inlay frame — full-bleed color, gold corners */}
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] shadow-2xl">
-              <img
+              <Image
                 src="https://res.cloudinary.com/fdzu3ih2/image/upload/w_1080,q_auto,f_auto/v1787640290/Indhu_Delivered_Collection.jpg"
                 alt="Indhu & Abhinandhan | Parva Weddings"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                priority
+                sizes="(max-width: 768px) 88vw, 40vh"
+                placeholder="blur"
+                blurDataURL={blurPlaceholder(32, 40)}
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
               {/* Gold inset keyline + temple corners */}
