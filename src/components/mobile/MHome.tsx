@@ -38,6 +38,13 @@ export default function MHome({ onNavigate }: { onNavigate: (i: number) => void 
     return () => clearInterval(t);
   }, []);
 
+  // Warm the next frame so advancing never flashes empty.
+  useEffect(() => {
+    if (slides.length < 2) return;
+    const next = new window.Image();
+    next.src = slides[(s + 1) % slides.length].src;
+  }, [s]);
+
   const go = (d: 1 | -1) => {
     setDir(d);
     setS((p) => (p + d + slides.length) % slides.length);
@@ -87,6 +94,9 @@ export default function MHome({ onNavigate }: { onNavigate: (i: number) => void 
                   alt={slides[s].couple}
                   fill
                   priority={s === 0}
+                  // Remote slides already carry Cloudinary transforms — skip the
+                  // /_next/image round-trip for those; keep it for local files.
+                  unoptimized={slides[s].src.includes("res.cloudinary.com")}
                   sizes="(max-width: 768px) 90vw, 560px"
                   placeholder="blur"
                   blurDataURL={blurPlaceholder(32, 40)}

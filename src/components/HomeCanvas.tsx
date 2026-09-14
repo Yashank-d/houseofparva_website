@@ -108,6 +108,9 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
                 alt="Indhu & Abhinandhan | Parva Weddings"
                 fill
                 priority
+                // Cloudinary already serves transformed bytes — routing through
+                // /_next/image would add a second fetch + encode round-trip.
+                unoptimized
                 sizes="(max-width: 768px) 88vw, 40vh"
                 placeholder="blur"
                 blurDataURL={blurPlaceholder(32, 40)}
