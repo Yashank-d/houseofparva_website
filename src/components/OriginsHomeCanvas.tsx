@@ -58,7 +58,7 @@ export default function OriginsHomeCanvas({ onNavigate }: OriginsHomeCanvasProps
             <div className="h-px w-24 bg-[#C9A86A]/60" />
 
             <p className="font-sans-utility text-sm md:text-[15px] text-[#1C1B18]/75 leading-relaxed max-w-xs">
-              Tiny toes. Warm homes. Beautiful beginnings — yours, gently preserved.
+              Tiny toes. Warm homes. Beautiful beginnings: yours, gently preserved.
             </p>
           </div>
 
@@ -76,7 +76,7 @@ export default function OriginsHomeCanvas({ onNavigate }: OriginsHomeCanvasProps
           </div>
         </motion.div>
 
-        {/* RIGHT: arch frame — the doorway to beginnings */}
+        {/* RIGHT: arch frame - the doorway to beginnings */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,11 +93,11 @@ export default function OriginsHomeCanvas({ onNavigate }: OriginsHomeCanvasProps
           <div className="relative h-[94%] aspect-[3/4.1] bg-[#F5F1E8] rounded-t-[999px] rounded-b-[28px] scrapbook-shadow border border-[#1C1B18]/10 p-4 md:p-5 rotate-[-1deg]">
             {/* Washi tape crown */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-6 masking-tape z-20 rotate-[1.5deg]" />
-            {/* Inner sanctuary — first family frame */}
+            {/* Inner sanctuary - first family frame */}
             <div className="w-full h-full rounded-t-[999px] rounded-b-[18px] bg-[#E8DFD0] overflow-hidden relative ring-1 ring-[#C9A86A]/30">
               <Image
                 src="/Assets/OriginsHero_1600.jpg"
-                alt="Parva Origins — family celebration"
+                alt="Parva Origins family celebration"
                 fill
                 priority
                 sizes="(max-width: 768px) 85vw, 420px"
@@ -119,7 +119,7 @@ export default function OriginsHomeCanvas({ onNavigate }: OriginsHomeCanvasProps
         </motion.div>
       </div>
 
-      {/* Bottom celebration marquee ribbon — 4 identical copies, -50% loop, no seam */}
+      {/* Bottom celebration marquee ribbon - 4 identical copies, -50% loop, no seam */}
       <div className="shrink-0 relative z-10 border-t border-[#1C1B18]/10 mt-2">
         <div className="overflow-hidden py-3">
           <div className="flex w-max animate-origins-marquee">

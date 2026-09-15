@@ -62,7 +62,7 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
             </h1>
 
             <p className="font-sans-utility text-sm md:text-[15px] text-[#1C1B18]/75 leading-relaxed max-w-xs">
-              Candid moments. Raw emotions. Timeless memories — yours, beautifully captured.
+              Candid moments. Raw emotions. Timeless memories: yours, beautifully captured.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
           </div>
         </motion.div>
 
-        {/* RIGHT: original polaroid — burgundy sheet, tape, clip, seal */}
+        {/* RIGHT: original polaroid - burgundy sheet, tape, clip, seal */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94, rotate: -4 }}
           animate={{ opacity: 1, scale: 1, rotate: -1.5 }}
@@ -101,14 +101,14 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
             {/* Washi tape */}
             <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-36 h-6 masking-tape z-40 rotate-[-1.5deg]" />
 
-            {/* Temple-inlay frame — full-bleed color, gold corners */}
+            {/* Temple-inlay frame - full-bleed color, gold corners */}
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] shadow-2xl">
               <Image
                 src="https://res.cloudinary.com/fdzu3ih2/image/upload/w_1080,q_auto,f_auto/v1787640290/Indhu_Delivered_Collection.jpg"
                 alt="Indhu & Abhinandhan"
                 fill
                 priority
-                // Cloudinary already serves transformed bytes — routing through
+                // Cloudinary already serves transformed bytes - routing through
                 // /_next/image would add a second fetch + encode round-trip.
                 unoptimized
                 sizes="(max-width: 768px) 88vw, 40vh"
@@ -134,7 +134,7 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
               </div>
             </div>
             <p className="font-sans-utility text-[9px] tracking-[0.3em] uppercase text-[#1C1B18]/45 mt-4 text-center">
-              Fig. 01 — The Golden Hour
+              Fig. 01 · The Golden Hour
             </p>
           </div>
         </motion.div>

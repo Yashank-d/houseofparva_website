@@ -40,7 +40,7 @@ export default function ParvaWeddingsPage() {
       const phoneUA = /iPhone|iPod|Android.*Mobile/i.test(navigator.userAgent);
       const minSide = Math.min(window.screen.width, window.screen.height);
       // Tablets (incl. iPad mini at 744px) stay on desktop; only true phones
-      // (smallest side well under tablet sizes) get the mobile layout — even
+      // (smallest side well under tablet sizes) get the mobile layout - even
       // when "desktop site" mode spoofs viewport width or UA.
       const isTablet = !phoneUA && minSide >= 600;
       setIsMobile(!isTablet && (narrow || phoneUA || minSide < 600));
@@ -50,7 +50,7 @@ export default function ParvaWeddingsPage() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Keyboard Arrow Key Listener — desktop only
+  // Keyboard Arrow Key Listener - desktop only
   useEffect(() => {
     if (isMobile) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -65,7 +65,7 @@ export default function ParvaWeddingsPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isMobile]);
 
-  // Strict Sequential Viewport Wheel Scroll Listener — desktop only
+  // Strict Sequential Viewport Wheel Scroll Listener - desktop only
   useEffect(() => {
     if (isMobile) return;
     const handleWheel = (e: WheelEvent) => {
@@ -140,7 +140,7 @@ export default function ParvaWeddingsPage() {
     }
   };
 
-  // Mobile — Starbucks Reserve style: single header row, shell scrolls
+  // Mobile - Starbucks Reserve style: single header row, shell scrolls
   const mScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -159,7 +159,7 @@ export default function ParvaWeddingsPage() {
     return (
       <div className="w-full h-[100dvh] overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
         <MPreloader mark="/Assets/Brands/Asset 30.svg" brandAlt="Parva Weddings" sub="Weddings" />
-        {/* Seamless masthead — no bar, no rules; sits directly on the paper */}
+        {/* Seamless masthead - no bar, no rules; sits directly on the paper */}
         <header className="shrink-0 z-20" style={{ paddingTop: "env(safe-area-inset-top)" }}>
           <div className="h-[64px] px-5 flex items-center justify-between">
             <span className="flex items-center gap-3 min-w-0">
@@ -184,7 +184,7 @@ export default function ParvaWeddingsPage() {
               </motion.div>
             </AnimatePresence>
           </div>
-          {/* Floating tab pill — emerald, gold active */}
+          {/* Floating tab pill - emerald, gold active */}
           <nav className="absolute bottom-0 inset-x-0 z-30 px-5" style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 12px)" }}>
             <div className="w-full rounded-full bg-[#2B0F14]/80 backdrop-blur-xl shadow-[0_14px_36px_rgba(43,15,20,0.4)] border border-[#C9A86A]/25 flex items-center px-2 py-2">
               {navItems.map((item) => {
@@ -273,7 +273,7 @@ export default function ParvaWeddingsPage() {
           </AnimatePresence>
         </div>
 
-        {/* Bottom Control Bar — breathing room, not extreme bottom */}
+        {/* Bottom Control Bar - breathing room, not extreme bottom */}
         <footer className="w-full py-5 md:py-6 px-8 md:px-12 flex justify-between items-center relative z-40 border-t border-[#1C1B18]/10 text-xs font-sans-utility tracking-[0.18em] uppercase select-none mb-1">
           {/* Left: single-line Instagram | Email */}
           <div className="flex flex-row items-center gap-3 text-[12.5px] md:text-[13px] text-[#1C1B18]/70 z-10">

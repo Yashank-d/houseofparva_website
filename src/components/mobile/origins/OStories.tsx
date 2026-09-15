@@ -118,7 +118,7 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
               <span className="lowercase italic font-normal text-[#C9A86A]">the pages are blank.</span>
             </p>
             <p className="font-script text-[20px] text-[#F5EED5]/75 mt-2 leading-snug">
-              Naming mornings, housewarmings, festival tables — our first family records are on their way.
+              Naming mornings, housewarmings, festival tables. Our first family records are on their way.
             </p>
             <button
               onClick={() => onNavigate?.(4)}
@@ -130,7 +130,7 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
         </Reveal>
       ) : (
         <>
-          {/* Two even columns — alternate distribution, ends together */}
+          {/* Two even columns - alternate distribution, ends together */}
           <div className="px-3 mt-4 flex gap-3 items-start">
             <div className="flex-1 min-w-0 space-y-5">
               {wall.map((p, i) =>
@@ -170,7 +170,7 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
         </>
       )}
 
-      {/* Swipeable fullscreen viewer — solid, no glass */}
+      {/* Swipeable fullscreen viewer - solid, no glass */}
       <AnimatePresence>
         {view && idx !== null && (
           <motion.div

@@ -47,10 +47,10 @@ export default function ContactCanvas() {
         {/* Right Column: Contact Scrapbook Collage */}
         <div className="lg:col-span-6 relative hidden lg:block">
           <div className="relative w-full max-w-md mx-auto">
-            {/* Burgundy Paper Swatch behind — deckled */}
+            {/* Burgundy Paper Swatch behind - deckled */}
             <div className="absolute -top-6 -left-6 w-32 h-64 bg-[#641F27] rounded-xs shadow-xl rotate-[-5deg] paper-card" style={{ clipPath: "polygon(0.5% 0%, 98% 1%, 99.5% 98%, 1% 99%)" }} />
 
-            {/* Main Polaroid — premium */}
+            {/* Main Polaroid - premium */}
             <motion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
@@ -62,7 +62,7 @@ export default function ContactCanvas() {
                   src="https://res.cloudinary.com/fdzu3ih2/image/upload/w_800,q_auto,f_auto/v1787640286/3.jpg"
                   alt="Wedding couple portrait"
                   fill
-                  // Cloudinary already serves transformed bytes — routing through
+                  // Cloudinary already serves transformed bytes - routing through
                   // /_next/image would add a second fetch + encode round-trip.
                   unoptimized
                   sizes="(max-width: 768px) 80vw, 400px"
@@ -75,16 +75,16 @@ export default function ContactCanvas() {
               <div className="absolute bottom-[22px] left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/15 to-transparent pointer-events-none" />
             </motion.div>
 
-            {/* Top Right Scrap Note — premium */}
+            {/* Top Right Scrap Note - premium */}
             <div className="absolute -right-8 -top-6 z-30 bg-[#FFFCF8] p-4 max-w-[260px] rounded-xs shadow-xl border border-[#C9A86A]/15 rotate-[3.5deg]">
               <div className="absolute -top-3 right-5 w-3 h-7 border-[1.5px] border-[#C9A86A]/40 rounded-full z-40 bg-[#FFFCF8]/60" />
               <p className="font-script text-[15px] leading-snug text-[#1C1B18]">
                 Long after the music fades, your story remains. We cannot wait to preserve yours.
               </p>
-              <span className="font-sans-utility text-[9px] tracking-[0.18em] uppercase text-[#C9A86A] block text-right mt-2">— The Atelier</span>
+              <span className="font-sans-utility text-[9px] tracking-[0.18em] uppercase text-[#C9A86A] block text-right mt-2">The Atelier</span>
             </div>
 
-            {/* Premium Emerald Contact Card — clear of caption — slightly reduced */}
+            {/* Premium Emerald Contact Card - clear of caption - slightly reduced */}
             <img
               src="/Assets/seal/parva_seal_256.png"
               alt="Parva Seal"

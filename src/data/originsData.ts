@@ -1,22 +1,22 @@
-// ── PARVA ORIGINS — FAMILY GALLERY ──────────────────────────────────────────
-// One flat photo wall. No projects, no albums — just every family frame,
+// ── PARVA ORIGINS - FAMILY GALLERY ──────────────────────────────────────────
+// One flat photo wall. No projects, no albums - just every family frame,
 // shown desktop + mobile straight from this list.
 //
 // HOW TO ADD PHOTOS:
-//   1. Export all image URLs from Cloudinary at once (command below — run it
+//   1. Export all image URLs from Cloudinary at once (command below - run it
 //      on your own machine, it prints ready-to-paste lines).
 //   2. Paste the lines into originGallery.
 //   3. Rebuild. The desktop grid, mobile wall, viewers and empty states all
 //      switch on automatically. Nothing else to touch.
 //
-// BULK EXPORT (Admin API — needs your key + secret from Cloudinary
+// BULK EXPORT (Admin API - needs your key + secret from Cloudinary
 // Dashboard → Settings → API keys; never share the secret):
 //
 //   CLOUD=<cloud_name> KEY=<api_key> SECRET=<api_secret> FOLDER=<folder/path>
 //   curl -s "https://$KEY:$SECRET@api.cloudinary.com/v1_1/$CLOUD/resources/image/upload?prefix=$FOLDER/&max_results=500" \
 //     | python3 -c 'import json,sys; [print("    \"" + r["secure_url"] + "\",") for r in json.load(sys.stdin).get("resources", [])]'
 //
-//   (>500 photos? The response includes `next_cursor` — repeat the call with
+//   (>500 photos? The response includes `next_cursor` - repeat the call with
 //    ...&next_cursor=<cursor> appended, until no cursor comes back.)
 //
 export const originGallery: string[] = [

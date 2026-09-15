@@ -51,7 +51,7 @@ export default function MHome({ onNavigate }: { onNavigate: (i: number) => void 
   };
   return (
     <div className="w-full pt-3 pb-[110px]">
-      {/* Reserve hero — emerald panel, gold greeting */}
+      {/* Reserve hero - emerald panel, gold greeting */}
       <div className="mx-4 rounded-[28px] bg-[#2B0F14] overflow-hidden shadow-[0_18px_44px_rgba(43,15,20,0.35)]">
         <div className="px-6 pt-7 pb-5">
           <p className="font-sans-utility text-[10px] tracking-[0.3em] uppercase text-[#C9A86A] font-semibold">
@@ -94,7 +94,7 @@ export default function MHome({ onNavigate }: { onNavigate: (i: number) => void 
                   alt={slides[s].couple}
                   fill
                   priority={s === 0}
-                  // Remote slides already carry Cloudinary transforms — skip the
+                  // Remote slides already carry Cloudinary transforms - skip the
                   // /_next/image round-trip for those; keep it for local files.
                   unoptimized={slides[s].src.includes("res.cloudinary.com")}
                   sizes="(max-width: 768px) 90vw, 560px"
@@ -154,13 +154,13 @@ export default function MHome({ onNavigate }: { onNavigate: (i: number) => void 
         </div>
       </div>
 
-      {/* Quote card — frosted cream, gold seal line */}
+      {/* Quote card - frosted cream, gold seal line */}
       <Reveal className="mx-4 mt-4 rounded-[24px] bg-[#FFFCF8]/70 backdrop-blur-md p-6 shadow-[0_10px_30px_rgba(28,27,24,0.08)] border border-white/50" y={22}>
         <div className="w-10 h-[3px] bg-[#C9A86A] rounded-full" />
         <p className="font-script text-[21px] leading-snug text-[#1C1B18] mt-3">
           Some stories are meant to be felt, not just seen.
         </p>
-        <p className="font-script text-[18px] text-[#641F27] mt-1">— Parva</p>
+        <p className="font-script text-[18px] text-[#641F27] mt-1">Parva</p>
         <p className="font-sans-utility text-[10px] tracking-[0.24em] uppercase text-[#1C1B18]/40 mt-4">
           Parva Weddings • Bangalore
         </p>

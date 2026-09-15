@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-// Luxury splash — brand mark in, wordmark rises, gold bar sweeps, panel lifts away.
+// Luxury splash - brand mark in, wordmark rises, gold bar sweeps, panel lifts away.
 export default function MPreloader({
   mark = "/Assets/Brands/Asset 30.svg",
   sub = "Weddings",
@@ -17,9 +17,9 @@ export default function MPreloader({
   lightMark?: boolean;
   /** true for the gateway: logo + tagline only, mirroring the home header */
   house?: boolean;
-  /** plain brand name for the mark artwork — no keywords */
+  /** plain brand name for the mark artwork, no keywords */
   brandAlt?: string;
-  /** gateway header mark to land on — splash content glides into it, bg dissolves */
+  /** gateway header mark to land on: splash content glides into it, bg dissolves */
   landRef?: React.RefObject<HTMLDivElement | null>;
 }) {
   const [gone, setGone] = useState(false);

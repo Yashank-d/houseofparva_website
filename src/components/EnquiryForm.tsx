@@ -96,7 +96,7 @@ export default function EnquiryForm({
           we reply within a day.
         </p>
 
-        {/* Service selector — single dropdown, no clutter */}
+        {/* Service selector - single dropdown, no clutter */}
         <label className="group block mt-5 border-b border-[#1C1B18]/25 focus-within:border-[#C9A86A] transition-colors pb-1">
           <span className="block font-sans-utility text-[9px] tracking-[0.25em] uppercase text-[#1C1B18]/55 group-focus-within:text-[var(--acc)] font-semibold transition-colors">
             I&apos;m enquiring about

@@ -7,7 +7,7 @@ import Reveal from "../Reveal";
 export default function OHome({ onNavigate }: { onNavigate: (i: number) => void }) {
   return (
     <div className="w-full pt-3 pb-[110px]">
-      {/* Velvet hero — typographic until the first family frames arrive */}
+      {/* Velvet hero - typographic until the first family frames arrive */}
       <Reveal
         className="mx-4 rounded-[28px] bg-[#2B0F14]/90 backdrop-blur-md overflow-hidden shadow-[0_18px_44px_rgba(43,15,20,0.4)] border border-[#C9A86A]/15"
         y={20}
@@ -64,13 +64,13 @@ export default function OHome({ onNavigate }: { onNavigate: (i: number) => void 
         </div>
       </Reveal>
 
-      {/* Quote card — frosted cream */}
+      {/* Quote card - frosted cream */}
       <Reveal className="mx-4 mt-4 rounded-[24px] bg-[#FFFCF8]/70 backdrop-blur-md p-6 shadow-[0_10px_30px_rgba(28,27,24,0.08)] border border-white/50" y={22}>
         <div className="w-10 h-[3px] bg-[#C9A86A] rounded-full" />
         <p className="font-script text-[21px] leading-snug text-[#1C1B18] mt-3">
           Every family has a first page. Let&apos;s preserve yours.
         </p>
-        <p className="font-script text-[18px] text-[#2B0F14] mt-1">— Parva</p>
+        <p className="font-script text-[18px] text-[#2B0F14] mt-1">Parva</p>
         <p className="font-sans-utility text-[10px] tracking-[0.24em] uppercase text-[#1C1B18]/40 mt-4">
           Parva Origins • Bangalore
         </p>

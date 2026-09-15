@@ -10,7 +10,7 @@ export default function ServicesCanvas({ onNavigate }: { onNavigate?: (i: number
       eyebrow="What we offer"
       title="Services"
       script="every celebration, covered."
-      promise="From whispered proposals to full multi-day celebrations — photography and films for every way a wedding unfolds."
+      promise="From whispered proposals to full multi-day celebrations: photography and films for every way a wedding unfolds."
       groups={weddingsGroups}
       ctaScript="Every story begins with a hello."
       deep={["#641F27", "#3D1620", "#1E0A0E"]}

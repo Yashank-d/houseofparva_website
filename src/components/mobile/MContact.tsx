@@ -34,7 +34,7 @@ export default function MContact() {
 
   return (
     <div className="w-full pt-4 pb-[110px]">
-      {/* Emerald invite panel — frosted */}
+      {/* Emerald invite panel - frosted */}
       <Reveal className="mx-4 rounded-[28px] bg-[#2B0F14]/90 backdrop-blur-md p-6 shadow-[0_18px_44px_rgba(43,15,20,0.35)] border border-[#C9A86A]/15" y={20}>
         <p className="font-sans-utility text-[10px] tracking-[0.3em] uppercase text-[#C9A86A] font-bold">
           ★ Let&apos;s create something timeless
@@ -45,11 +45,11 @@ export default function MContact() {
           <span className="lowercase italic font-normal text-[#C9A86A]">hear</span> from you.
         </h2>
         <p className="font-sans-utility text-[14px] leading-relaxed text-[#F5F1E8]/70 mt-3">
-          Weddings, intimate celebrations, stories worth remembering — we&apos;d be honored to tell yours.
+          Weddings, intimate celebrations, stories worth remembering. We&apos;d be honored to tell yours.
         </p>
       </Reveal>
 
-      {/* Order-style form card — frosted */}
+      {/* Order-style form card - frosted */}
       <Reveal className="mx-4 mt-4 rounded-[28px] bg-[#FFFCF8]/75 backdrop-blur-md p-6 shadow-[0_12px_32px_rgba(28,27,24,0.1)] border border-white/50" y={22}>
         {!sent ? (
           <form onSubmit={submit}>
@@ -92,7 +92,7 @@ export default function MContact() {
         )}
       </Reveal>
 
-      {/* Reach — frosted emerald rewards card */}
+      {/* Reach - frosted emerald rewards card */}
       <Reveal className="mx-4 mt-4 rounded-[28px] bg-[#2B0F14]/85 backdrop-blur-md p-5 shadow-[0_18px_44px_rgba(43,15,20,0.3)] border border-[#C9A86A]/15" y={22}>
         <p className="font-sans-utility text-[10px] tracking-[0.3em] uppercase text-[#C9A86A] font-bold px-1">
           Reach us at

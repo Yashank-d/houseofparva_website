@@ -45,7 +45,7 @@ export default function ParvaOriginsPage() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Keyboard Arrow Key Listener — desktop only
+  // Keyboard Arrow Key Listener - desktop only
   useEffect(() => {
     if (isMobile) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -60,7 +60,7 @@ export default function ParvaOriginsPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isMobile]);
 
-  // Strict Sequential Viewport Wheel Scroll Listener — desktop only
+  // Strict Sequential Viewport Wheel Scroll Listener - desktop only
   useEffect(() => {
     if (isMobile) return;
     const handleWheel = (e: WheelEvent) => {
@@ -86,7 +86,7 @@ export default function ParvaOriginsPage() {
     return () => window.removeEventListener("wheel", handleWheel);
   }, [isMobile]);
 
-  // Mobile shell scrolls — reset to top on page change
+  // Mobile shell scrolls - reset to top on page change
   useEffect(() => {
     if (!isMobile) return;
     mScrollRef.current?.scrollTo(0, 0);
@@ -125,7 +125,7 @@ export default function ParvaOriginsPage() {
     }
   };
 
-  // Mobile — velvet shell: seamless masthead + floating velvet tab pill
+  // Mobile - velvet shell: seamless masthead + floating velvet tab pill
   if (isMobile) {
     const navItems = [
       { short: "Home", idx: 0, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" /></svg>) },
@@ -137,7 +137,7 @@ export default function ParvaOriginsPage() {
     return (
       <div className="w-full h-[100dvh] overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col relative font-sans selection:bg-[#2B0F14] selection:text-[#F5EED5]">
         <MPreloader mark="/Assets/Brands/Asset 29.svg" brandAlt="Parva Origins" sub="Origins" />
-        {/* Seamless masthead — PARVA ORIGINS */}
+        {/* Seamless masthead - PARVA ORIGINS */}
         <header className="shrink-0 z-20" style={{ paddingTop: "env(safe-area-inset-top)" }}>
           <div className="h-[64px] px-5 flex items-center justify-between">
             <span className="flex items-center gap-3 min-w-0">
@@ -162,7 +162,7 @@ export default function ParvaOriginsPage() {
               </motion.div>
             </AnimatePresence>
           </div>
-          {/* Floating velvet tab pill — gold gliding indicator */}
+          {/* Floating velvet tab pill - gold gliding indicator */}
           <nav className="absolute bottom-0 inset-x-0 z-30 px-5" style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 12px)" }}>
             <div className="w-full rounded-full bg-[#2B0F14]/80 backdrop-blur-xl shadow-[0_14px_36px_rgba(43,15,20,0.45)] border border-[#C9A86A]/25 flex items-center px-2 py-2">
               {navItems.map((item) => {

@@ -33,7 +33,7 @@ export default function OriginsContactCanvas() {
           </div>
 
           <p className="font-sans-utility text-xs md:text-sm text-[#1C1B18]/80 leading-relaxed font-light max-w-md">
-            From naming ceremonies to housewarmings and family sessions — tell us what you&apos;re celebrating, and we&apos;d be honored to keep it.
+            From naming ceremonies to housewarmings and family sessions, tell us what you&apos;re celebrating, and we&apos;d be honored to keep it.
           </p>
 
           <EnquiryForm
@@ -51,7 +51,7 @@ export default function OriginsContactCanvas() {
             {/* Velvet Paper Swatch behind */}
             <div className="absolute -top-6 -left-6 w-32 h-64 bg-[#2B0F14] rounded-xs shadow-xl rotate-[-5deg] paper-card" style={{ clipPath: "polygon(0.5% 0%, 98% 1%, 99.5% 98%, 1% 99%)" }} />
 
-            {/* Main Keepsake Frame — Polaroid with ContactPageImg.jpg (B&W to Color on hover) */}
+            {/* Main Keepsake Frame - Polaroid with ContactPageImg.jpg (B&W to Color on hover) */}
             <motion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
@@ -78,7 +78,7 @@ export default function OriginsContactCanvas() {
               <p className="font-script text-[15px] leading-snug text-[#1C1B18]">
                 Long after the lullabies fade, these pages remain. We cannot wait to keep yours.
               </p>
-              <span className="font-sans-utility text-[9px] tracking-[0.18em] uppercase text-[#C9A86A] block text-right mt-2">— The Atelier</span>
+              <span className="font-sans-utility text-[9px] tracking-[0.18em] uppercase text-[#C9A86A] block text-right mt-2">The Atelier</span>
             </div>
 
             {/* Velvet Contact Card */}

@@ -135,7 +135,7 @@ export default function OriginsAboutCanvas() {
       {/* Bottom Quote Bar */}
       <div className="border-t border-[#1C1B18]/10 pt-3 flex justify-between items-center text-[#1C1B18]/60 font-sans-utility text-[10px] tracking-[0.2em] uppercase">
         <span>PARVA ORIGINS • BANGALORE</span>
-        <span className="font-serif-editorial italic text-[#2B0F14] text-sm font-medium">"Childhood rooms, festival mornings — kept forever."</span>
+        <span className="font-serif-editorial italic text-[#2B0F14] text-sm font-medium">"Childhood rooms, festival mornings, kept forever."</span>
       </div>
     </div>
   );

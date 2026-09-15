@@ -110,7 +110,7 @@ export default function PortfolioCanvas() {
         </div>
       </div>
 
-      {/* Main Single Viewport Artistic Canvas — bigger, vh-centered */}
+      {/* Main Single Viewport Artistic Canvas - bigger, vh-centered */}
       <div className="relative z-10 w-full h-[84vh] max-h-[760px] min-h-[620px] flex items-center justify-center px-8 md:px-16 my-auto">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
@@ -168,7 +168,7 @@ export default function PortfolioCanvas() {
                     </p>
 
                     <span className="font-script text-lg text-[#641F27] block text-right pt-1">
-                      — AW
+                      AW
                     </span>
                   </div>
                 </div>
@@ -228,7 +228,7 @@ export default function PortfolioCanvas() {
               </div>
             )}
 
-            {/* Style 3: Blue Ink — redesigned like Journal Entry (2nd image) */}
+            {/* Style 3: Blue Ink - redesigned like Journal Entry (2nd image) */}
             {currentWork.styleType === "blue-ink-polaroid" && (
               <div className="w-full h-full flex flex-col justify-between relative py-2">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
@@ -246,7 +246,7 @@ export default function PortfolioCanvas() {
                       </div>
                     </button>
                   </div>
-                  {/* Right: Journal Entry — names + quote */}
+                  {/* Right: Journal Entry - names + quote */}
                   <div className="md:col-span-6 flex flex-col justify-center space-y-4 md:pl-2">
                     <div className="space-y-1">
                       <span className="font-sans-utility text-[10px] tracking-[0.25em] uppercase text-[#641F27] font-semibold block">JOURNAL ENTRY</span>
@@ -255,7 +255,7 @@ export default function PortfolioCanvas() {
                     <p className="font-script text-xl md:text-2xl text-[#1C1B18]/90 leading-relaxed">
                       {currentWork.blueQuote}
                     </p>
-                    <span className="font-script text-lg text-[#641F27] block text-right pt-1">— I & A</span>
+                    <span className="font-script text-lg text-[#641F27] block text-right pt-1">I & A</span>
                   </div>
                 </div>
                 {/* Footer like 2nd image */}
