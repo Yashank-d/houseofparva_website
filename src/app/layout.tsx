@@ -42,32 +42,11 @@ export const SITE_URL = "https://thehouseofparva.in";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default:
-      "House of Parva | Professional Photography & Videography in Bangalore",
+    default: "House of Parva | Wedding Photographer in Bangalore & Family Photography",
     template: "%s | House of Parva",
   },
   description:
     "House of Parva — fine-art wedding photography & cinematic films in Bangalore: pre-weddings, destination & intimate weddings, proposals, maternity, baby showers, naming ceremonies, housewarmings and family sessions across Karnataka & India.",
-  keywords: [
-    "wedding photographer in Bangalore",
-    "best wedding photographer Bangalore",
-    "candid wedding photography Bangalore",
-    "cinematic wedding films India",
-    "pre wedding shoot Bangalore",
-    "destination wedding photographer India",
-    "maternity photographer Bangalore",
-    "maternity photoshoot Bangalore",
-    "baby shower photographer Bangalore",
-    "naming ceremony photographer",
-    "housewarming photographer Bangalore",
-    "pooja ceremony photographer",
-    "family photographer Bangalore",
-    "family photoshoot Bangalore",
-    "couple shoot Bangalore",
-    "House of Parva",
-    "Parva Weddings",
-    "Parva Origins",
-  ],
   authors: [{ name: "House of Parva" }],
   creator: "House of Parva",
   alternates: { canonical: "/" },

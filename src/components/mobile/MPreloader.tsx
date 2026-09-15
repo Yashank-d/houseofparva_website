@@ -8,6 +8,7 @@ export default function MPreloader({
   sub = "Weddings",
   lightMark = false,
   house = false,
+  brandAlt = "Parva",
   landRef,
 }: {
   mark?: string;
@@ -16,6 +17,8 @@ export default function MPreloader({
   lightMark?: boolean;
   /** true for the gateway: logo + tagline only, mirroring the home header */
   house?: boolean;
+  /** plain brand name for the mark artwork — no keywords */
+  brandAlt?: string;
   /** gateway header mark to land on — splash content glides into it, bg dissolves */
   landRef?: React.RefObject<HTMLDivElement | null>;
 }) {
@@ -80,7 +83,7 @@ export default function MPreloader({
         <div ref={group} className="flex flex-col items-center">
           <img
             src={mark}
-            alt="Parva"
+            alt={house ? "House of Parva" : brandAlt}
             className="mpl-mark w-[104px] h-auto"
             style={{ filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.4))" }}
           />
@@ -92,7 +95,7 @@ export default function MPreloader({
         <>
           <img
             src={mark}
-            alt="Parva"
+            alt={brandAlt}
             className="mpl-mark w-[88px] h-auto"
             style={
               lightMark

@@ -221,7 +221,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
               <span className="block w-full flex-1 my-1.5 min-h-0 relative overflow-hidden bg-[#E8DFD0]">
                 <img
                   src={thumb(photo, 800)}
-                  alt={`Parva Origins family photograph ${num} — naming ceremony and family celebration photography in Bangalore`}
+                  alt={`Parva Origins family photograph ${num}`}
                   loading={eager ? "eager" : "lazy"}
                   decoding="async"
                   draggable={false}
@@ -438,7 +438,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                         <div className="relative w-full h-full overflow-hidden">
                           <img
                             src={thumb(item.photo, 1200)}
-                            alt="Parva Origins panoramic family celebration photography in Bangalore"
+                            alt="Parva Origins family celebration"
                             className="absolute top-0 left-0 w-[calc(200%+1px)] h-full max-w-none object-cover transition-transform duration-700 group-hover:scale-[1.015]"
                             style={{ transformOrigin: "left center" }}
                             draggable={false}
@@ -471,7 +471,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                         <div className="relative w-full h-full overflow-hidden">
                           <img
                             src={thumb(item.photo, 1200)}
-                            alt="Parva Origins panoramic family celebration photography in Bangalore"
+                            alt="Parva Origins family celebration"
                             className="absolute top-0 -left-[100%] w-[200%] h-full max-w-none object-cover transition-transform duration-700 group-hover:scale-[1.015]"
                             style={{ transformOrigin: "right center" }}
                             draggable={false}

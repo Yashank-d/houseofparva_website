@@ -49,7 +49,7 @@ export default function OriginsSidebar({
           <div className="relative z-10 pt-1 flex flex-col items-start text-left w-full space-y-1.5">
             <img
               src="/Parva_logo.svg"
-              alt="Parva Origins Logo"
+              alt="Parva Origins"
               className="w-32 md:w-36 h-auto opacity-95 filter drop-shadow-xs"
             />
             <div className="flex flex-col items-start text-left pt-0.5">

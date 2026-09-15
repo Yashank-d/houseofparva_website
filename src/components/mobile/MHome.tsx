@@ -91,7 +91,7 @@ export default function MHome({ onNavigate }: { onNavigate: (i: number) => void 
               >
                 <Image
                   src={slides[s].src}
-                  alt={`${slides[s].couple} — wedding photography by Parva Weddings, Bangalore`}
+                  alt={slides[s].couple}
                   fill
                   priority={s === 0}
                   // Remote slides already carry Cloudinary transforms — skip the

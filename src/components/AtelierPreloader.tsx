@@ -74,7 +74,7 @@ export default function AtelierPreloader({
         <span className="font-sans-utility text-[9px] tracking-[0.4em] uppercase text-[#1C1B18]/45 pl-[0.4em]">
           The House of Parva
         </span>
-        <img src={mark} alt="" className="ap-mark w-[92px] h-auto mt-5" />
+        <img src={mark} alt={title === "Origins" ? "Parva Origins" : "Parva Weddings"} className="ap-mark w-[92px] h-auto mt-5" />
         <span
           className="ap-word font-serif-editorial text-[26px] tracking-[0.22em] uppercase mt-4 pl-[0.22em]"
           style={{ color: accent }}

@@ -133,7 +133,7 @@ export default function PortfolioCanvas() {
                       <div className="overflow-hidden bg-[#E8DFD0] flex relative">
                         <img
                           src={thumb(currentWork.mainImage)}
-                          alt={`${currentWork.couple} — wedding photography in ${currentWork.location} by House of Parva`}
+                          alt={`${currentWork.couple}, ${currentWork.location}`}
                           loading="lazy"
                           decoding="async"
                           className="max-w-full max-h-[42vh] w-auto object-contain rounded-xs group-hover/img:scale-[1.02] transition-transform duration-500"
@@ -206,7 +206,7 @@ export default function PortfolioCanvas() {
                       <div className="aspect-[4/3] w-full overflow-hidden bg-[#E8DFD0] relative">
                         <img
                           src={thumb(currentWork.mainImage)}
-                          alt={`${currentWork.couple} — wedding photography in ${currentWork.location} by House of Parva`}
+                          alt={`${currentWork.couple}, ${currentWork.location}`}
                           loading="lazy"
                           decoding="async"
                           className="w-full h-full object-cover group-hover/img:scale-[1.02] transition-transform duration-500"
@@ -238,7 +238,7 @@ export default function PortfolioCanvas() {
                       <div className="overflow-hidden bg-[#E8DFD0] flex relative">
                         <img
                           src={thumb(currentWork.mainImage)}
-                          alt={`${currentWork.couple} — wedding photography in ${currentWork.location} by House of Parva`}
+                          alt={`${currentWork.couple}, ${currentWork.location}`}
                           loading="lazy"
                           decoding="async"
                           className="max-w-full max-h-[42vh] w-auto object-contain rounded-xs group-hover/img:scale-[1.02] transition-transform duration-500"
@@ -289,7 +289,7 @@ export default function PortfolioCanvas() {
                     <div className="aspect-[4/3] w-full overflow-hidden bg-[#E8DFD0] relative">
                       <img
                         src={thumb(currentWork.mainImage)}
-                        alt={`${currentWork.couple} — wedding photography in ${currentWork.location} by House of Parva`}
+                        alt={`${currentWork.couple}, ${currentWork.location}`}
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover grayscale group-hover/img:scale-[1.02] transition-transform duration-500"
@@ -327,7 +327,7 @@ export default function PortfolioCanvas() {
                   <div className="md:col-span-6">
                     <button onClick={() => setModalStory(currentWork)} className="bg-[#E8DFD0] p-3 rounded-xs shadow-lg rotate-[-2deg] max-w-sm ml-auto w-full text-left cursor-pointer group/img hover:rotate-[-1deg] transition-transform" title="Open full gallery">
                       <div className="aspect-[3/4] w-full overflow-hidden relative">
-                        <img src={thumb(currentWork.mainImage, 800)} alt={`${currentWork.couple} wedding portrait by Parva Weddings, Bangalore`} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale group-hover/img:scale-[1.02] transition-transform duration-500" />
+                        <img src={thumb(currentWork.mainImage, 800)} alt={currentWork.couple} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale group-hover/img:scale-[1.02] transition-transform duration-500" />
                       </div>
                     </button>
 
@@ -389,7 +389,7 @@ export default function PortfolioCanvas() {
               <div className="columns-1 sm:columns-2 gap-3 my-6 space-y-3">
                 {modalStory.gallery.map((img, i) => (
                   <div key={i} className="bg-[#E8DFD0] overflow-hidden rounded-xs break-inside-avoid shadow-sm">
-                    <img src={thumb(img, 1000)} alt={`${modalStory.couple} wedding gallery photo ${i + 1} by House of Parva`} loading="lazy" decoding="async" className="w-full h-auto block" />
+                    <img src={thumb(img, 1000)} alt={`${modalStory.couple}, wedding photograph ${i + 1}`} loading="lazy" decoding="async" className="w-full h-auto block" />
                   </div>
                 ))}
               </div>

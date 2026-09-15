@@ -32,7 +32,7 @@ export default function OHome({ onNavigate }: { onNavigate: (i: number) => void 
           <div className="relative rounded-[20px] overflow-hidden aspect-[4/3] bg-[#1E0A0E]">
             <Image
               src="/Assets/OriginsHero_1600.jpg"
-              alt="Parva Origins family celebration photography in Bangalore"
+              alt="Parva Origins family celebration"
               fill
               priority
               sizes="(max-width: 768px) 90vw, 560px"

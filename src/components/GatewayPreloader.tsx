@@ -154,7 +154,7 @@ export default function GatewayPreloader({
       <div ref={group} className="relative flex flex-col items-center">
         <img
           src="/Parva_logo.svg"
-          alt=""
+          alt="House of Parva"
           className="gp-mark w-[104px] h-auto"
           style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 2px 12px rgba(0,0,0,0.45))" }}
         />
