@@ -158,7 +158,7 @@ export default function ParvaWeddingsPage() {
     ];
     return (
       <div className="w-full h-[100dvh] overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
-        <MPreloader mark="/Assets/Brands/Asset 30.svg" sub="Weddings" />
+        <MPreloader mark="/Assets/Brands/Asset 30.svg" brandAlt="Parva Weddings" sub="Weddings" />
         {/* Seamless masthead — no bar, no rules; sits directly on the paper */}
         <header className="shrink-0 z-20" style={{ paddingTop: "env(safe-area-inset-top)" }}>
           <div className="h-[64px] px-5 flex items-center justify-between">

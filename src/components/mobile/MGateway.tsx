@@ -40,13 +40,13 @@ export default function MGateway() {
       className="w-full h-[100dvh] overflow-hidden relative font-sans selection:bg-[#C9A86A] selection:text-[#2B0F14] flex flex-col"
       style={{ background: "linear-gradient(180deg, #3D1620 0%, #2B0F14 40%, #1E0A0E 100%)" }}
     >
-      <MPreloader mark="/Parva_logo.svg" house lightMark landRef={headMark} />
+      <MPreloader mark="/Parva_logo.svg" brandAlt="House of Parva" house lightMark landRef={headMark} />
       <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse 90% 36% at 50% 0%, rgba(201,168,106,0.16) 0%, transparent 65%)" }} />
 
       {/* compact reserve mark */}
       <header className="shrink-0 w-full flex flex-col items-center relative z-10 px-6 pt-6">
         <div ref={headMark} className="flex flex-col items-center">
-          <img src="/Parva_logo.svg" alt="Parva" className="w-[76px] h-auto" style={{ filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.4))" }} />
+          <img src="/Parva_logo.svg" alt="House of Parva" className="w-[76px] h-auto" style={{ filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.4))" }} />
           <p className="font-sans-utility text-[8px] tracking-[0.3em] uppercase text-[#F5EED5]/60 mt-2 pl-[0.3em]">
             Fine Art & Storytelling House
           </p>
@@ -62,6 +62,9 @@ export default function MGateway() {
           </h1>
           <p className="font-serif-editorial text-[15px] text-[#F5EED5]/70 italic font-light mt-2 leading-snug px-2">
             Two worlds, one belief — every story, remembered beautifully.
+          </p>
+          <p className="font-serif-editorial text-[12px] text-[#F5EED5]/40 font-light mt-2 leading-relaxed px-4">
+            House of Parva is a photography and visual storytelling house based in Bengaluru, documenting weddings, celebrations, families and the stories that live between them. Through Parva Weddings and Parva Origins, we create photographs and films with a cinematic, honest and timeless approach.
           </p>
         </div>
 

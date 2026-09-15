@@ -34,7 +34,7 @@ function PinCard({ p, eager, onOpen }: { p: Pin; eager?: boolean; onOpen: () => 
       <div className="relative overflow-hidden rounded-[16px] bg-[#E8DFD0]">
         <img
           src={thumb(p.src)}
-          alt="Parva Origins family photography in Bangalore — naming ceremony, housewarming and family celebration"
+          alt="Parva Origins family celebration"
           loading={eager ? "eager" : "lazy"}
           decoding="async"
           className="w-full h-auto block"
@@ -199,7 +199,7 @@ export default function OStories({ onNavigate }: { onNavigate?: (i: number) => v
                 <motion.img
                   key={idx}
                   src={view.src}
-                  alt="Parva Origins family celebration photograph — Bangalore family photography"
+                  alt="Parva Origins family photograph"
                   custom={dir}
                   initial={{ opacity: 0, x: dir > 0 ? 60 : -60 }}
                   animate={{ opacity: 1, x: 0 }}

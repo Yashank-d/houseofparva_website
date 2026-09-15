@@ -93,7 +93,7 @@ export default function OriginsAboutCanvas() {
               <div className="aspect-[4/5.6] w-full overflow-hidden bg-[#E8DFD0]">
                 <img
                   src="/Assets/Founders/Founder-B_768.jpg"
-                  alt="Yashank D., founder and family photographer at Parva Origins, Bangalore"
+                  alt="Yashank D., Photographer"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover"
@@ -116,7 +116,7 @@ export default function OriginsAboutCanvas() {
               <div className="aspect-[4/5.6] w-full overflow-hidden bg-[#E8DFD0]">
                 <img
                   src="/Assets/Founders/Founder-A_768.jpg"
-                  alt="Tejas, founder and family photographer at Parva Origins, Bangalore"
+                  alt="Tejas, Filmmaker"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover"

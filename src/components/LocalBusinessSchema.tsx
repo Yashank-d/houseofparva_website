@@ -13,21 +13,25 @@ export default function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: "Ocean and Origin LLP",
+      },
+      {
         "@type": "ProfessionalService",
         "@id": `${SITE_URL}/#business`,
         name: "House of Parva",
+        parentOrganization: { "@id": `${SITE_URL}/#organization` },
         description:
           "Fine-art wedding photography and cinematic films in Bangalore: pre-weddings, destination and intimate weddings, proposals, maternity, baby showers, naming ceremonies, housewarmings, poojas and family photography across Karnataka and India.",
         url: SITE_URL,
         email: "hello@thehouseofparva.in",
-        priceRange: "₹₹₹",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Bengaluru",
           addressRegion: "Karnataka",
           addressCountry: "IN",
         },
-        geo: { "@type": "GeoCoordinates", latitude: 12.9716, longitude: 77.5946 },
         areaServed: [
           { "@type": "City", name: "Bengaluru" },
           { "@type": "State", name: "Karnataka" },

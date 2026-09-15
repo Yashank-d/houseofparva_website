@@ -58,7 +58,7 @@ export default function HouseOfParvaGateway() {
       {/* centered maison mark — splash mark glides home into this (opacity-only so the landing rect stays stable mid-glide) */}
       <motion.header initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 0.55 }} className="w-full flex flex-col items-center relative z-20 pt-3 md:pt-5 shrink-0">
         <div ref={headMark} className="flex flex-col items-center">
-          <img src="/Parva_logo.svg" alt="Parva" className="w-[66px] sm:w-[72px] md:w-[86px] h-auto" style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 1px 8px rgba(0,0,0,0.35))" }} />
+          <img src="/Parva_logo.svg" alt="House of Parva" className="w-[66px] sm:w-[72px] md:w-[86px] h-auto" style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 1px 8px rgba(0,0,0,0.35))" }} />
           <div className="flex items-center gap-2.5 md:gap-3 mt-2.5 md:mt-3">
             <span className="h-px w-6 md:w-8 bg-[#C9A86A]/22" />
             <span className="font-sans-utility text-[8px] sm:text-[8.5px] md:text-[9px] tracking-[0.28em] md:tracking-[0.36em] uppercase text-[#F5EED5]/55 md:text-[#F5EED5]/42">Fine Art & Storytelling House</span>
@@ -81,6 +81,7 @@ export default function HouseOfParvaGateway() {
           </div>
           <p className="font-sans-utility text-[9px] sm:text-[9.5px] md:text-[10.5px] tracking-[0.18em] sm:tracking-[0.30em] uppercase text-[#C9A86A]/90 mt-2.5 px-2">Photography & Films • Weddings • Family • Stories</p>
           <p className="font-serif-editorial text-[15px] sm:text-[16px] md:text-[18px] text-[#F5EED5]/70 md:text-[#F5EED5]/58 italic font-light mt-1.5 leading-snug px-4 sm:px-0">Two worlds, one belief — every story, <br className="sm:hidden" />remembered beautifully.</p>
+          <p className="font-serif-editorial text-[12px] md:text-[13px] text-[#F5EED5]/40 font-light mt-2 leading-relaxed px-6 sm:px-0 max-w-xl mx-auto">House of Parva is a photography and visual storytelling house based in Bengaluru, documenting weddings, celebrations, families and the stories that live between them. Through Parva Weddings and Parva Origins, we create photographs and films with a cinematic, honest and timeless approach.</p>
         </motion.div>
 
         <motion.p initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : { opacity: 0 }} transition={{ delay: 0.32, duration: 0.5 }} className="font-sans-utility text-[10.5px] md:text-[11px] tracking-[0.22em] md:tracking-[0.28em] uppercase text-[#F5EED5]/70 md:text-[#F5EED5]/65 mt-3.5 md:mt-5">

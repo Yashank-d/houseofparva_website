@@ -136,7 +136,7 @@ export default function ParvaOriginsPage() {
     ];
     return (
       <div className="w-full h-[100dvh] overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col relative font-sans selection:bg-[#2B0F14] selection:text-[#F5EED5]">
-        <MPreloader mark="/Assets/Brands/Asset 29.svg" sub="Origins" />
+        <MPreloader mark="/Assets/Brands/Asset 29.svg" brandAlt="Parva Origins" sub="Origins" />
         {/* Seamless masthead — PARVA ORIGINS */}
         <header className="shrink-0 z-20" style={{ paddingTop: "env(safe-area-inset-top)" }}>
           <div className="h-[64px] px-5 flex items-center justify-between">
