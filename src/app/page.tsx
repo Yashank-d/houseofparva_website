@@ -51,7 +51,6 @@ export default function HouseOfParvaGateway() {
       {/* top bar — larger tap targets on mobile, no hidden text */}
       <div className="w-full flex justify-between items-center px-4 sm:px-7 md:px-10 pt-3.5 md:pt-6 relative z-20 shrink-0">
         <a href="https://instagram.com/weddingsbyparva" target="_blank" rel="noopener noreferrer" className="font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.18em] md:tracking-[0.28em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/25 py-2 -my-2">IG — @weddingsbyparva</a>
-        <a href="mailto:hello@thehouseofparva.in" className="hidden sm:inline font-sans-utility text-[8.5px] tracking-[0.28em] uppercase text-[#F5EED5]/25 py-2 -my-2">hello@thehouseofparva.in</a>
         <span className="font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.18em] md:tracking-[0.28em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/25 py-2 -my-2">Est. MMXXVI</span>
       </div>
 
