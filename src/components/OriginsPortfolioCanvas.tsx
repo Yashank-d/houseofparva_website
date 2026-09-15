@@ -554,7 +554,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                         </p>
                       </div>
                       <div className="relative z-10 pt-2 border-t border-[#C9A86A]/25 text-center font-sans-utility text-[8px] tracking-[0.25em] uppercase text-[#1C1B18]/50">
-                        PARVA ORIGINS • MMXXIV
+                        PARVA ORIGINS • MMXXVI
                       </div>
                     </div>
                   </div>
