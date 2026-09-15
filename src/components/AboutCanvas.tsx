@@ -88,7 +88,7 @@ export default function AboutCanvas() {
           </div>
         </div>
 
-        {/* Right Column: Photo Section — Two Portraits (reference) — enlarged */}
+        {/* Right Column: Photo Section - Two Portraits (reference) - enlarged */}
         <div className="lg:col-span-6 relative hidden lg:block">
           <div className="relative w-full max-w-[620px] mx-auto flex gap-7 lg:gap-9 items-start">
             {/* Yashank */}

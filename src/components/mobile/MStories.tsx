@@ -79,7 +79,7 @@ export default function MStories({ onNavigate }: { onNavigate?: (i: number) => v
     return shuffled(list);
   }, []);
 
-  // Greedy pack by true aspect ratio — columns end together, no lopsided tail.
+  // Greedy pack by true aspect ratio - columns end together, no lopsided tail.
   // Captions add a fixed ~34px per pin, folded into the estimate.
   const { left, right } = useMemo(() => {
     const l: (Pin & { i: number })[] = [];
@@ -140,7 +140,7 @@ export default function MStories({ onNavigate }: { onNavigate?: (i: number) => v
         </p>
       </Reveal>
 
-      {/* Two even columns — alternate distribution, ends together */}
+      {/* Two even columns - alternate distribution, ends together */}
       <div className="px-3 mt-4 flex gap-3 items-start">
         <div className="flex-1 min-w-0 space-y-5">
           {left.map((p, k) => (
@@ -154,7 +154,7 @@ export default function MStories({ onNavigate }: { onNavigate?: (i: number) => v
         </div>
       </div>
 
-      {/* Closer sits right after the wall — no trailing void */}
+      {/* Closer sits right after the wall - no trailing void */}
       <Reveal className="px-4 mt-6" y={24}>
         <div className="rounded-[24px] bg-[#2B0F14]/90 backdrop-blur-md p-6 text-center shadow-[0_18px_44px_rgba(43,15,20,0.35)] border border-[#C9A86A]/20">
           <div className="w-10 h-[3px] bg-[#C9A86A] rounded-full mx-auto" />
@@ -175,7 +175,7 @@ export default function MStories({ onNavigate }: { onNavigate?: (i: number) => v
         </p>
       </Reveal>
 
-      {/* Swipeable fullscreen viewer — solid, no glass */}
+      {/* Swipeable fullscreen viewer - solid, no glass */}
       <AnimatePresence>
         {view && idx !== null && (
           <motion.div

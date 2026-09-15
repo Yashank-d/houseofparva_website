@@ -10,7 +10,7 @@ export default function OriginsServicesCanvas({ onNavigate }: { onNavigate?: (i:
       eyebrow="What we offer"
       title="Services"
       script="every beginning, kept."
-      promise="From first lamps to first birthdays — photography and films for every beginning a family marks."
+      promise="From first lamps to first birthdays: photography and films for every beginning a family marks."
       groups={originsGroups}
       ctaScript="Every family has a first page."
       deep={["#2B0F14", "#1F0A0E", "#140608"]}

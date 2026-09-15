@@ -1,4 +1,4 @@
-// Measured once from Cloudinary originals — drives masonry balancing + placeholders.
+// Measured once from Cloudinary originals - drives masonry balancing + placeholders.
 export const PIN_ASPECT: Record<string, number> = {
   "https://res.cloudinary.com/fdzu3ih2/image/upload/v1786343463/DSC02000.jpg": 1.3333,
   "https://res.cloudinary.com/fdzu3ih2/image/upload/v1786343463/DSC02099.jpg": 1.3333,

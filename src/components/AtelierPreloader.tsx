@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-// Simple atelier veil — parchment backdrop matching the paper canvas,
+// Simple atelier veil - parchment backdrop matching the paper canvas,
 // atelier mark rises, wordmark + hairline sweep, then the whole veil
 // melts away. Desktop only (mobile shells already run MPreloader).
 export default function AtelierPreloader({

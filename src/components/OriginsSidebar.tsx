@@ -28,7 +28,7 @@ export default function OriginsSidebar({
           filter: "drop-shadow(12px 4px 18px rgba(0,0,0,0.4)) drop-shadow(6px 1px 8px rgba(0,0,0,0.25))"
         }}
       >
-        {/* Deep Velvet Physical Paper Sheet — real PNG mask (photo-real torn fiber) */}
+        {/* Deep Velvet Physical Paper Sheet - real PNG mask (photo-real torn fiber) */}
         <div
           className="absolute inset-0 paper-bg-velvet"
           style={{
@@ -62,7 +62,7 @@ export default function OriginsSidebar({
             </div>
           </div>
 
-          {/* Navigation — straight, no hover shift */}
+          {/* Navigation - straight, no hover shift */}
           <nav className="relative z-10 my-auto py-2">
             <ul className="space-y-[18px]">
               {pages.map((page) => {

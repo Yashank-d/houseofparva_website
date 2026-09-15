@@ -1,7 +1,7 @@
 import { SITE_URL } from "@/app/layout";
 import { weddingsServices, originsServices } from "@/data/services";
 
-// Structured data (schema.org) — tells Google & AI search exactly who the
+// Structured data (schema.org) - tells Google & AI search exactly who the
 // House is, where it serves, and every service it offers.
 export default function LocalBusinessSchema() {
   const offers = [...weddingsServices, ...originsServices].map((s) => ({

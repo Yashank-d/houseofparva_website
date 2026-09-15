@@ -62,9 +62,9 @@ export const artisticWorks: ArtisticWork[] = [
     date: "April 19, 2026",
     styleType: "blue-ink-polaroid",
     mainImage: "https://res.cloudinary.com/fdzu3ih2/image/upload/v1787640364/Edits_DSC02683_Large.jpg",
-    blueQuote: `"Engaged — two souls, one quiet promise"`,
-    handwrittenStory: "An engagement evening in the ancestral courtyard — henna-stained hands, marigolds and quiet laughter between two families as the rituals draw near.",
-    details: "Engagement — taped silver gelatin with indigo hand-lettering. Ancestral home, Bangalore.",
+    blueQuote: `"Engaged, two souls, one quiet promise"`,
+    handwrittenStory: "An engagement evening in the ancestral courtyard. Henna-stained hands, marigolds and quiet laughter between two families as the rituals draw near.",
+    details: "Engagement: taped silver gelatin with indigo hand-lettering. Ancestral home, Bangalore.",
     gallery: [
       "https://res.cloudinary.com/fdzu3ih2/image/upload/v1787640290/Indhu_Delivered_Collection.jpg",
       "https://res.cloudinary.com/fdzu3ih2/image/upload/v1787640280/15.jpg",

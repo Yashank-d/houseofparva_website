@@ -33,7 +33,7 @@ export default function OAbout() {
           </h2>
           <p className="font-sans-utility text-[13px] leading-relaxed text-[#F5EED5]/65 mt-2.5">
             Family photographers and filmmakers who believe childhood is best kept unhurried. No
-            stiff poses — just real rooms, real rituals, and everyday joy.
+            stiff poses. Just real rooms, real rituals, and everyday joy.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export default function OAbout() {
       </Reveal>
 
       <p className="font-serif-editorial italic text-[15px] text-[#2B0F14] text-center px-8 mt-5">
-        “Childhood rooms, festival mornings — kept forever.”
+        “Childhood rooms, festival mornings, kept forever.”
       </p>
       <p className="font-sans-utility text-[9px] tracking-[0.24em] uppercase text-[#1C1B18]/35 text-center mt-2">
         Parva Origins • Bangalore

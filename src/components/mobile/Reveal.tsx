@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-// Shared single IntersectionObserver — every <Reveal/> on the page shares it,
+// Shared single IntersectionObserver - every <Reveal/> on the page shares it,
 // so scroll reveals cost one observer total, not one per section.
 let io: IntersectionObserver | null = null;
 const pending = new Map<Element, () => void>();

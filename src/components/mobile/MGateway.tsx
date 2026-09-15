@@ -6,7 +6,7 @@ import MPreloader from "./MPreloader";
 
 const ateliers = [
   {
-    index: "Atelier — 01",
+    index: "Atelier 01",
     eyebrow: "Weddings",
     mark: "/Assets/Brands/Asset 30.svg",
     markAlt: "Parva Weddings",
@@ -15,11 +15,11 @@ const ateliers = [
     sub: "Pre-weddings • Weddings • Intimate • Destination • Photography • Films",
     cta: "Enter Weddings",
     href: "/parvaweddings",
-    label: "Enter Parva Weddings — weddings atelier",
+    label: "Enter Parva Weddings, weddings atelier",
     gold: true,
   },
   {
-    index: "Atelier — 02",
+    index: "Atelier 02",
     eyebrow: "Family & Beginnings",
     mark: "/Assets/Brands/Asset 29.svg",
     markAlt: "Parva Origins",
@@ -28,7 +28,7 @@ const ateliers = [
     sub: "Housewarmings • Poojas • Baby Showers • Namings • Family Celebrations",
     cta: "Enter Origins",
     href: "/parvaorigins",
-    label: "Enter Parva Origins — family and beginnings atelier",
+    label: "Enter Parva Origins, family and beginnings atelier",
     gold: false,
   },
 ];
@@ -61,7 +61,7 @@ export default function MGateway() {
             The House of Parva
           </h1>
           <p className="font-serif-editorial text-[15px] text-[#F5EED5]/70 italic font-light mt-2 leading-snug px-2">
-            Two worlds, one belief — every story, remembered beautifully.
+            Two worlds, one belief, every story, remembered beautifully.
           </p>
           <p className="font-serif-editorial text-[12px] text-[#F5EED5]/40 font-light mt-2 leading-relaxed px-4">
             House of Parva is a photography and visual storytelling house based in Bengaluru, documenting weddings, celebrations, families and the stories that live between them. Through Parva Weddings and Parva Origins, we create photographs and films with a cinematic, honest and timeless approach.
@@ -69,10 +69,10 @@ export default function MGateway() {
         </div>
 
         <p className="shrink-0 font-sans-utility text-[9px] tracking-[0.24em] uppercase text-[#F5EED5]/70 text-center mt-3 pl-[0.24em]">
-          Choose your story <span className="text-[#C9A86A]">—</span> tap to enter
+          Choose your story <span className="text-[#C9A86A]">·</span> tap to enter
         </p>
 
-        {/* both ateliers visible — full cards with Enter pills, substance over void */}
+        {/* both ateliers visible - full cards with Enter pills, substance over void */}
         <div className="mt-3 space-y-3 pb-1">
           {ateliers.map((a, i) => (
             <Reveal key={a.title} y={24} delay={0.1 + i * 0.12} duration={1}>

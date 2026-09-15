@@ -25,17 +25,17 @@ export async function POST(req: Request) {
       from: fromEmail,
       to: toEmail,
       replyTo: email,
-      subject: `New inquiry — ${name}${service ? ` — ${service}` : ""}`,
+      subject: `New inquiry: ${name}${service ? ` (${service})` : ""}`,
       html: `
         <div style="font-family: Georgia, serif; line-height: 1.6; color: #1C1B18;">
           <h2 style="margin: 0 0 8px; font-size: 18px;">New message from the House of Parva</h2>
           <p style="margin: 0 0 4px;"><strong>Name:</strong> ${escapeHtml(name)}</p>
           <p style="margin: 0 0 4px;"><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p style="margin: 0 0 4px;"><strong>Phone:</strong> ${escapeHtml(phone || "—")}</p>
-          <p style="margin: 0 0 4px;"><strong>Enquiring about:</strong> ${escapeHtml(service || "—")}</p>
+          <p style="margin: 0 0 4px;"><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
+          <p style="margin: 0 0 4px;"><strong>Enquiring about:</strong> ${escapeHtml(service || "Not provided")}</p>
           <p style="margin: 12px 0 4px;"><strong>Message:</strong></p>
           <p style="margin: 0; white-space: pre-wrap; background: #F5F1E8; padding: 12px; border-radius: 6px;">${escapeHtml(message)}</p>
-          <p style="margin: 16px 0 0; font-size: 12px; color: #888;">Sent from thehouseofparva.in — ${new Date().toISOString()}</p>
+          <p style="margin: 16px 0 0; font-size: 12px; color: #888;">Sent from thehouseofparva.in, ${new Date().toISOString()}</p>
         </div>
       `,
     });

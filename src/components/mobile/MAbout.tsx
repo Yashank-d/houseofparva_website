@@ -8,7 +8,7 @@ const founders = [
 ];
 
 const drives = [
-  { n: "01", title: "Connection", text: "Real is beautiful — in-between glances." },
+  { n: "01", title: "Connection", text: "Real is beautiful, in-between glances." },
   { n: "02", title: "Aesthetic", text: "Timeless, minimal, honest light." },
   { n: "03", title: "Experience", text: "Intimate rituals to wild celebrations." },
 ];
@@ -16,7 +16,7 @@ const drives = [
 export default function MAbout() {
   return (
     <div className="w-full pt-3 pb-[110px]">
-      {/* One emerald story panel — everything lives here, no card hopping */}
+      {/* One emerald story panel - everything lives here, no card hopping */}
       <Reveal
         className="mx-4 rounded-[28px] bg-[#2B0F14]/90 backdrop-blur-md overflow-hidden shadow-[0_18px_44px_rgba(43,15,20,0.35)] border border-[#C9A86A]/15"
         y={20}
@@ -31,12 +31,12 @@ export default function MAbout() {
             <span className="lowercase italic font-normal text-[#C9A86A]">beyond the moments.</span>
           </h2>
           <p className="font-sans-utility text-[13px] leading-relaxed text-[#F5F1E8]/65 mt-2.5">
-            No forced poses. No staged smiles — just real moments, raw emotions, storytelling that
+            No forced poses. No staged smiles. Just real moments, raw emotions, storytelling that
             feels authentically yours.
           </p>
         </div>
 
-        {/* Founders side by side — compact, faces up top */}
+        {/* Founders side by side - compact, faces up top */}
         <div className="px-6 mt-5 grid grid-cols-2 gap-3">
           {founders.map((f, i) => (
             <div key={f.name}>
@@ -63,7 +63,7 @@ export default function MAbout() {
           </p>
         </div>
 
-        {/* Drives — slim 3-col strip, desktop echo */}
+        {/* Drives - slim 3-col strip, desktop echo */}
         <div className="mx-4 mt-5 mb-4 rounded-[20px] bg-white/[0.05] border border-[#C9A86A]/20 px-2 py-4 grid grid-cols-3 gap-2">
           {drives.map((d) => (
             <div key={d.n} className="text-center px-1">

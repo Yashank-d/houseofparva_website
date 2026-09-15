@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-// Maison Reveal — desktop gateway splash.
+// Maison Reveal - desktop gateway splash.
 // Same choreography as mobile MPreloader house mode: mark in, brief hold,
 // glide home into the header while the veil dissolves. Timings match mobile
 // exactly; landing is logo-anchored so it docks pixel-true.
@@ -127,7 +127,7 @@ export default function GatewayPreloader({
       aria-hidden
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#2B0F14] text-[#F5EED5] overflow-hidden"
     >
-      {/* velvet depth — identical to the gateway so the dissolve is seamless */}
+      {/* velvet depth - identical to the gateway so the dissolve is seamless */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -150,7 +150,7 @@ export default function GatewayPreloader({
       <div className="pointer-events-none absolute bottom-[14px] left-[14px] w-5 h-5 border-l border-b border-[#C9A86A]/28" />
       <div className="pointer-events-none absolute bottom-[14px] right-[14px] w-5 h-5 border-r border-b border-[#C9A86A]/28" />
 
-      {/* shared element — glides into the header mark */}
+      {/* shared element - glides into the header mark */}
       <div ref={group} className="relative flex flex-col items-center">
         <img
           src="/Parva_logo.svg"

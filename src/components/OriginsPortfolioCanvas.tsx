@@ -28,7 +28,7 @@ type FlipRef = {
 };
 
 const CAPTIONS = [
-  "kept, forever —",
+  "kept, forever.",
   "cherished, always.",
   "in sacred light.",
   "joy in quiet corners.",
@@ -174,8 +174,8 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
   }, []);
 
   const getHeaderTitle = () => {
-    if (spread === 0) return "THE FAMILY ALBUM — VOLUME TITLE SPREAD";
-    if (spread >= totalSpreads) return `THE FAMILY ALBUM — THE END (SPREAD ${spread} OF ${totalSpreads})`;
+    if (spread === 0) return "THE FAMILY ALBUM: VOLUME TITLE SPREAD";
+    if (spread >= totalSpreads) return `THE FAMILY ALBUM: THE END (SPREAD ${spread} OF ${totalSpreads})`;
     return `THE FAMILY ALBUM (SPREAD ${spread} OF ${totalSpreads})`;
   };
 
@@ -202,7 +202,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
         onClick={() => turn(isLeft ? -1 : 1)}
       >
         <div className={`relative w-full h-full py-4 md:py-5 ${leafPadding}`}>
-          {/* Fore-edge gold gilt trim — strictly on outer edges */}
+          {/* Fore-edge gold gilt trim - strictly on outer edges */}
           {isLeft ? (
             <div aria-hidden className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-[#C9A86A] via-[#E8D4A0] to-[#C9A86A] opacity-80 pointer-events-none" />
           ) : (
@@ -283,7 +283,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
             {/* Floor shadow */}
             <div aria-hidden className="absolute -bottom-6 left-12 right-12 h-6 bg-black/20 blur-xl rounded-full pointer-events-none" />
 
-            {/* Book container — exact original size preserved */}
+            {/* Book container - exact original size preserved */}
             <div
               onWheel={onBookWheel}
               className="relative flex items-center justify-center w-[min(70vw,calc((100vh-230px)*1.52))] max-w-[960px] aspect-[1.52/1]"
@@ -345,7 +345,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                     </p>
                     <div className="pt-2">
                       <span className="font-script text-2xl md:text-3xl text-[#2B0F14] block">
-                        — House of Parva
+                        House of Parva
                       </span>
                       <span className="font-sans-utility text-[8.5px] tracking-[0.25em] uppercase text-[#1C1B18]/50 block mt-1">
                         BANGALORE & BEYOND
@@ -444,7 +444,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                             draggable={false}
                             loading={sIndex < 3 ? "eager" : "lazy"}
                           />
-                          {/* Soft organic binding valley curve — zero hard line, natural physical depth */}
+                          {/* Soft organic binding valley curve - zero hard line, natural physical depth */}
                           <div
                             aria-hidden
                             className="absolute top-0 right-0 bottom-0 w-10 sm:w-14 bg-gradient-to-l from-black/[0.12] via-black/[0.03] to-transparent pointer-events-none mix-blend-multiply"
@@ -477,7 +477,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                             draggable={false}
                             loading={sIndex < 3 ? "eager" : "lazy"}
                           />
-                          {/* Soft organic binding valley curve — zero hard line, natural physical depth */}
+                          {/* Soft organic binding valley curve - zero hard line, natural physical depth */}
                           <div
                             aria-hidden
                             className="absolute top-0 left-0 bottom-0 w-10 sm:w-14 bg-gradient-to-r from-black/[0.12] via-black/[0.03] to-transparent pointer-events-none mix-blend-multiply"

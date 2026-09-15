@@ -8,11 +8,11 @@ interface ServicesMenuProps {
   eyebrow: string;
   title: string;
   script: string;
-  /** one-line promise — the client knows what we do before reading a row */
+  /** one-line promise so the client knows what we do before reading a row */
   promise: string;
   groups: ServiceGroup[];
   ctaScript: string;
-  /** deep velvet tone — burgundy for weddings, near-black velvet for origins */
+  /** deep velvet tone: burgundy for weddings, near-black velvet for origins */
   deep: [string, string, string];
   onEnquire: () => void;
 }
@@ -35,7 +35,7 @@ export default function ServicesMenu({
   deep,
   onEnquire,
 }: ServicesMenuProps) {
-  // One continuous 01–N run across groups, remembering group boundaries.
+  // One continuous 01 to N run across groups, remembering group boundaries.
   const flat: FlatItem[] = [];
   {
     let n = 0;
@@ -126,7 +126,7 @@ export default function ServicesMenu({
           <span aria-hidden className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-[#C9A86A]" />
 
           <div className="relative h-full flex flex-col px-10 py-5">
-            {/* Masthead — context first */}
+            {/* Masthead - context first */}
             <div className="text-center shrink-0">
               <span className="font-sans-utility text-[10px] tracking-[0.38em] uppercase text-[#C9A86A] font-semibold pl-[0.38em]">
                 ✦ &nbsp;{eyebrow}&nbsp; ✦
@@ -144,7 +144,7 @@ export default function ServicesMenu({
               </p>
             </div>
 
-            {/* Grouped ledger — everything visible, nothing hidden */}
+            {/* Grouped ledger - everything visible, nothing hidden */}
             <div className="flex-1 min-h-0 grid grid-cols-2 gap-x-12 grid-rows-[1fr_auto] mt-1">
               {head.map((g) => (
                 <section key={g.title} aria-label={g.title} className="flex flex-col min-h-0">
