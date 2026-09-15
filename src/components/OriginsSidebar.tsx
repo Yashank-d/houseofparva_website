@@ -14,8 +14,9 @@ export default function OriginsSidebar({
   const pages = [
     { name: "THE WELCOME", targetIdx: 0 },
     { name: "STORIES WE'VE KEPT", targetIdx: 1 },
-    { name: "WHO WE ARE", targetIdx: 2 },
-    { name: "BEGIN YOUR CHAPTER", targetIdx: 3 },
+    { name: "WHAT WE OFFER", targetIdx: 2 },
+    { name: "WHO WE ARE", targetIdx: 3 },
+    { name: "BEGIN YOUR CHAPTER", targetIdx: 4 },
   ];
 
   return (

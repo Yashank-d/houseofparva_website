@@ -11,12 +11,13 @@ export default function SidebarScrapbook({
   currentPage,
   onSelectPage,
 }: SidebarScrapbookProps) {
-  // Exactly 4 creative editorial navigation items (No numbers)
+  // Exactly 5 creative editorial navigation items (No numbers)
   const pages = [
     { name: "THE WELCOME", targetIdx: 0 },
     { name: "STORIES WE'VE TOLD", targetIdx: 1 },
-    { name: "WHO WE ARE", targetIdx: 2 },
-    { name: "BEGIN YOUR CHAPTER", targetIdx: 3 },
+    { name: "WHAT WE OFFER", targetIdx: 2 },
+    { name: "WHO WE ARE", targetIdx: 3 },
+    { name: "BEGIN YOUR CHAPTER", targetIdx: 4 },
   ];
 
   return (

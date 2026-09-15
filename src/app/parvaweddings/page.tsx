@@ -6,6 +6,7 @@ import Link from "next/link";
 import SidebarScrapbook from "@/components/SidebarScrapbook";
 import HomeCanvas from "@/components/HomeCanvas";
 import PortfolioCanvas from "@/components/PortfolioCanvas";
+import ServicesCanvas from "@/components/ServicesCanvas";
 import AboutCanvas from "@/components/AboutCanvas";
 import ContactCanvas from "@/components/ContactCanvas";
 import MHome from "@/components/mobile/MHome";
@@ -21,7 +22,7 @@ export default function ParvaWeddingsPage() {
   const isLockedRef = useRef(false);
   const touchStartY = useRef<number | null>(null);
 
-  const totalPages = 4;
+  const totalPages = 5;
 
   const goToNextPage = () => {
     setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : prev));
@@ -113,8 +114,10 @@ export default function ParvaWeddingsPage() {
       case 1:
         return <PortfolioCanvas />;
       case 2:
-        return <AboutCanvas />;
+        return <ServicesCanvas onNavigate={setCurrentPage} />;
       case 3:
+        return <AboutCanvas />;
+      case 4:
         return <ContactCanvas />;
       default:
         return <HomeCanvas onNavigate={setCurrentPage} />;
@@ -127,8 +130,10 @@ export default function ParvaWeddingsPage() {
       case 1:
         return <MStories onNavigate={setCurrentPage} />;
       case 2:
-        return <MAbout />;
+        return <ServicesCanvas onNavigate={setCurrentPage} />;
       case 3:
+        return <MAbout />;
+      case 4:
         return <MContact />;
       default:
         return <MHome onNavigate={setCurrentPage} />;
@@ -147,8 +152,9 @@ export default function ParvaWeddingsPage() {
     const navItems = [
       { short: "Home", idx: 0, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" /></svg>) },
       { short: "Stories", idx: 1, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" /><circle cx="9" cy="9" r="1.6" /><path d="m21 15-4.5-4.5L6 21" /></svg>) },
-      { short: "About", idx: 2, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5" /><path d="M4.5 20.5c1.4-3.6 4.2-5.5 7.5-5.5s6.1 1.9 7.5 5.5" /></svg>) },
-      { short: "Contact", idx: 3, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="4" /><path d="m3.5 7 8.5 6 8.5-6" /></svg>) },
+      { short: "Services", idx: 2, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6h16M4 12h16M4 18h10" /></svg>) },
+      { short: "About", idx: 3, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5" /><path d="M4.5 20.5c1.4-3.6 4.2-5.5 7.5-5.5s6.1 1.9 7.5 5.5" /></svg>) },
+      { short: "Contact", idx: 4, icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="4" /><path d="m3.5 7 8.5 6 8.5-6" /></svg>) },
     ];
     return (
       <div className="w-full h-[100dvh] overflow-hidden paper-bg-parchment text-[#1C1B18] flex flex-col relative font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
@@ -234,9 +240,9 @@ export default function ParvaWeddingsPage() {
 
           {/* Clean Underlined Script CTA Button -> Contact Page (Hidden on Contact Page) */}
           <div className="flex items-center gap-6">
-            {currentPage !== 3 && (
+            {currentPage !== 4 && (
               <button
-                onClick={() => setCurrentPage(3)}
+                onClick={() => setCurrentPage(4)}
                 className="group inline-flex items-center gap-2.5 font-script text-xl md:text-2xl text-[#1C1B18] hover:text-[#641F27] transition-colors relative cursor-pointer py-1"
                 title="Begin Your Chapter | Contact Us"
               >
@@ -301,17 +307,17 @@ export default function ParvaWeddingsPage() {
           <div className="absolute left-1/2 -translate-x-1/2 z-20">
             <button
               onClick={() => {
-                if (currentPage < 3) {
+                if (currentPage < 4) {
                   goToNextPage();
                 } else {
                   goToPrevPage();
                 }
               }}
               className="group flex items-center gap-2 cursor-pointer transition-transform duration-300 hover:scale-105"
-              title={currentPage < 3 ? "Scroll down to next section" : "Scroll up to previous section"}
+              title={currentPage < 4 ? "Scroll down to next section" : "Scroll up to previous section"}
             >
               <div className="w-3.5 h-6 border border-[#1C1B18]/40 rounded-full flex justify-center items-center relative overflow-hidden group-hover:border-[#641F27] transition-colors">
-                {currentPage < 3 ? (
+                {currentPage < 4 ? (
                   <motion.div
                     animate={{ y: [-3, 3, -3] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
@@ -327,7 +333,7 @@ export default function ParvaWeddingsPage() {
               </div>
 
               <span className="font-sans-utility text-[9.5px] tracking-[0.25em] uppercase text-[#1C1B18]/70 group-hover:text-[#641F27] transition-colors font-medium">
-                {currentPage < 3 ? "Scroll down" : "Scroll up"}
+                {currentPage < 4 ? "Scroll down" : "Scroll up"}
               </span>
             </button>
           </div>

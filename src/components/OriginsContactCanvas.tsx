@@ -1,42 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { blurPlaceholder } from "./img";
+import EnquiryForm from "./EnquiryForm";
+import { originsServices } from "@/data/services";
 
 export default function OriginsContactCanvas() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to send.");
-      setSubmitted(true);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="w-full h-full p-6 md:p-12 flex flex-col justify-between relative overflow-hidden select-none">
       {/* Header */}
@@ -65,97 +36,15 @@ export default function OriginsContactCanvas() {
             From naming ceremonies to housewarmings and family sessions — tell us what you&apos;re celebrating, and we&apos;d be honored to keep it.
           </p>
 
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-6 max-w-lg">
-              <div>
-                <label className="block font-sans-utility text-[9px] tracking-[0.25em] uppercase text-[#1C1B18]/70 mb-1 font-semibold">
-                  YOUR NAME
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-transparent border-b border-[#1C1B18]/30 py-2 text-xs font-sans-utility focus:outline-none focus:border-[#2B0F14] transition-colors"
-                  placeholder="Enter your name"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block font-sans-utility text-[9px] tracking-[0.25em] uppercase text-[#1C1B18]/70 mb-1 font-semibold">
-                    EMAIL ADDRESS
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-transparent border-b border-[#1C1B18]/30 py-2 text-xs font-sans-utility focus:outline-none focus:border-[#2B0F14] transition-colors"
-                    placeholder="hello@domain.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="block font-sans-utility text-[9px] tracking-[0.25em] uppercase text-[#1C1B18]/70 mb-1 font-semibold">
-                    PHONE NUMBER
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-transparent border-b border-[#1C1B18]/30 py-2 text-xs font-sans-utility focus:outline-none focus:border-[#2B0F14] transition-colors"
-                    placeholder="+91"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-sans-utility text-[9px] tracking-[0.25em] uppercase text-[#1C1B18]/70 mb-1 font-semibold">
-                  YOUR MESSAGE
-                </label>
-                <textarea
-                  rows={3}
-                  required
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-transparent border-b border-[#1C1B18]/30 py-2 text-xs font-sans-utility focus:outline-none focus:border-[#2B0F14] transition-colors resize-none"
-                  placeholder="Tell us about your celebration, dates, or family story..."
-                />
-              </div>
-
-              {error && (
-                <p className="text-xs text-[#2B0F14] bg-[#F5F1E8] border border-[#2B0F14]/20 px-3 py-2 rounded-xs font-sans-utility">{error}</p>
-              )}
-              {/* Velvet Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="px-8 py-3.5 bg-[#2B0F14] text-[#F5EED5] hover:bg-[#641F27] disabled:opacity-60 disabled:cursor-not-allowed font-sans-utility text-xs tracking-[0.25em] uppercase transition-all duration-500 rounded-xs shadow-md flex items-center gap-3 group"
-              >
-                <span>{loading ? "SENDING…" : "SEND MESSAGE"}</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
-              </button>
-            </form>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="p-6 bg-[#F5F1E8] rounded-xs scrapbook-shadow text-center my-4 max-w-md"
-            >
-              <h3 className="font-serif-editorial text-2xl uppercase tracking-wider text-[#1C1B18] mb-2">
-                Message Received
-              </h3>
-              <p className="font-script text-xl text-[#2B0F14] mb-2">
-                "The first page of your family&apos;s archive starts here."
-              </p>
-              <p className="font-sans-utility text-xs text-[#1C1B18]/80">
-                We will get back to you within 24 hours.
-              </p>
-            </motion.div>
-          )}
+          <EnquiryForm
+            accent="#2B0F14"
+            services={originsServices.map((s) => s.name)}
+            messagePlaceholder="Tell us about your celebration, dates, or family story..."
+            successScript="The first page of your family's archive starts here."
+          />
         </div>
 
+        {/* Right Column: Contact Scrapbook Collage */}
         {/* Right Column: Velvet Keepsake Collage */}
         <div className="lg:col-span-6 relative hidden lg:block">
           <div className="relative w-full max-w-md mx-auto">

@@ -587,7 +587,7 @@ export default function OriginsPortfolioCanvas({ onNavigate }: { onNavigate?: (i
                       </p>
                       <button
                         type="button"
-                        onClick={() => onNavigate?.(3)}
+                        onClick={() => onNavigate?.(4)}
                         className="mt-5 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#C9A86A] text-[#2B0F14] font-sans-utility text-[9.5px] tracking-[0.22em] uppercase font-bold hover:bg-[#E8D4A0] hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg cursor-pointer"
                       >
                         <span>BEGIN YOURS</span>
