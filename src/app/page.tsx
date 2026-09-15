@@ -163,7 +163,7 @@ export default function HouseOfParvaGateway() {
       </main>
 
       <footer className="w-full flex justify-center items-center px-4 sm:px-6 md:px-8 pb-[calc(12px+env(safe-area-inset-bottom))] md:pb-5 pt-3 relative z-20 shrink-0">
-        <span className="font-sans-utility text-[9px] sm:text-[8.5px] tracking-[0.18em] sm:tracking-[0.26em] uppercase text-[#F5EED5]/30 md:text-[#F5EED5]/20 text-center leading-relaxed">Ocean and Origin LLP • Est. MMXXVI<br className="sm:hidden" /><span className="hidden sm:inline"> — </span>hello@thehouseofparva.in</span>
+        <span className="font-sans-utility text-[9px] sm:text-[8.5px] tracking-[0.18em] sm:tracking-[0.26em] uppercase text-[#F5EED5]/30 md:text-[#F5EED5]/20 text-center leading-relaxed">© 2026 Ocean and Origin LLP • All Rights Reserved<br className="sm:hidden" /><span className="hidden sm:inline"> — </span>hello@thehouseofparva.in</span>
       </footer>
     </div>
   );
