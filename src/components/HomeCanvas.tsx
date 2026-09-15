@@ -105,7 +105,7 @@ export default function HomeCanvas({ onNavigate }: HomeCanvasProps) {
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] shadow-2xl">
               <Image
                 src="https://res.cloudinary.com/fdzu3ih2/image/upload/w_1080,q_auto,f_auto/v1787640290/Indhu_Delivered_Collection.jpg"
-                alt="Indhu & Abhinandhan | Parva Weddings"
+                alt="Indhu & Abhinandhan — wedding photography by Parva Weddings, Bangalore"
                 fill
                 priority
                 // Cloudinary already serves transformed bytes — routing through

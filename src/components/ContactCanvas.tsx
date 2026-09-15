@@ -60,7 +60,7 @@ export default function ContactCanvas() {
               <div className="aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] mb-4 ring-1 ring-[#C9A86A]/10 relative">
                 <Image
                   src="https://res.cloudinary.com/fdzu3ih2/image/upload/w_800,q_auto,f_auto/v1787640286/3.jpg"
-                  alt="Couple"
+                  alt="Indian wedding couple portrait by Parva Weddings, Bangalore"
                   fill
                   // Cloudinary already serves transformed bytes — routing through
                   // /_next/image would add a second fetch + encode round-trip.
