@@ -164,7 +164,7 @@ export default function MStories({ onNavigate }: { onNavigate?: (i: number) => v
             <span className="lowercase italic font-normal text-[#C9A86A]">let&apos;s create yours.</span>
           </p>
           <button
-            onClick={() => onNavigate?.(3)}
+            onClick={() => onNavigate?.(4)}
             className="w-full h-[50px] mt-4 rounded-full bg-[#C9A86A] text-[#2B0F14] font-sans-utility text-[11px] tracking-[0.2em] uppercase font-bold outline-none active:scale-[0.98] transition"
           >
             Begin yours →
