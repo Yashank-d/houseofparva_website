@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Cormorant_Garamond, Montserrat, Caveat, Reenie_Beanie } from "next/font/google";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import "./globals.css";
@@ -108,6 +109,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#EAE1D2] text-[#1C1B18] font-sans selection:bg-[#641F27] selection:text-[#F5F1E8]">
         <LocalBusinessSchema />
+        {/* Google tag (gtag.js) — Analytics G-813F5T54ZQ, loads after hydration */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-813F5T54ZQ" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-813F5T54ZQ');`}
+        </Script>
         {/* Warm up the Cloudinary connection before hero images request it */}
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
