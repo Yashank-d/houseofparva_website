@@ -61,7 +61,7 @@ export default function OriginsContactCanvas() {
               <div className="aspect-[4/5] w-full overflow-hidden bg-[#E8DFD0] mb-4 ring-1 ring-[#C9A86A]/10 relative">
                 <Image
                   src="/Assets/ContactPageImg.jpg"
-                  alt="House of Parva family portrait"
+                  alt="House of Parva family portrait — family photography in Bangalore"
                   fill
                   sizes="(max-width: 768px) 80vw, 400px"
                   placeholder="blur"

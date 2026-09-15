@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "House of Parva | Wedding Photographer in Bangalore & Family Photography",
+      "House of Parva | Professional Photography & Videography in Bangalore",
     template: "%s | House of Parva",
   },
   description:

@@ -96,7 +96,7 @@ export default function AboutCanvas() {
               <div className="aspect-[4/5.6] w-full overflow-hidden bg-[#E8DFD0]">
                 <img
                   src="/Assets/Founders/Founder-B_768.jpg"
-                  alt="Yashank D."
+                  alt="Yashank D., founder and wedding photographer at House of Parva, Bangalore"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover"
@@ -121,7 +121,7 @@ export default function AboutCanvas() {
               <div className="aspect-[4/5.6] w-full overflow-hidden bg-[#E8DFD0]">
                 <img
                   src="/Assets/Founders/Founder-A_768.jpg"
-                  alt="Tejas"
+                  alt="Tejas, founder and wedding photographer at House of Parva, Bangalore"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover"

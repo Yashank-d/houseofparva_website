@@ -43,7 +43,7 @@ export default function MAbout() {
               <div className="rounded-[18px] overflow-hidden bg-[#1E0A0E] aspect-[3/4]">
                 <img
                   src={f.src}
-                  alt={f.name}
+                  alt={`${f.name}, ${f.role} at Parva Weddings, Bangalore`}
                   loading={i === 0 ? "eager" : "lazy"}
                   decoding="async"
                   className="w-full h-full object-cover object-top"

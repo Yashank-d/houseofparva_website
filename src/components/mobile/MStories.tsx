@@ -42,7 +42,7 @@ function PinCard({ p, eager, onOpen }: { p: Pin; eager?: boolean; onOpen: () => 
       >
         <img
           src={thumb(p.src)}
-          alt={p.couple}
+          alt={`${p.couple} — candid wedding photography in ${p.location} by Parva Weddings`}
           loading={eager ? "eager" : "lazy"}
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
@@ -204,7 +204,7 @@ export default function MStories({ onNavigate }: { onNavigate?: (i: number) => v
                 <motion.img
                   key={idx}
                   src={view.src}
-                  alt={view.couple}
+                  alt={`${view.couple} — wedding photography in ${view.location} by Parva Weddings`}
                   custom={dir}
                   initial={{ opacity: 0, x: dir > 0 ? 60 : -60 }}
                   animate={{ opacity: 1, x: 0 }}
