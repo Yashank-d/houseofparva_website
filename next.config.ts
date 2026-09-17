@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/icon.svg",
+        destination: "/icon.png",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -16,12 +16,15 @@ export default function LocalBusinessSchema() {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         name: "Ocean and Origin LLP",
+        logo: `${SITE_URL}/icon.png`,
       },
       {
         "@type": "ProfessionalService",
         "@id": `${SITE_URL}/#business`,
         name: "House of Parva",
         parentOrganization: { "@id": `${SITE_URL}/#organization` },
+        logo: `${SITE_URL}/icon.png`,
+        image: `${SITE_URL}/icon.png`,
         description:
           "Fine-art wedding photography and cinematic films in Bangalore: pre-weddings, destination and intimate weddings, proposals, maternity, baby showers, naming ceremonies, housewarmings, poojas and family photography across Karnataka and India.",
         url: SITE_URL,

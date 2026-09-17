@@ -48,7 +48,14 @@ export const metadata: Metadata = {
   description:
     "House of Parva: fine-art wedding photography & cinematic films in Bangalore: pre-weddings, destination & intimate weddings, proposals, maternity, baby showers, naming ceremonies, housewarmings and family sessions across Karnataka & India.",
   icons: {
-    icon: "/icon.png",
+    icon: [
+      { url: "/icon.png", sizes: "640x640", type: "image/png" },
+      { url: "/favicon.ico", sizes: "48x48 32x32 16x16", type: "image/x-icon" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
   },
   authors: [{ name: "House of Parva" }],
   creator: "House of Parva",
