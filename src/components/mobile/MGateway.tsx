@@ -140,8 +140,29 @@ export default function MGateway() {
           </div>
         </div>
 
+        {/* Direct Contact Card */}
+        <div className="mt-4 rounded-[18px] bg-white/[0.05] border border-[#C9A86A]/20 p-3.5 text-center">
+          <p className="font-sans-utility text-[9px] tracking-[0.26em] uppercase text-[#C9A86A] font-bold">
+            Direct Atelier Contact
+          </p>
+          <div className="mt-2.5 flex items-center justify-center gap-3 font-sans-utility text-[13px] text-[#F5EED5]">
+            <a href="tel:+917892524833" className="hover:text-[#C9A86A] transition-colors py-1">
+              +91 78925 24833
+            </a>
+            <span className="text-[#C9A86A]/40">·</span>
+            <a href="tel:+919739585818" className="hover:text-[#C9A86A] transition-colors py-1">
+              +91 97395 85818
+            </a>
+          </div>
+          <div className="mt-1.5">
+            <a href="mailto:hello@thehouseofparva.in" className="font-sans-utility text-[11px] text-[#F5EED5]/65 hover:text-[#C9A86A] transition-colors">
+              hello@thehouseofparva.in
+            </a>
+          </div>
+        </div>
+
         <p className="shrink-0 font-sans-utility text-[8px] tracking-[0.22em] uppercase text-[#F5EED5]/35 text-center mt-3 pb-2 pl-[0.22em]">
-          Two ateliers • One house • © 2026 Ocean and Origin LLP
+          Two ateliers • One house • Bengaluru & Beyond • © 2026 Ocean and Origin LLP
         </p>
       </main>
     </div>

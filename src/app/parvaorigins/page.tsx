@@ -276,6 +276,12 @@ export default function ParvaOriginsPage() {
               </svg>
               <span>hello@thehouseofparva.in</span>
             </a>
+            <span className="text-[#1C1B18]/20 font-light mx-1">|</span>
+            <div className="flex items-center gap-2 font-sans text-[12px] md:text-[12.5px] text-[#1C1B18]/80">
+              <a href="tel:+917892524833" className="hover:text-[#2B0F14] transition-colors">+91 78925 24833</a>
+              <span className="text-[#1C1B18]/20">·</span>
+              <a href="tel:+919739585818" className="hover:text-[#2B0F14] transition-colors">+91 97395 85818</a>
+            </div>
           </div>
 
           <div className="absolute left-1/2 -translate-x-1/2 z-20">

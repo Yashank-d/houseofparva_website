@@ -83,6 +83,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "IN-KA",
     "geo.placename": "Bengaluru",
+    telephone: "+917892524833, +919739585818",
+    "format-detection": "telephone=yes",
   },
 };
 

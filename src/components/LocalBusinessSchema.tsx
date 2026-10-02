@@ -29,6 +29,23 @@ export default function LocalBusinessSchema() {
           "Fine-art wedding photography and cinematic films in Bangalore: pre-weddings, destination and intimate weddings, proposals, maternity, baby showers, naming ceremonies, housewarmings, poojas and family photography across Karnataka and India.",
         url: SITE_URL,
         email: "hello@thehouseofparva.in",
+        telephone: ["+917892524833", "+919739585818"],
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: "+91-7892524833",
+            contactType: "reservations",
+            areaServed: "IN",
+            availableLanguage: ["en", "hi", "kn"],
+          },
+          {
+            "@type": "ContactPoint",
+            telephone: "+91-9739585818",
+            contactType: "customer support",
+            areaServed: "IN",
+            availableLanguage: ["en", "hi", "kn"],
+          },
+        ],
         address: {
           "@type": "PostalAddress",
           addressLocality: "Bengaluru",
@@ -51,8 +68,20 @@ export default function LocalBusinessSchema() {
           itemListElement: offers,
         },
         subOrganization: [
-          { "@type": "ProfessionalService", name: "Parva Weddings", url: `${SITE_URL}/parvaweddings` },
-          { "@type": "ProfessionalService", name: "Parva Origins", url: `${SITE_URL}/parvaorigins` },
+          {
+            "@type": "ProfessionalService",
+            name: "Parva Weddings",
+            url: `${SITE_URL}/parvaweddings`,
+            telephone: ["+917892524833", "+919739585818"],
+            email: "hello@thehouseofparva.in",
+          },
+          {
+            "@type": "ProfessionalService",
+            name: "Parva Origins",
+            url: `${SITE_URL}/parvaorigins`,
+            telephone: ["+917892524833", "+919739585818"],
+            email: "hello@thehouseofparva.in",
+          },
         ],
       },
       {

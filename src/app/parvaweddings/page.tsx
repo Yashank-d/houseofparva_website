@@ -301,6 +301,12 @@ export default function ParvaWeddingsPage() {
               </svg>
               <span>hello@thehouseofparva.in</span>
             </a>
+            <span className="text-[#1C1B18]/20 font-light mx-1">|</span>
+            <div className="flex items-center gap-2 font-sans text-[12px] md:text-[12.5px] text-[#1C1B18]/80">
+              <a href="tel:+917892524833" className="hover:text-[#641F27] transition-colors">+91 78925 24833</a>
+              <span className="text-[#1C1B18]/20">·</span>
+              <a href="tel:+919739585818" className="hover:text-[#641F27] transition-colors">+91 97395 85818</a>
+            </div>
           </div>
 
           {/* ABSOLUTE CENTER: Dynamic Mouse Scroll Indicator */}

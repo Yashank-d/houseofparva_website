@@ -102,6 +102,16 @@ export default function ContactCanvas() {
                   </span>
                   <span className="font-sans-utility text-[11px] tracking-wide">hello@thehouseofparva.in</span>
                 </a>
+                <div className="flex items-center gap-2.5">
+                  <span className="w-6 h-6 rounded-full bg-white/[0.06] border border-[#C9A86A]/20 flex items-center justify-center text-[#C9A86A]">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  </span>
+                  <div className="flex items-center gap-2 font-sans-utility text-[11px] tracking-wide">
+                    <a href="tel:+917892524833" className="hover:text-[#C9A86A] transition-colors">+91 78925 24833</a>
+                    <span className="text-[#C9A86A]/40">·</span>
+                    <a href="tel:+919739585818" className="hover:text-[#C9A86A] transition-colors">+91 97395 85818</a>
+                  </div>
+                </div>
                 <a href="https://instagram.com/weddingsbyparva" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2.5 hover:text-[#C9A86A] transition-colors">
                   <span className="w-6 h-6 rounded-full bg-white/[0.06] border border-[#C9A86A]/20 flex items-center justify-center text-[#C9A86A] group-hover:bg-[#C9A86A] group-hover:text-[#2B0F14] transition-colors">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>

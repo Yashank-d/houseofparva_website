@@ -50,8 +50,14 @@ export default function HouseOfParvaGateway() {
 
       {/* top bar - larger tap targets on mobile, no hidden text */}
       <div className="w-full flex justify-between items-center px-4 sm:px-7 md:px-10 pt-3.5 md:pt-6 relative z-20 shrink-0">
-        <a href="https://instagram.com/weddingsbyparva" target="_blank" rel="noopener noreferrer" className="font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.18em] md:tracking-[0.28em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/25 py-2 -my-2">IG · @weddingsbyparva</a>
-        <span className="font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.18em] md:tracking-[0.28em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/25 py-2 -my-2">Est. MMXXVI</span>
+        <a href="https://instagram.com/weddingsbyparva" target="_blank" rel="noopener noreferrer" className="font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.18em] md:tracking-[0.28em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/25 hover:text-[#C9A86A] transition-colors py-2 -my-2">IG · @weddingsbyparva</a>
+        <div className="flex items-center gap-2.5 font-sans-utility text-[10px] md:text-[8.5px] tracking-[0.16em] md:tracking-[0.22em] uppercase text-[#F5EED5]/45 md:text-[#F5EED5]/30">
+          <a href="tel:+917892524833" className="hover:text-[#C9A86A] transition-colors">+91 78925 24833</a>
+          <span className="text-[#C9A86A]/40">·</span>
+          <a href="tel:+919739585818" className="hover:text-[#C9A86A] transition-colors">+91 97395 85818</a>
+          <span className="hidden sm:inline text-[#C9A86A]/40">·</span>
+          <span className="hidden sm:inline">Est. MMXXVI</span>
+        </div>
       </div>
 
       {/* centered maison mark - splash mark glides home into this (opacity-only so the landing rect stays stable mid-glide) */}
@@ -162,8 +168,15 @@ export default function HouseOfParvaGateway() {
         <p className="font-sans-utility text-[9px] sm:text-[8.5px] tracking-[0.22em] sm:tracking-[0.28em] uppercase text-[#F5EED5]/35 md:text-[#F5EED5]/32 mt-3.5 md:mt-4 text-center px-4">Two ateliers • One house • Bengaluru & Beyond</p>
       </main>
 
-      <footer className="w-full flex justify-center items-center px-4 sm:px-6 md:px-8 pb-[calc(12px+env(safe-area-inset-bottom))] md:pb-5 pt-3 relative z-20 shrink-0">
-        <span className="font-sans-utility text-[9px] sm:text-[8.5px] tracking-[0.18em] sm:tracking-[0.26em] uppercase text-[#F5EED5]/30 md:text-[#F5EED5]/20 text-center leading-relaxed">© 2026 Ocean and Origin LLP • All Rights Reserved<br className="sm:hidden" /><span className="hidden sm:inline"> · </span>hello@thehouseofparva.in</span>
+      <footer className="w-full flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 md:px-8 pb-[calc(12px+env(safe-area-inset-bottom))] md:pb-5 pt-3 relative z-20 shrink-0 text-[9px] sm:text-[8.5px] font-sans-utility tracking-[0.18em] sm:tracking-[0.24em] uppercase text-[#F5EED5]/40 gap-2">
+        <div className="flex items-center gap-2.5 flex-wrap justify-center">
+          <a href="tel:+917892524833" className="hover:text-[#C9A86A] transition-colors">+91 78925 24833</a>
+          <span>·</span>
+          <a href="tel:+919739585818" className="hover:text-[#C9A86A] transition-colors">+91 97395 85818</a>
+          <span>·</span>
+          <a href="mailto:hello@thehouseofparva.in" className="hover:text-[#C9A86A] transition-colors normal-case tracking-normal">hello@thehouseofparva.in</a>
+        </div>
+        <span>© 2026 Ocean and Origin LLP • Bengaluru, India</span>
       </footer>
     </div>
   );
