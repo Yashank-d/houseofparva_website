@@ -63,7 +63,16 @@ export default function HouseOfParvaGateway() {
       {/* centered maison mark - splash mark glides home into this (opacity-only so the landing rect stays stable mid-glide) */}
       <motion.header initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 0.55 }} className="w-full flex flex-col items-center relative z-20 pt-3 md:pt-5 shrink-0">
         <div ref={headMark} className="flex flex-col items-center">
-          <img src="/Parva_logo.svg" alt="House of Parva" className="w-[66px] sm:w-[72px] md:w-[86px] h-auto" style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 1px 8px rgba(0,0,0,0.35))" }} />
+          <img
+            src="/Parva_logo.svg"
+            alt="House of Parva"
+            width={86}
+            height={86}
+            fetchPriority="high"
+            decoding="async"
+            className="w-[66px] sm:w-[72px] md:w-[86px] h-auto"
+            style={{ filter: "brightness(0) invert(0.94) sepia(0.12) saturate(0.3) drop-shadow(0 1px 8px rgba(0,0,0,0.35))" }}
+          />
           <div className="flex items-center gap-2.5 md:gap-3 mt-2.5 md:mt-3">
             <span className="h-px w-6 md:w-8 bg-[#C9A86A]/22" />
             <span className="font-sans-utility text-[8px] sm:text-[8.5px] md:text-[9px] tracking-[0.28em] md:tracking-[0.36em] uppercase text-[#F5EED5]/55 md:text-[#F5EED5]/42">Fine Art & Storytelling House</span>
@@ -101,7 +110,7 @@ export default function HouseOfParvaGateway() {
             <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-20 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/40 to-transparent opacity-80" />
             <span className="font-sans-utility text-[9px] sm:text-[9.5px] tracking-[0.30em] sm:tracking-[0.36em] uppercase text-[#C9A86A]">Atelier · 01 • Weddings</span>
             <div className="w-[76px] sm:w-[84px] md:w-[102px] mt-4" style={{ filter: "brightness(0) invert(1) opacity(0.96)" }}>
-              <img src="/Assets/Brands/Asset 30.svg" alt="Parva Weddings" className="w-full h-auto" />
+              <img src="/Assets/Brands/Asset 30.svg" alt="Parva Weddings" width={102} height={102} decoding="async" className="w-full h-auto" />
             </div>
             <span className="font-sans-utility text-[9px] sm:text-[10px] tracking-[0.44em] uppercase text-[#F5EED5]/70 mt-4">Parva</span>
             <h2 className="font-serif-editorial text-[26px] sm:text-[30px] md:text-[36px] tracking-[0.16em] sm:tracking-[0.18em] uppercase text-[#F5EED5] leading-none mt-1">Weddings</h2>
@@ -120,7 +129,7 @@ export default function HouseOfParvaGateway() {
             <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-20 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/40 to-transparent opacity-80" />
             <span className="font-sans-utility text-[9px] sm:text-[9.5px] tracking-[0.30em] sm:tracking-[0.36em] uppercase text-[#C9A86A]">Atelier · 02 • Family & Beginnings</span>
             <div className="w-[76px] sm:w-[84px] md:w-[102px] mt-4" style={{ filter: "brightness(0) invert(1) opacity(0.96)" }}>
-              <img src="/Assets/Brands/Asset 29.svg" alt="Parva Origins" className="w-full h-auto" />
+              <img src="/Assets/Brands/Asset 29.svg" alt="Parva Origins" width={102} height={102} decoding="async" className="w-full h-auto" />
             </div>
             <span className="font-sans-utility text-[9px] sm:text-[10px] tracking-[0.44em] uppercase text-[#F5EED5]/70 mt-4">Parva</span>
             <h2 className="font-serif-editorial text-[26px] sm:text-[30px] md:text-[36px] tracking-[0.16em] sm:tracking-[0.18em] uppercase text-[#F5EED5] leading-none mt-1">Origins</h2>

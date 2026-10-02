@@ -46,7 +46,16 @@ export default function MGateway() {
       {/* compact reserve mark */}
       <header className="shrink-0 w-full flex flex-col items-center relative z-10 px-6 pt-6">
         <div ref={headMark} className="flex flex-col items-center">
-          <img src="/Parva_logo.svg" alt="House of Parva" className="w-[76px] h-auto" style={{ filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.4))" }} />
+          <img
+            src="/Parva_logo.svg"
+            alt="House of Parva"
+            width={76}
+            height={76}
+            fetchPriority="high"
+            decoding="async"
+            className="w-[76px] h-auto"
+            style={{ filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.4))" }}
+          />
           <p className="font-sans-utility text-[8px] tracking-[0.3em] uppercase text-[#F5EED5]/60 mt-2 pl-[0.3em]">
             Fine Art & Storytelling House
           </p>
@@ -78,7 +87,7 @@ export default function MGateway() {
             <Reveal key={a.title} y={24} delay={0.1 + i * 0.12} duration={1}>
               <div className="rounded-[24px] bg-[#FFFCF8]/80 backdrop-blur-md p-5 shadow-[0_14px_36px_rgba(0,0,0,0.32)] border border-white/40">
                 <div className="flex items-center gap-4">
-                  <img src={a.mark} alt={a.markAlt} className="w-[76px] h-auto shrink-0" />
+                  <img src={a.mark} alt={a.markAlt} width={76} height={76} decoding="async" className="w-[76px] h-auto shrink-0" />
                   <span className="flex-1 min-w-0 text-left">
                     <span className="block font-sans-utility text-[9px] tracking-[0.24em] uppercase text-[#641F27] font-bold">
                       {a.index} • {a.eyebrow}
