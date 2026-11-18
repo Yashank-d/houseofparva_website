@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House of Parva — Architecture & Portfolio Presentation Deck</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              burgundy: '#2B0F14',
+              velvet: '#1E0A0E',
+              crimson: '#641F27',
+              gold: '#C9A86A',
+              parchment: '#EAE1D2',
+              cream: '#F5EED5',
+              bgDark: '#0B090A',
+              surface: '#140D0F',
+              card: '#1C1316',
+              border: '#2E1E23',
+              muted: '#9E8E93'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Custom Scrollbar & Transitions */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0B090A; }
+    ::-webkit-scrollbar-thumb { background: #2E1E23; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C9A86A; }
+
+    .slide {
+      display: none;
+      opacity: 0;
+      transform: scale(0.985) translateY(8px);
+      transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1), transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    /* Print / PDF Export Stylesheet */
+    @media print {
+      @page {
+        size: 16in 10in;
+        margin: 0;
+      }
+      body {
+        background: #0B090A !important;
+        color: #F5EED5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .slide {
+        display: flex !important;
+        opacity: 1 !important;
+        transform: none !important;
+        page-break-after: always;
+        break-after: page;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        padding: 2.5rem !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-brand-bgDark text-brand-cream font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-brand-gold selection:text-brand-burgundy overflow-x-hidden">
+
+  <!-- TOP BAR / HEADER -->
+  <header class="no-print border-b border-brand-border/60 bg-brand-surface/80 backdrop-blur-xl sticky top-0 z-50 px-6 py-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-crimson to-brand-gold/70 flex items-center justify-center shadow-lg shadow-brand-crimson/20 border border-brand-gold/30">
+        <span class="font-serif font-bold text-brand-cream text-lg italic">P</span>
+      </div>
+      <div>
+        <h1 class="text-sm font-semibold tracking-wide text-brand-cream flex items-center gap-2">
+          House of Parva
+          <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-brand-gold/15 text-brand-gold border border-brand-gold/30">System Portfolio</span>
+        </h1>
+        <p class="text-[11px] text-brand-muted">Editorial Dual-Atelier Fine Art Platform & Visual Architecture</p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-card border border-brand-border text-xs text-brand-muted">
+        <kbd class="px-1.5 py-0.5 rounded bg-brand-surface border border-brand-border text-[10px] text-brand-cream">←</kbd>
+        <kbd class="px-1.5 py-0.5 rounded bg-brand-surface border border-brand-border text-[10px] text-brand-cream">→</kbd>
+        <span>or</span>
+        <kbd class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-[10px] text-brand-cream">Space</kbd>
+      </div>
+
+      <button onclick="window.print()" class="px-3.5 py-1.5 rounded-lg bg-brand-card hover:bg-brand-surface border border-brand-border hover:border-brand-gold/50 text-xs font-medium text-brand-cream transition-all flex items-center gap-1.5 shadow-sm active:scale-95">
+        <svg class="w-3.5 h-3.5 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+        </svg>
+        <span>Export PDF</span>
+      </button>
+
+      <a href="mailto:yashank.design@gmail.com" class="px-3.5 py-1.5 rounded-lg bg-brand-gold hover:bg-brand-gold/90 text-brand-burgundy text-xs font-bold transition-all shadow-md shadow-brand-gold/20 active:scale-95">
+        Contact Architect
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN SLIDES CONTAINER -->
+  <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col justify-center">
+
+    <!-- SLIDE 01: EXECUTIVE OVERVIEW -->
+    <section class="slide active flex-col lg:flex-row gap-8 items-center" data-title="Executive Overview">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>01 / 10</span>
+          <span>•</span>
+          <span>EXECUTIVE SUMMARY</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight text-brand-cream leading-tight">
+          House of Parva: <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-cream to-brand-gold">Editorial Fine-Art Digital Flagship</span>
+        </h2>
+        <p class="text-sm sm:text-base text-brand-muted leading-relaxed font-light">
+          House of Parva is a premier Indian storytelling and fine-art photography studio based in Bengaluru. This portfolio piece deconstructs the design architecture, physical paper tactile shaders, multi-tier client gateway, and high-performance Webpack runtime engineered for luxury commercial conversion.
+        </p>
+        
+        <div class="grid grid-cols-3 gap-3 pt-2">
+          <div class="p-3.5 rounded-xl bg-brand-card border border-brand-border">
+            <span class="block text-2xl font-display font-bold text-brand-gold">100%</span>
+            <span class="text-[11px] text-brand-muted font-medium">SEO & Accessibility Score</span>
+          </div>
+          <div class="p-3.5 rounded-xl bg-brand-card border border-brand-border">
+            <span class="block text-2xl font-display font-bold text-brand-cream">2 Ateliers</span>
+            <span class="text-[11px] text-brand-muted font-medium">Weddings & Origins</span>
+          </div>
+          <div class="p-3.5 rounded-xl bg-brand-card border border-brand-border">
+            <span class="block text-2xl font-display font-bold text-brand-gold">0-Scroll</span>
+            <span class="text-[11px] text-brand-muted font-medium">Editorial Scrapbook Canvas</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs font-mono text-brand-muted pt-1">
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Architect: Yashank D</span>
+          <span>•</span>
+          <span>Studio: Ocean and Origin</span>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/01_house_gateway.png" alt="House of Parva Gateway Interface" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 01: Dual-Atelier Maison Gateway</span>
+            <span class="text-[11px] text-brand-muted">Retina 2880×1800 Viewport</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 02: PROBLEM & ARCHITECTURAL INTENT -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="Problem Matrix">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>02 / 10</span>
+          <span>•</span>
+          <span>OPERATIONAL CHALLENGES & SOLUTION</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          The Luxury Creative Problem Matrix
+        </h2>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          High-end photography portfolios routinely suffer from visual genericness, sluggish hydration delays from unoptimized raster grids, and fractured booking funnels that confuse commercial wedding clients with family milestone inquiries.
+        </p>
+
+        <div class="space-y-3">
+          <div class="p-3.5 rounded-xl bg-brand-card border border-brand-border/70 flex gap-3.5 items-start">
+            <div class="w-6 h-6 rounded-md bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">✕</div>
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-brand-cream">Industry Friction: Generic Template Grids</h4>
+              <p class="text-xs text-brand-muted mt-0.5">SquareSpace/WordPress sites feel generic, fail to convey fine-art pedigree, and degrade luxury pricing power.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-brand-card border border-brand-border/70 flex gap-3.5 items-start">
+            <div class="w-6 h-6 rounded-md bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">✕</div>
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-brand-cream">Audience Dilution: Weddings vs. Families</h4>
+              <p class="text-xs text-brand-muted mt-0.5">Mixing high-ticket destination weddings with intimate naming ceremonies creates cognitive discord for prospective clients.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-brand-card border border-brand-gold/30 bg-gradient-to-r from-brand-card to-brand-crimson/10 flex gap-3.5 items-start">
+            <div class="w-6 h-6 rounded-md bg-brand-gold/20 border border-brand-gold/40 text-brand-gold font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">✓</div>
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-brand-gold">Architected Solution: Dual-Atelier Editorial Engine</h4>
+              <p class="text-xs text-brand-cream/80 mt-0.5">A unified maison gateway with zero-scroll editorial parchment canvases, real torn-paper edge masking, and decoupled atelier funnels.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/02_weddings_welcome.png" alt="Parva Weddings Atelier Welcome" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 02: Parva Weddings Editorial Canvas</span>
+            <span class="text-[11px] text-brand-muted">Physical Torn Mask & Velvet Sidebar</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 03: FULL-STACK ARCHITECTURE -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="System Architecture">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>03 / 10</span>
+          <span>•</span>
+          <span>TECHNICAL ARCHITECTURE PIPELINE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          Modern Next.js 16 & Editorial Pipeline
+        </h2>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          Engineered using React 19 and Next.js 16 with optimized Turbopack & Webpack builds. Leverages hardware-accelerated Framer Motion choreography and CSS mask filters to render photorealistic paper grain without taxing the GPU.
+        </p>
+
+        <!-- Tech Stack Badges -->
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border">
+            <span class="font-mono text-brand-gold font-bold block mb-1">Next.js 16 & React 19</span>
+            <span class="text-brand-muted">App router, server metadata, dynamic asset prefetching, and zero-flicker client hydration.</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border">
+            <span class="font-mono text-brand-gold font-bold block mb-1">Tailwind CSS v4 & Shaders</span>
+            <span class="text-brand-muted">Custom SVG fractal noise textures with multiply blend modes embedded directly into paper backgrounds.</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border">
+            <span class="font-mono text-brand-gold font-bold block mb-1">Framer Motion & GSAP 3</span>
+            <span class="text-brand-muted">Coordinated logo dock transitions, spring physics page turners, and zero-jank swipe gesture handling.</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border">
+            <span class="font-mono text-brand-gold font-bold block mb-1">Schema.org & Edge SEO</span>
+            <span class="text-brand-muted">Automated LocalBusiness structured data, canonical URL resolvers, and dynamic sitemap generators.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/03_weddings_stories.png" alt="Parva Weddings Stories Canvas" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 03: Editorial Scrapbook Gallery</span>
+            <span class="text-[11px] text-brand-muted">Curated Photo Stories</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 04: ATELIER DEEP DIVE: WEDDINGS SERVICES -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="Weddings Atelier">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>04 / 10</span>
+          <span>•</span>
+          <span>FEATURE SPOTLIGHT: WEDDINGS ATELIER</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          Curated Offerings & High-Touch Ingestion
+        </h2>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          The Weddings Atelier presents full-scale destination weddings, pre-wedding master films, and intimate celebration packages with transparent deliverables, multi-crew inclusions, and instant modal enquiry hooks.
+        </p>
+
+        <div class="space-y-3 text-xs">
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <div>
+              <span class="font-bold text-brand-cream block">Destination & Grand Weddings</span>
+              <span class="text-brand-muted">Multi-day documentation, cinematic drone films, teaser films, & legacy albums.</span>
+            </div>
+            <span class="font-mono text-brand-gold px-2 py-1 rounded bg-brand-surface border border-brand-border">Flagship</span>
+          </div>
+
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <div>
+              <span class="font-bold text-brand-cream block">Pre-Wedding & Couple Sessions</span>
+              <span class="text-brand-muted">Editorial conceptual shoots, styling direction, and cinematic save-the-date reels.</span>
+            </div>
+            <span class="font-mono text-brand-gold px-2 py-1 rounded bg-brand-surface border border-brand-border">Creative</span>
+          </div>
+
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <div>
+              <span class="font-bold text-brand-cream block">Direct Telephone & WhatsApp Integration</span>
+              <span class="text-brand-muted">Instant routing to studio producers with verified business schema metadata.</span>
+            </div>
+            <span class="font-mono text-emerald-400 px-2 py-1 rounded bg-brand-surface border border-brand-border">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/04_weddings_services.png" alt="Parva Weddings Services Matrix" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 04: Weddings Services & Menu Canvas</span>
+            <span class="text-[11px] text-brand-muted">Service Menu & Curated Inclusions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 05: FOUNDER BIOGRAPHY & STUDIO ETHOS -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="Studio Ethos">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>05 / 10</span>
+          <span>•</span>
+          <span>FOUNDER STORY & PROVENANCE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          Authentic Storytelling with Soul
+        </h2>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          Founded on the principle of documenting life as it breathes without artificial poses. The biography canvas pairs tactile handwritten typography with archival founder portraits to establish immediate client trust.
+        </p>
+
+        <div class="p-4 rounded-xl bg-brand-card border border-brand-border/80 space-y-3">
+          <p class="text-xs italic text-brand-cream/90 font-serif leading-relaxed">
+            "We believe weddings and family beginnings are not commercial spectacles to be directed, but sacred milestones to be preserved with artistic reverence and honest emotion."
+          </p>
+          <div class="flex items-center justify-between pt-2 border-t border-brand-border/60 text-xs">
+            <span class="font-mono text-brand-gold">Founders: Yashank & Parva Team</span>
+            <span class="text-brand-muted">Ocean and Origin</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="p-3 rounded-lg bg-brand-surface border border-brand-border">
+            <span class="font-bold text-brand-cream block mb-1">Dual-Brand Synergy</span>
+            <span class="text-brand-muted">Seamlessly cross-pollinates clients from weddings into life's subsequent chapters.</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-surface border border-brand-border">
+            <span class="font-bold text-brand-cream block mb-1">Archival Standards</span>
+            <span class="text-brand-muted">All deliverables packaged in custom hand-bound albums and 4K master drives.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/05_weddings_about.png" alt="Parva Weddings About Canvas" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 05: Editorial About & Founder Story</span>
+            <span class="text-[11px] text-brand-muted">Tactile Portrait & Script Callouts</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 06: WEDDINGS CONTACT & CONVERSION ENGINE -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="Weddings Inquiries">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>06 / 10</span>
+          <span>•</span>
+          <span>HIGH-CONVERSION INQUIRY SUITE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          Seamless Ingestion & Client Qualification
+        </h2>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          Eliminates standard email forms in favor of an editorial reservation canvas. Direct dial integration, location verification, and bespoke booking timeline scheduling maximize qualification velocity.
+        </p>
+
+        <div class="space-y-2.5 text-xs">
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <span class="text-brand-cream font-medium">Direct Telephone Ingestion:</span>
+            <span class="font-mono text-brand-gold font-bold">+91 78925 24833 • +91 97395 85818</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <span class="text-brand-cream font-medium">Studio Concierge Email:</span>
+            <span class="font-mono text-brand-gold font-bold">hello@thehouseofparva.in</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <span class="text-brand-cream font-medium">Headquarters & Jurisdiction:</span>
+            <span class="font-mono text-brand-muted">Bengaluru, Karnataka, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/06_weddings_contact.png" alt="Parva Weddings Contact Canvas" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 06: Weddings Atelier Reservation Canvas</span>
+            <span class="text-[11px] text-brand-muted">Direct Phone, Email & Social Routing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 07: ATELIER DEEP DIVE: PARVA ORIGINS -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="Origins Atelier">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>07 / 10</span>
+          <span>•</span>
+          <span>SECOND ATELIER: PARVA ORIGINS</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          Family Celebrations & Beginnings
+        </h2>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          Parva Origins is dedicated to life's intimate milestones: Housewarmings (Gruhapravesham), Traditional Poojas, Baby Showers (Seemantha), and Naming Ceremonies. Crafted with a richer deep-velvet aesthetic and warm heirloom lighting.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border">
+            <span class="font-bold text-brand-gold block mb-0.5">Family Heirloom Archive</span>
+            <span class="text-brand-muted">Preserves traditional multi-generational rituals across Karnataka and India.</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border">
+            <span class="font-bold text-brand-gold block mb-0.5">Dedicated Velvet Styling</span>
+            <span class="text-brand-muted">Tailored maroon & gold aesthetic (`#2B0F14`) differentiating it from wedding editorial.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/07_origins_welcome.png" alt="Parva Origins Welcome Canvas" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 07: Parva Origins Atelier Canvas</span>
+            <span class="text-[11px] text-brand-muted">Deep Velvet Heirloom Paper Palette</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 08: ORIGINS PORTFOLIO & FAMILY STORIES -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="Origins Stories">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>08 / 10</span>
+          <span>•</span>
+          <span>PORTFOLIO ORCHESTRATION</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          Heirloom Galleries & Visual Archiving
+        </h2>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          Showcases real family moments through an editorial scrapbooking layout. Employs asymmetric polaroid angles, subtle drop shadows, and handwritten annotations (`Caveat` & `Reenie Beanie` fonts) to invoke emotional resonance.
+        </p>
+
+        <div class="p-3.5 rounded-xl bg-brand-card border border-brand-border space-y-2 text-xs">
+          <div class="flex items-center justify-between text-brand-cream font-mono">
+            <span>Visual Asset Optimization</span>
+            <span class="text-brand-gold font-bold">Cloudinary CDN + Next/Image</span>
+          </div>
+          <div class="w-full bg-brand-surface h-1.5 rounded-full overflow-hidden">
+            <div class="bg-gradient-to-r from-brand-crimson to-brand-gold h-full rounded-full" style="width: 95%"></div>
+          </div>
+          <p class="text-[11px] text-brand-muted pt-1">
+            Pre-warmed CDN connections and lazy loaded script tags ensure instantaneous gallery browsing with sub-50ms interaction latency.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/08_origins_stories.png" alt="Parva Origins Stories Canvas" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 08: Origins Heirloom Stories Canvas</span>
+            <span class="text-[11px] text-brand-muted">Asymmetric Visual Journal</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 09: PERFORMANCE & QUANTIFIED METRICS -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="Real Metrics">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>09 / 10</span>
+          <span>•</span>
+          <span>CORE WEB VITALS & METRICS</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          Engineered for 100% Performance
+        </h2>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          Real production metrics audited via Google Lighthouse and PageSpeed Insights across desktop and mobile form factors.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3.5">
+          <div class="p-4 rounded-xl bg-brand-card border border-brand-border/80 text-center">
+            <span class="text-3xl font-display font-bold text-emerald-400">100%</span>
+            <span class="text-xs font-mono text-brand-cream block mt-1">SEO AUDIT SCORE</span>
+            <span class="text-[10px] text-brand-muted block mt-0.5">Automated JSON-LD schemas</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-brand-card border border-brand-border/80 text-center">
+            <span class="text-3xl font-display font-bold text-emerald-400">100%</span>
+            <span class="text-xs font-mono text-brand-cream block mt-1">ACCESSIBILITY</span>
+            <span class="text-[10px] text-brand-muted block mt-0.5">WCAG AAA contrast adherence</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-brand-card border border-brand-border/80 text-center">
+            <span class="text-3xl font-display font-bold text-brand-gold">0.4s</span>
+            <span class="text-xs font-mono text-brand-cream block mt-1">FIRST CONTENTFUL PAINT</span>
+            <span class="text-[10px] text-brand-muted block mt-0.5">Optimized SVG logos & font-swap</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-brand-card border border-brand-border/80 text-center">
+            <span class="text-3xl font-display font-bold text-brand-gold">0 CLS</span>
+            <span class="text-xs font-mono text-brand-cream block mt-1">CUMULATIVE LAYOUT SHIFT</span>
+            <span class="text-[10px] text-brand-muted block mt-0.5">Pixel-true zero layout shifting</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/09_origins_services.png" alt="Parva Origins Services Canvas" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 09: Origins Services Matrix</span>
+            <span class="text-[11px] text-brand-muted">Ceremonial Pricing & Packages</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: ARCHITECT & CANDIDATE COMPETENCIES -->
+    <section class="slide flex-col lg:flex-row gap-8 items-center" data-title="Candidate Profile">
+      <div class="lg:w-1/2 flex flex-col justify-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-crimson/20 border border-brand-gold/30 text-brand-gold text-xs font-mono w-max">
+          <span>10 / 10</span>
+          <span>•</span>
+          <span>SYSTEM ARCHITECT & HIRING PROFILE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-brand-cream">
+          Yashank D
+        </h2>
+        <p class="text-xs font-mono text-brand-gold uppercase tracking-wider">
+          Founder & Full-Stack Architect • Ocean and Origin
+        </p>
+        <p class="text-sm text-brand-muted leading-relaxed font-light">
+          Bridging high-end aesthetic luxury with meticulous software engineering. Experienced in architecting production web apps, custom design systems, edge delivery pipelines, and conversion-focused digital experiences.
+        </p>
+
+        <!-- Core Competencies Grid -->
+        <div class="space-y-2.5 text-xs">
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <span class="font-bold text-brand-cream">Full-Stack Web Architecture</span>
+            <span class="text-brand-muted">Next.js 16, React 19, TypeScript, Node.js, Webpack/Turbopack</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <span class="font-bold text-brand-cream">UI/UX & Creative Engineering</span>
+            <span class="text-brand-muted">Tailwind CSS v4, Framer Motion, GSAP, SVG Shaders</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center justify-between">
+            <span class="font-bold text-brand-cream">Web Performance & SEO</span>
+            <span class="text-brand-muted">Core Web Vitals, JSON-LD Schema, Server-Side Rendering</span>
+          </div>
+        </div>
+
+        <div class="pt-2 flex flex-wrap gap-3">
+          <a href="mailto:yashank.design@gmail.com" class="px-5 py-2.5 rounded-lg bg-brand-gold hover:bg-brand-gold/90 text-brand-burgundy font-bold text-xs transition-all shadow-lg shadow-brand-gold/20 flex items-center gap-2">
+            <span>✉ Email: yashank.design@gmail.com</span>
+          </a>
+          <a href="https://github.com/Yashank-d" target="_blank" class="px-5 py-2.5 rounded-lg bg-brand-card hover:bg-brand-surface border border-brand-border text-brand-cream font-medium text-xs transition-all flex items-center gap-2">
+            <span>GitHub: @Yashank-d</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <div class="relative group rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl shadow-black/80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <img src="portfolio_assets/10_origins_contact.png" alt="Parva Origins Contact Canvas" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+          <div class="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-center text-xs">
+            <span class="font-mono text-brand-gold font-medium bg-brand-surface/90 px-2.5 py-1 rounded border border-brand-border">Screen 10: Origins Contact & Chapter Inquiries</span>
+            <span class="text-[11px] text-brand-muted">Direct Atelier Engagement</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM BAR / PROGRESS & CONTROLS -->
+  <footer class="no-print border-t border-brand-border/60 bg-brand-surface/80 backdrop-blur-xl px-6 py-3 sticky bottom-0 z-50 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span id="slideIndicator" class="font-mono text-xs text-brand-gold font-bold">01 / 10</span>
+      <span class="text-xs text-brand-muted hidden sm:inline" id="slideTitle">Executive Overview</span>
+    </div>
+
+    <!-- Progress Dots -->
+    <div class="flex items-center gap-1.5" id="dotsContainer">
+      <!-- Generated via JS -->
+    </div>
+
+    <!-- Prev / Next Navigation Buttons -->
+    <div class="flex items-center gap-2">
+      <button id="prevBtn" onclick="prevSlide()" class="p-2 rounded-lg bg-brand-card hover:bg-brand-surface border border-brand-border text-brand-muted hover:text-brand-cream transition-all disabled:opacity-30 disabled:pointer-events-none active:scale-95" aria-label="Previous Slide">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <button id="nextBtn" onclick="nextSlide()" class="p-2 rounded-lg bg-brand-card hover:bg-brand-surface border border-brand-border text-brand-muted hover:text-brand-cream transition-all disabled:opacity-30 disabled:pointer-events-none active:scale-95" aria-label="Next Slide">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE DECK CONTROLLER JAVASCRIPT -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const titleEl = document.getElementById('slideTitle');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+
+    // Build progress dots
+    slides.forEach((slide, idx) => {
+      const dot = document.createElement('button');
+      dot.className = `w-2.5 h-1.5 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-brand-gold w-6' : 'bg-brand-border hover:bg-brand-muted'}`;
+      dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+      dot.onclick = () => goToSlide(idx);
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('button');
+
+    function updateDeck() {
+      slides.forEach((slide, idx) => {
+        if (idx === currentIndex) {
+          slide.classList.add('active');
+          slide.classList.remove('hidden');
+        } else {
+          slide.classList.remove('active');
+          slide.classList.add('hidden');
+        }
+      });
+
+      // Update text & dots
+      const num = String(currentIndex + 1).padStart(2, '0');
+      const total = String(slides.length).padStart(2, '0');
+      indicator.textContent = `${num} / ${total}`;
+      titleEl.textContent = slides[currentIndex].getAttribute('data-title') || '';
+
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.className = 'w-6 h-1.5 rounded-full bg-brand-gold transition-all duration-300';
+        } else {
+          dot.className = 'w-2.5 h-1.5 rounded-full bg-brand-border hover:bg-brand-muted transition-all duration-300';
+        }
+      });
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === slides.length - 1;
+    }
+
+    function nextSlide() {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        updateDeck();
+      }
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateDeck();
+      }
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < slides.length) {
+        currentIndex = index;
+        updateDeck();
+      }
+    }
+
+    // Keyboard bindings
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+
+    // Touch swipe support
+    let touchStartX = null;
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+      const diffX = e.changedTouches[0].clientX - touchStartX;
+      if (diffX > 50) prevSlide();
+      else if (diffX < -50) nextSlide();
+      touchStartX = null;
+    }, { passive: true });
+
+    // Initial render
+    updateDeck();
+  </script>
+</body>
+</html>
