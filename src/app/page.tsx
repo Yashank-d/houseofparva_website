@@ -185,7 +185,7 @@ export default function HouseOfParvaGateway() {
           <span>·</span>
           <a href="mailto:hello@thehouseofparva.in" className="hover:text-[#C9A86A] transition-colors normal-case tracking-normal">hello@thehouseofparva.in</a>
         </div>
-        <span>© 2026 Ocean and Origin LLP • Bengaluru, India</span>
+        <span>© 2026 Ocean and Origin • Bengaluru, India</span>
       </footer>
     </div>
   );

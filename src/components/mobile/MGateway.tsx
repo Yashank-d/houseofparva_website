@@ -171,7 +171,7 @@ export default function MGateway() {
         </div>
 
         <p className="shrink-0 font-sans-utility text-[8px] tracking-[0.22em] uppercase text-[#F5EED5]/35 text-center mt-3 pb-2 pl-[0.22em]">
-          Two ateliers • One house • Bengaluru & Beyond • © 2026 Ocean and Origin LLP
+          Two ateliers • One house • Bengaluru & Beyond • © 2026 Ocean and Origin
         </p>
       </main>
     </div>

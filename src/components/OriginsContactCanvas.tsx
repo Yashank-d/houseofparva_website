@@ -125,7 +125,7 @@ export default function OriginsContactCanvas() {
       {/* Bottom Footer Attribution */}
       <div className="border-t border-[#1C1B18]/10 pt-3 flex flex-col sm:flex-row justify-between items-center text-[#1C1B18]/60 font-sans-utility text-[10px] tracking-[0.2em] uppercase gap-2">
         <span>PARVA ORIGINS • A HOUSE OF PARVA BRAND</span>
-        <span>A DIVISION OF OCEAN AND ORIGIN LLP</span>
+        <span>A DIVISION OF OCEAN AND ORIGIN</span>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export default function LocalBusinessSchema() {
       {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
-        name: "Ocean and Origin LLP",
+        name: "Ocean and Origin",
         logo: `${SITE_URL}/icon.png`,
       },
       {

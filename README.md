@@ -2,7 +2,7 @@
 
 > **Fine Art & Storytelling House** — Crafting timeless wedding stories and celebrating life's beautiful beginnings.
 
-An editorial, scrapbook-inspired web experience built with **Next.js 16**, **Tailwind CSS v4**, **Framer Motion**, **GSAP**, and **TypeScript**. Presented by **Ocean and Origin LLP**, Bengaluru.
+An editorial, scrapbook-inspired web experience built with **Next.js 16**, **Tailwind CSS v4**, **Framer Motion**, **GSAP**, and **TypeScript**. Presented by **Ocean and Origin**, Bengaluru.
 
 ---
 
@@ -116,4 +116,4 @@ public/
 
 ## 📄 License & Credits
 
-© **Ocean and Origin LLP** • Bengaluru & Beyond • hello@thehouseofparva.in — All Rights Reserved.
+© **Ocean and Origin** • Bengaluru & Beyond • hello@thehouseofparva.in — All Rights Reserved.
